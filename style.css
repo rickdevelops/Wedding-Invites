@@ -1,0 +1,1629 @@
+/* =========================================================
+   SRIJITA & ARNAB
+   FINAL IMAGE-DRIVEN WEDDING INVITATION
+========================================================= */
+
+:root{
+  --cream:#fff8ed;
+  --paper:#f2e4cf;
+  --paper-dark:#dec7a8;
+  --wine:#6f102d;
+  --wine-deep:#3d0919;
+  --teal:#0e6170;
+  --teal-deep:#0b4856;
+  --gold:#c59b57;
+  --gold-light:#efd49b;
+  --green:#4e7564;
+  --text:#302629;
+
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --script:"Great Vibes","Brush Script MT",cursive;
+  --bengali:"Noto Serif Bengali","Nirmala UI","Vrinda",serif;
+  --sans:"DM Sans","Segoe UI",Arial,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:var(--cream);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{cursor:pointer}
+::selection{background:var(--wine);color:white}
+
+.bengali{font-family:var(--bengali)}
+
+.hidden{display:none!important}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  background:var(--wine-deep);
+  color:var(--cream);
+  transition:opacity .6s,visibility .6s;
+}
+.loader.hide{opacity:0;visibility:hidden}
+.loader-flower{
+  color:var(--gold-light);
+  font-size:45px;
+  animation:loaderSpin 3s linear infinite;
+}
+.loader p{
+  margin:12px 0 4px;
+  font-size:22px;
+}
+.loader span{
+  font-size:8px;
+  letter-spacing:4px;
+}
+@keyframes loaderSpin{
+  to{transform:rotate(360deg)}
+}
+
+/* =========================================================
+   COVER
+========================================================= */
+
+.cover{
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:var(--wine-deep);
+  transition:transform 1.05s cubic-bezier(.82,0,.16,1),opacity .7s;
+}
+.cover.exit{
+  transform:translateY(-100%);
+  opacity:0;
+  pointer-events:none;
+}
+/* Fills every edge of the screen with a soft, darkened blow-up of the same
+   card so there is never any empty space, on any screen shape. */
+.cover-backdrop{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:url("assets/cover-card.png") center/cover no-repeat;
+  filter:blur(50px) brightness(.5) saturate(1.15);
+  transform:scale(1.2);
+}
+/* The real invitation-card artwork, shown in full (never cropped) and
+   scaled up as large as the screen allows. */
+.cover-bg-image{
+  position:relative;
+  z-index:2;
+  height:100%;
+  width:auto;
+  max-width:100%;
+  max-height:100vh;
+  max-height:100dvh;
+  object-fit:contain;
+  box-shadow:0 30px 90px rgba(0,0,0,.5);
+}
+.cover-button{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:5%;
+  transform:translateX(-50%);
+  padding:14px 26px;
+  border:1px solid var(--gold);
+  background:rgba(61,9,25,.55);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+  color:var(--cream);
+  font-size:10px;
+  letter-spacing:2px;
+  white-space:nowrap;
+  transition:.35s;
+}
+.cover-button:hover{
+  background:var(--gold);
+  color:var(--wine-deep);
+  transform:translateX(-50%) translateY(-3px);
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+  position:fixed;
+  z-index:2000;
+  top:0;
+  left:0;
+  right:0;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:0 5vw;
+  color:var(--wine-deep);
+  background:rgba(253,246,233,.96);
+  box-shadow:0 2px 14px rgba(63,20,10,.08);
+  transition:.35s;
+}
+.nav.scrolled{
+  background:rgba(253,246,233,.98);
+  box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  color:inherit;
+}
+.brand-mark{
+  width:30px;
+  height:24px;
+  color:var(--wine-deep);
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:1;
+  gap:30px;
+}
+.nav-links a{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:inherit;
+  font-weight:600;
+}
+.nav-links a:hover{color:var(--wine)}
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:inherit;
+  font-size:22px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+  background:#427b82;
+  display:grid;
+  place-items:center;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-cloud{
+  position:absolute;
+  width:280px;
+  opacity:.35;
+  filter:blur(1px);
+}
+.hero-cloud-1{left:-35px;top:25%}
+.hero-cloud-2{right:-35px;top:35%}
+.hero-stars-image{
+  position:absolute;
+  width:180px;
+  left:9%;
+  top:16%;
+  opacity:.7;
+}
+.hero-moon-image{
+  position:absolute;
+  width:150px;
+  right:10%;
+  top:12%;
+}
+.hero-copy{
+  position:relative;
+  z-index:6;
+  width:min(760px,92vw);
+  padding:100px 30px 250px;
+  text-align:center;
+  color:var(--cream);
+}
+.hero-bn{
+  font-size:24px;
+  color:var(--gold-light);
+  margin:0 0 9px;
+}
+.hero-kicker{
+  font-size:9px;
+  letter-spacing:4px;
+}
+.hero-names{
+  margin:22px 0 17px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  font-family:var(--script);
+  font-size:clamp(74px,11vw,125px);
+  font-weight:400;
+  line-height:.73;
+}
+.hero-names i{
+  font-family:var(--serif);
+  font-size:38px;
+  color:var(--gold-light);
+  font-style:normal;
+  margin:11px 0;
+}
+.hero-line{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:var(--gold);
+}
+.hero-line span{
+  width:70px;
+  height:1px;
+  background:var(--gold);
+}
+.hero-date-box{}
+.date-lockup{
+  margin:25px auto 0;
+  padding:15px 18px;
+  width:min(430px,100%);
+  border-top:1px solid rgba(239,212,155,.55);
+  border-bottom:1px solid rgba(239,212,155,.55);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  background:rgba(24,68,75,.14);
+}
+.date-lockup small{
+  font-size:8px;
+  letter-spacing:4px;
+}
+.date-lockup strong{
+  font-family:var(--serif);
+  font-size:25px;
+  letter-spacing:1px;
+  color:var(--gold-light);
+}
+.date-lockup em{
+  font-style:normal;
+  font-size:10px;
+  letter-spacing:4px;
+}
+.hero-location{
+  margin-top:15px;
+  font-size:9px;
+  letter-spacing:5px;
+}
+.hero-ground{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:36%;
+  z-index:4;
+}
+.hero-skyline{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:32px;
+  width:100%;
+  height:60%;
+  object-fit:cover;
+  object-position:center bottom;
+  mix-blend-mode:multiply;
+  opacity:.68;
+}
+.hero-bridge{
+  position:absolute;
+  right:-2%;
+  bottom:32px;
+  width:44%;
+  max-width:500px;
+}
+.hero-river{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:90px;
+  object-fit:cover;
+  opacity:.85;
+}
+.hero-boat{
+  position:absolute;
+  left:25%;
+  bottom:28px;
+  width:120px;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+  position:relative;
+  min-height:900px;
+  padding:120px 6vw 145px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,#f2e4d1,#ead9c0);
+}
+.story-heading{text-align:center}
+.section-kicker{
+  margin:0;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+.story-heading h2{
+  margin:13px 0 5px;
+  font-family:var(--serif);
+  font-size:clamp(52px,7vw,85px);
+  line-height:.9;
+  color:var(--wine);
+}
+.story-heading h2 span{
+  font-family:var(--script);
+  color:var(--gold);
+  font-weight:400;
+}
+.section-bn{
+  font-size:19px;
+  color:var(--wine);
+}
+.split-story{
+  position:relative;
+  z-index:2;
+  max-width:1080px;
+  margin:65px auto 0;
+  display:grid;
+  grid-template-columns:1fr 100px 1fr;
+  gap:25px;
+  align-items:center;
+}
+.city-card{
+  min-height:385px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(111,16,45,.13);
+  box-shadow:0 25px 55px rgba(64,34,23,.14);
+}
+.city-card>img{
+  width:100%;
+  height:100%;
+  min-height:385px;
+  object-fit:cover;
+}
+.city-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 20%,rgba(16,42,46,.62) 100%);
+}
+.city-text{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:25px;
+  color:var(--cream);
+}
+.city-text-right{text-align:right}
+.city-text span{
+  font-size:8px;
+  letter-spacing:3px;
+  color:var(--gold-light);
+}
+.city-text h3{
+  margin:5px 0 0;
+  font-family:var(--serif);
+  font-size:46px;
+}
+.city-text p{
+  margin:0;
+  font-size:9px;
+  letter-spacing:3px;
+}
+.city-text small{
+  display:block;
+  margin-top:5px;
+  font-family:var(--serif);
+  font-size:17px;
+}
+.story-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:var(--wine);
+  gap:9px;
+}
+.route-top,.route-bottom{
+  font-size:7px;
+  letter-spacing:2px;
+  writing-mode:vertical-rl;
+}
+.route-bottom{transform:rotate(180deg)}
+.route-line{
+  width:1px;
+  height:75px;
+  background:linear-gradient(var(--gold),transparent);
+}
+.route-heart{font-size:22px;color:var(--gold)}
+.story-copy{
+  max-width:730px;
+  margin:60px auto 0;
+  text-align:center;
+  font-family:var(--serif);
+  font-size:22px;
+  line-height:1.55;
+  color:#55433c;
+}
+
+/* Flight animation */
+.travel-plane{
+  position:absolute;
+  z-index:12;
+  left:50%;
+  top:100px;
+  width:145px;
+  height:220px;
+  transform:translate(-50%,-250px);
+  opacity:0;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.flight-path-img{
+  position:absolute;
+  left:18px;
+  top:0;
+  width:110px;
+  height:220px;
+  object-fit:contain;
+  opacity:.75;
+}
+.plane-image{
+  position:absolute;
+  left:15px;
+  top:62px;
+  width:115px;
+  height:95px;
+  object-fit:contain;
+  transform:rotate(90deg);
+}
+.plane-penguin{
+  position:absolute;
+  width:52px;
+  height:48px;
+  object-fit:contain;
+  z-index:2;
+}
+.plane-penguin-left{
+  left:42px;
+  top:52px;
+}
+.plane-penguin-right{
+  left:69px;
+  top:52px;
+}
+.story::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(transparent,rgba(111,16,45,.10),transparent);
+  opacity:.5;
+}
+
+/* =========================================================
+   ARRIVAL
+========================================================= */
+
+.arrival{
+  min-height:700px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+}
+.full-bg-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.arrival::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:radial-gradient(ellipse 62% 60% at 50% 42%,rgba(255,248,237,.42) 0%,rgba(255,248,237,.18) 50%,transparent 75%);
+}
+.arrival-copy{
+  position:relative;
+  z-index:4;
+  width:min(750px,90vw);
+  padding:120px 20px 250px;
+  text-align:center;
+  color:var(--wine);
+}
+.arrival-copy h2{
+  margin:10px 0;
+  font-family:var(--serif);
+  font-size:clamp(53px,7vw,85px);
+  line-height:.9;
+}
+.arrival-copy h2 span{
+  color:var(--gold);
+  font-family:var(--script);
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote{
+  position:relative;
+  min-height:340px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:var(--cream);
+}
+.quote-leaf{
+  position:absolute;
+  width:250px;
+  opacity:.17;
+}
+.quote-leaf.left{left:-55px;bottom:-45px}
+.quote-leaf.right{right:-55px;top:-45px}
+.quote-inner{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.quote-inner p{
+  font-size:clamp(28px,4vw,48px);
+  line-height:1.4;
+  color:var(--wine);
+}
+.quote-inner strong{color:var(--gold)}
+.quote-inner small{
+  font-family:var(--serif);
+  font-size:18px;
+  color:#6b5c54;
+}
+
+/* =========================================================
+   WEDDING
+========================================================= */
+
+.wedding{
+  min-height:720px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:var(--wine-deep);
+}
+.wedding-bg-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.30;
+}
+.wedding-card{
+  position:relative;
+  z-index:3;
+  width:min(1000px,88vw);
+  padding:80px 45px;
+  text-align:center;
+  color:var(--cream);
+  border:1px solid rgba(239,212,155,.5);
+  background:rgba(43,7,18,.95);
+  backdrop-filter:blur(2px);
+}
+.wedding-card h2{
+  margin:10px 0;
+  font-size:39px;
+  color:var(--gold-light);
+}
+.wedding-names{
+  font-family:var(--script);
+  font-size:64px;
+  margin:5px 0 50px;
+}
+.wedding-names i{
+  font-family:var(--serif);
+  color:var(--gold);
+  font-style:normal;
+  font-size:33px;
+}
+.wedding-info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.wedding-info-grid div{
+  padding:20px 10px;
+  border-top:1px solid rgba(239,212,155,.25);
+  border-bottom:1px solid rgba(239,212,155,.25);
+}
+.wedding-info-grid span{
+  display:block;
+  color:var(--gold);
+  font-size:8px;
+  letter-spacing:3px;
+}
+.wedding-info-grid strong{
+  display:block;
+  margin-top:8px;
+  font-family:var(--serif);
+  font-size:25px;
+}
+.wedding-info-grid p{
+  margin:5px 0 0;
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--gold-light);
+}
+.outline-light{
+  display:inline-block;
+  margin-top:40px;
+  padding:14px 24px;
+  border:1px solid var(--gold-light);
+  font-size:9px;
+  letter-spacing:3px;
+  transition:.3s;
+}
+.outline-light:hover{
+  background:var(--gold-light);
+  color:var(--wine-deep);
+}
+.wedding-flower{
+  position:absolute;
+  z-index:2;
+  width:220px;
+  opacity:.55;
+}
+.wedding-flower.left{left:-20px;bottom:-20px}
+.wedding-flower.right{right:-20px;top:-10px}
+
+/* =========================================================
+   VENUE
+========================================================= */
+
+.venue{
+  min-height:650px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:var(--paper);
+}
+.venue-copy{
+  padding:110px 10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.venue-copy .section-kicker{text-align:left}
+.venue-copy h2{
+  margin:10px 0;
+  font-family:var(--serif);
+  font-size:clamp(58px,7vw,95px);
+  line-height:.85;
+  color:var(--wine);
+}
+.venue-alt{
+  margin:0;
+  font-family:var(--serif);
+  font-size:20px;
+  color:#70625c;
+}
+.venue-alt strong{color:var(--wine)}
+.gold-rule{
+  width:85px;
+  height:1px;
+  background:var(--gold);
+  margin:22px 0;
+}
+.venue-address{
+  max-width:430px;
+  line-height:1.9;
+  color:#65554e;
+  font-family:var(--serif);
+  font-size:19px;
+}
+.map-button{
+  display:inline-block;
+  width:max-content;
+  margin-top:23px;
+  padding:14px 21px;
+  border:1px solid var(--wine);
+  color:var(--wine);
+  font-size:9px;
+  letter-spacing:2px;
+  transition:.3s;
+}
+.map-button:hover{
+  background:var(--wine);
+  color:var(--cream);
+}
+.venue-art{
+  position:relative;
+  min-height:500px;
+  overflow:hidden;
+  background:#a9855a;
+}
+.venue-sign-image{
+  position:absolute;
+  width:290px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-3deg);
+  box-shadow:0 22px 45px rgba(0,0,0,.26);
+}
+.venue-lamp-image{
+  position:absolute;
+  top:45px;
+  left:13%;
+  width:130px;
+  opacity:.8;
+}
+.venue-camera-image{
+  position:absolute;
+  right:5%;
+  bottom:2%;
+  width:180px;
+}
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown-section{
+  padding:100px 6vw;
+  text-align:center;
+  background:var(--cream);
+}
+.countdown-section h2{
+  margin:10px 0 50px;
+  color:var(--wine);
+  font-family:var(--serif);
+  font-size:55px;
+}
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  max-width:900px;
+  margin:auto;
+  gap:13px;
+}
+.countdown div{
+  padding:24px 10px;
+  border-bottom:2px solid var(--gold);
+}
+.countdown strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:60px;
+  color:var(--wine);
+}
+.countdown span{
+  font-size:8px;
+  letter-spacing:3px;
+}
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline{
+  padding:100px 6vw;
+  text-align:center;
+  background:#efe1ce;
+}
+.timeline h2{
+  margin:10px 0 50px;
+  color:var(--wine);
+  font-family:var(--serif);
+  font-size:55px;
+}
+.timeline-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.timeline-card{
+  padding:35px 22px;
+  border:1px solid rgba(111,16,45,.13);
+  background:rgba(255,255,255,.36);
+}
+.timeline-card span{
+  font-family:var(--serif);
+  font-size:25px;
+  color:var(--gold);
+}
+.timeline-card h3{
+  font-family:var(--serif);
+  color:var(--wine);
+  font-size:32px;
+}
+.timeline-card p{
+  color:#6c5c54;
+  line-height:1.7;
+}
+
+/* =========================================================
+   RECEPTION
+========================================================= */
+
+.reception{
+  position:relative;
+  min-height:750px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1.15fr 1fr;
+  align-items:center;
+  gap:35px;
+  padding:100px 6vw;
+  background:
+    linear-gradient(90deg,#f6e9d6,#ead8bc,#f5e9d6);
+}
+.reception-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.19;
+  mix-blend-mode:multiply;
+}
+.reception-kolkata{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:28%;
+  object-fit:cover;
+  opacity:.37;
+}
+.reception-flower{
+  position:absolute;
+  width:190px;
+  opacity:.7;
+  z-index:2;
+}
+.reception-flower.left{left:-18px;bottom:30px}
+.reception-flower.right{right:-18px;top:30px}
+.reception-copy,
+.reception-art,
+.reception-venue{
+  position:relative;
+  z-index:4;
+}
+.reception-copy .section-kicker{text-align:left}
+.reception-copy h2{
+  margin:10px 0 0;
+  font-size:clamp(60px,7vw,95px);
+  line-height:.9;
+  color:var(--wine);
+}
+.reception-sub{
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--gold);
+  margin-top:8px;
+}
+.reception-date{
+  margin-top:25px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.reception-date span{
+  font-size:9px;
+  letter-spacing:3px;
+}
+.reception-date strong{
+  color:var(--wine);
+  font-family:var(--serif);
+  font-size:25px;
+}
+.reception-line{
+  font-size:21px;
+  color:var(--wine);
+}
+.reception-art{
+  min-height:460px;
+  display:grid;
+  place-items:center;
+}
+.palace-image{
+  width:85%;
+  max-width:520px;
+  border:9px solid #ead2a9;
+  box-shadow:0 25px 55px rgba(66,34,19,.2);
+}
+.reception-chandelier{
+  position:absolute;
+  width:180px;
+  right:16%;
+  top:4%;
+  opacity:.35;
+}
+.chandelier-image{
+  position:absolute;
+  width:165px;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:.9;
+}
+.reception-venue .section-kicker{text-align:left}
+.reception-venue h3{
+  margin:10px 0 13px;
+  font-family:var(--serif);
+  font-size:46px;
+  color:var(--wine);
+}
+.reception-venue>p:not(.section-kicker){
+  color:#65564f;
+  line-height:1.8;
+}
+
+/* =========================================================
+   INVITATION
+========================================================= */
+
+.invitation{
+  min-height:620px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:var(--cream);
+}
+.invitation-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.22;
+}
+.invitation-flower{
+  position:absolute;
+  width:210px;
+  opacity:.75;
+}
+.invitation-flower.left{left:0;bottom:0}
+.invitation-flower.right{right:0;top:0}
+.namaste{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  z-index:2;
+}
+.invitation-copy{
+  position:relative;
+  z-index:3;
+  width:min(820px,90vw);
+  padding:120px 30px 80px;
+  text-align:center;
+}
+.invitation-copy h2{
+  color:var(--wine);
+  font-size:clamp(34px,5vw,56px);
+  line-height:1.5;
+  margin:8px 0 25px;
+}
+.invitation-copy>p:not(.section-kicker){
+  color:#694e43;
+  font-size:20px;
+  line-height:1.9;
+  margin:14px 0;
+}
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+.rsvp{
+  min-height:560px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#dec092;
+}
+.rsvp-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.4;
+}
+.rsvp-copy{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  padding:26px 34px;
+  background:rgba(255,248,237,.55);
+  backdrop-filter:blur(1px);
+}
+.rsvp-copy h2{
+  font-family:var(--serif);
+  font-size:clamp(55px,7vw,85px);
+  line-height:.85;
+  color:var(--wine);
+  margin:12px 0 20px;
+}
+.rsvp-copy>p:not(.section-kicker){
+  font-family:var(--serif);
+  font-size:20px;
+}
+.rsvp-button{
+  margin-top:23px;
+  padding:15px 30px;
+  border:1px solid var(--wine);
+  background:var(--wine);
+  color:var(--cream);
+  font-size:10px;
+  letter-spacing:3px;
+  transition:.3s;
+}
+.rsvp-button:hover{
+  background:var(--wine-deep);
+  transform:translateY(-3px);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+  position:relative;
+  min-height:260px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:var(--wine-deep);
+  color:var(--cream);
+}
+.footer-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.12;
+}
+.footer-lotus{
+  position:absolute;
+  bottom:-25px;
+  width:180px;
+  opacity:.55;
+}
+.footer-copy{
+  position:relative;
+  z-index:2;
+}
+.footer-copy p{
+  color:var(--gold-light);
+  font-size:19px;
+}
+.footer-copy h2{
+  font-family:var(--script);
+  font-size:76px;
+  font-weight:400;
+  margin:7px 0;
+}
+.footer-copy h2 span{
+  font-family:var(--serif);
+  color:var(--gold);
+  font-size:.48em;
+}
+.footer-copy small{
+  font-size:8px;
+  letter-spacing:3px;
+  color:var(--gold-light);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+}
+.modal.show{
+  opacity:1;
+  visibility:visible;
+}
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(32,5,14,.75);
+  backdrop-filter:blur(8px);
+}
+.modal-box{
+  position:relative;
+  z-index:2;
+  width:min(500px,100%);
+  padding:40px 30px;
+  background:var(--cream);
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+.modal-close{
+  position:absolute;
+  top:9px;
+  right:15px;
+  background:none;
+  border:0;
+  font-size:30px;
+  color:var(--wine);
+}
+.modal-bn{
+  text-align:center;
+  font-size:18px;
+  color:var(--wine);
+}
+.modal-box h2{
+  margin:5px 0 20px;
+  text-align:center;
+  font-family:var(--serif);
+  font-size:47px;
+  color:var(--wine);
+}
+.modal-box form{
+  display:grid;
+  gap:15px;
+}
+.modal-box label{
+  display:grid;
+  gap:6px;
+  font-size:8px;
+  letter-spacing:2px;
+  color:var(--wine);
+}
+.modal-box input,
+.modal-box select{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7c5ad;
+  background:white;
+}
+.modal-box form .rsvp-button{
+  width:100%;
+  border-color:var(--wine);
+}
+#rsvpThanks{text-align:center}
+#rsvpThanks h3{
+  color:var(--wine);
+  font-family:var(--serif);
+  font-size:35px;
+}
+.modal-note{
+  display:block;
+  margin-top:18px;
+  text-align:center;
+  color:#8d7b72;
+  font-size:8px;
+}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  z-index:6000;
+  padding:12px 18px;
+  background:var(--wine-deep);
+  color:var(--cream);
+  font-size:11px;
+  opacity:0;
+  transform:translate(-50%,30px);
+  transition:.3s;
+}
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal,
+.reveal-left,
+.reveal-right{
+  opacity:0;
+  transition:
+    opacity .85s ease,
+    transform .85s cubic-bezier(.22,1,.36,1);
+}
+.reveal{transform:translateY(35px)}
+.reveal-left{transform:translateX(-35px)}
+.reveal-right{transform:translateX(35px)}
+.reveal.active,
+.reveal-left.active,
+.reveal-right.active{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================================================
+   URL MODES
+========================================================= */
+
+body.mode-bi-only .page-reception,
+body.mode-bi-only .reception-link{
+  display:none!important;
+}
+
+body.mode-reception-only .page-biye,
+body.mode-reception-only .biye-link,
+body.mode-reception-only #story,
+body.mode-reception-only .arrival,
+body.mode-reception-only .quote{
+  display:none!important;
+}
+
+body.mode-reception-only #home{
+  min-height:72svh;
+}
+
+body.mode-reception-only .site{
+  min-height:100vh;
+}
+
+body.mode-reception-only #cover{
+  background:linear-gradient(180deg,#f0e3cf,#dac4a5);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:64px;
+    left:0;
+    right:0;
+    padding:23px;
+    flex-direction:column;
+    background:rgba(255,248,237,.97);
+    color:var(--wine);
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+  }
+  .nav-links.open{display:flex}
+  .menu{display:block}
+  .split-story{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .story-center{
+    flex-direction:row;
+    width:100%;
+  }
+  .route-line{
+    width:75px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold));
+  }
+  .route-bottom{
+    transform:none;
+    writing-mode:horizontal-tb;
+  }
+  .route-top{
+    writing-mode:horizontal-tb;
+  }
+  .travel-plane{
+    width:120px;
+    height:190px;
+  }
+  .venue,
+  .reception{
+    grid-template-columns:1fr;
+  }
+  .venue-art{
+    min-height:420px;
+  }
+  .reception{
+    gap:25px;
+  }
+  .reception-copy .section-kicker,
+  .reception-venue .section-kicker{
+    text-align:center;
+  }
+  .reception-copy,
+  .reception-venue{
+    text-align:center;
+    align-items:center;
+  }
+  .reception-venue .map-button{
+    margin-inline:auto;
+  }
+  .timeline-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .cover-button{
+    padding:12px 20px;
+    bottom:5%;
+    font-size:9px;
+  }
+  .hero-copy{
+    padding-bottom:235px;
+  }
+  .hero-names{
+    font-size:71px;
+  }
+  .hero-moon-image{
+    width:95px;
+    right:8%;
+    top:11%;
+  }
+  .hero-stars-image{
+    width:110px;
+    left:6%;
+  }
+  .hero-bridge{
+    width:65%;
+  }
+  .hero-boat{
+    width:90px;
+    left:15%;
+  }
+  .story{
+    padding:85px 20px 115px;
+  }
+  .city-card,
+  .city-card>img{
+    min-height:320px;
+  }
+  .story-copy{
+    font-size:19px;
+  }
+  .arrival-copy{
+    padding-bottom:235px;
+  }
+  .arrival-bridge{
+    width:70%;
+  }
+  .wedding-card{
+    padding:60px 18px;
+  }
+  .wedding-info-grid{
+    grid-template-columns:1fr;
+  }
+  .wedding-names{
+    font-size:54px;
+  }
+  .countdown{
+    grid-template-columns:1fr 1fr;
+  }
+  .countdown strong{
+    font-size:43px;
+  }
+  .footer-copy h2{
+    font-size:59px;
+  }
+  .namaste{
+    width:120px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .travel-plane{display:none!important}
+}
+
+/* =========================================================
+   ARTWORK COMPOSITING
+
+   The supplied illustrations are small, scene-based exports.  They are
+   deliberately blended into their sections instead of being presented as
+   framed cards, so their original canvas edges cannot appear in the layout.
+========================================================= */
+
+/*
+  The invitation card and top navigation strip have been cropped out of this
+  artwork — they are now real, functional elements (#cover and #nav) instead
+  of being baked into the image. What remains is preserved as one continuous
+  lead artwork for the combined invitation, which is what prevents the hard
+  seams and mismatched edges that occurred when its scenes were treated as
+  separate thumbnails.
+*/
+.hero-reference-art{display:none}
+body.mode-both .hero{
+  background:var(--cream);
+}
+body.mode-both .hero-reference-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  width:100%;
+  max-width:none;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+body.mode-both .hero > :not(.hero-reference-art){
+  display:none;
+}
+
+/* Remove the thin white export edge that appears on several raster assets. */
+.hero-bg,
+.full-bg-image,
+.wedding-bg-image,
+.reception-bg,
+.invitation-bg,
+.rsvp-bg,
+.footer-bg{
+  max-width:none;
+  width:100.4%;
+  height:100.4%;
+  left:-.2%;
+  top:-.2%;
+}
+
+/* The city images are a continuous editorial diptych, not two cards. */
+.split-story{
+  grid-template-columns:1fr 0 1fr;
+  gap:0;
+  overflow:hidden;
+  box-shadow:0 22px 50px rgba(64,34,23,.12);
+}
+.city-card{
+  min-height:420px;
+  border:0;
+  box-shadow:none;
+}
+.city-card>img{
+  min-height:420px;
+  transform:scale(1.015);
+}
+.story-center{
+  position:relative;
+  z-index:4;
+  width:100px;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+
+/* Hide each asset's white canvas without adding a visible image box. */
+.wedding-flower,
+.quote-leaf,
+.invitation-flower,
+.namaste,
+.reception-flower,
+.venue-sign-image,
+.venue-lamp-image,
+.venue-camera-image,
+.flight-path-img,
+.plane-image,
+.plane-penguin,
+.footer-lotus{
+  mix-blend-mode:multiply;
+}
+
+/* Keep celestial illustrations as their subject only, never as squares. */
+.hero-moon-image{
+  clip-path:circle(35% at 50% 50%);
+  transform:scale(1.32);
+}
+.arrival-sun{
+  clip-path:circle(36% at 50% 50%);
+  transform:scale(1.25);
+}
+.hero-stars-image{
+  mix-blend-mode:screen;
+  clip-path:inset(8% 5%);
+}
+
+/* Integrate the scenic overlays at their edges. */
+.hero-bridge,
+.arrival-bridge,
+.hero-boat{
+  mix-blend-mode:multiply;
+}
+.hero-skyline,
+.arrival-skyline,
+.reception-kolkata,
+.rsvp-bridge{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%);
+}
+
+/* The venue is one atmospheric scene rather than three boxed images. */
+.venue-art{
+  background:
+    linear-gradient(rgba(50,22,16,.22),rgba(50,22,16,.42)),
+    url("assets/venue-camera.png") center/cover no-repeat;
+}
+.venue-camera-image{display:none}
+.venue-sign-image{
+  width:min(58%,340px);
+  box-shadow:none;
+}
+.venue-lamp-image{
+  mix-blend-mode:screen;
+  opacity:.78;
+}
+
+/* The palace artwork floats into the royal reception scene—no picture frame. */
+.palace-image{
+  width:112%;
+  max-width:560px;
+  border:0;
+  box-shadow:none;
+  mix-blend-mode:multiply;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 82%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 82%,transparent 100%);
+}
+
+@media(max-width:900px){
+  .split-story{
+    grid-template-columns:1fr;
+    gap:0;
+    overflow:visible;
+    box-shadow:none;
+  }
+  .story-center{
+    position:relative;
+    z-index:4;
+    width:100%;
+    transform:none;
+    margin:-1px 0;
+  }
+  .city-card{min-height:340px}
+  .city-card>img{min-height:340px}
+}
