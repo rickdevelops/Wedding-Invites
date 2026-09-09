@@ -545,6 +545,46 @@
         <div id="rsvpThanks" hidden>
           <h3>Thank you ♥</h3>
           <p>Your response has been noted.</p>
+
+          <div id="rsvpCalendar" class="rsvp-calendar" hidden>
+            <p class="rsvp-calendar-label">Save the date</p>
+
+            <div id="calendarWedding" class="calendar-row">
+              <span>Wedding · 11 Feb, Select House</span>
+              <div class="calendar-actions">
+                <a
+                  id="calGoogleWedding"
+                  class="cal-btn"
+                  target="_blank"
+                  rel="noopener"
+                  >Google Calendar</a
+                >
+                <button id="calIcsWedding" type="button" class="cal-btn">
+                  Apple / Outlook (.ics)
+                </button>
+              </div>
+            </div>
+
+            <div id="calendarReception" class="calendar-row">
+              <span>Reception · 13 Feb, Singhi Palace</span>
+              <div class="calendar-actions">
+                <a
+                  id="calGoogleReception"
+                  class="cal-btn"
+                  target="_blank"
+                  rel="noopener"
+                  >Google Calendar</a
+                >
+                <button id="calIcsReception" type="button" class="cal-btn">
+                  Apple / Outlook (.ics)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button id="rsvpDone" type="button" class="rsvp-done-btn">
+            Close
+          </button>
         </div>
 
         <small class="modal-note">

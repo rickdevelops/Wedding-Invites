@@ -79,6 +79,14 @@
 
   const rsvpThanks = $("#rsvpThanks");
 
+  const rsvpCalendar = $("#rsvpCalendar");
+
+  const calendarWeddingRow = $("#calendarWedding");
+
+  const calendarReceptionRow = $("#calendarReception");
+
+  const rsvpDoneButton = $("#rsvpDone");
+
   const toast = $("#toast");
 
   /* =========================================================
@@ -480,21 +488,159 @@
     body.classList.remove("locked");
   }
 
+  function closeAndResetRsvp() {
+    closeRsvp();
+
+    setTimeout(resetRsvpModalView, 350);
+  }
+
   rsvpButton?.addEventListener("click", openRsvp);
 
-  modalClose?.addEventListener("click", closeRsvp);
+  modalClose?.addEventListener("click", closeAndResetRsvp);
 
-  modalBackdrop?.addEventListener("click", closeRsvp);
+  modalBackdrop?.addEventListener("click", closeAndResetRsvp);
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      closeRsvp();
+      closeAndResetRsvp();
     }
   });
 
   /* =========================================================
+     ADD TO CALENDAR
+
+     Times are fixed in IST (UTC+5:30) and expressed below already
+     converted to UTC, since calendar links/ICS files are timezone-
+     agnostic and expect UTC "Z" timestamps.
+  ========================================================= */
+
+  const CALENDAR_EVENTS = {
+    wedding: {
+      title: "Srijita & Arnab — Wedding",
+      location:
+        "Select House (The Shooting Bari), 251 S.N. Ghosh Avenue, Ramchandrapur, Elachi, Narendrapur, Kolkata, West Bengal 700103",
+      description:
+        "Join Srijita & Arnab as they tie the knot. Thursday 11 February 2027, 7 PM onwards, at Select House (The Shooting Bari), Kolkata.",
+      // 11 Feb 2027, 7:00 PM – 11:30 PM IST
+      startUTC: "20270211T133000Z",
+      endUTC: "20270211T180000Z",
+    },
+    reception: {
+      title: "Srijita & Arnab — Reception (Bou Bhat)",
+      location:
+        "Singhi Palace, Orchestra Co-Operative Housing Society, Gariahat Road, near Pantaloons, Dover Terrace, Ballygunge, Kolkata, West Bengal 700019",
+      description:
+        "Celebrate the reception of Srijita & Arnab. Saturday 13 February 2027, evening, at Singhi Palace, Kolkata.",
+      // 13 Feb 2027, 7:00 PM – 11:00 PM IST (time assumed; adjust if confirmed)
+      startUTC: "20270213T133000Z",
+      endUTC: "20270213T173000Z",
+    },
+  };
+
+  function googleCalendarUrl(event) {
+    const query = new URLSearchParams({
+      action: "TEMPLATE",
+      text: event.title,
+      dates: `${event.startUTC}/${event.endUTC}`,
+      details: event.description,
+      location: event.location,
+    });
+
+    return `https://calendar.google.com/calendar/render?${query.toString()}`;
+  }
+
+  function icsEscape(value) {
+    return String(value).replace(/([,;])/g, "\\$1");
+  }
+
+  function downloadIcsFile(event, filename) {
+    const stamp =
+      new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+    const uid = `${filename}-${Date.now()}@srijita-arnab-wedding`;
+
+    const lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Srijita & Arnab Wedding//EN",
+      "CALSCALE:GREGORIAN",
+      "BEGIN:VEVENT",
+      `UID:${uid}`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART:${event.startUTC}`,
+      `DTEND:${event.endUTC}`,
+      `SUMMARY:${icsEscape(event.title)}`,
+      `LOCATION:${icsEscape(event.location)}`,
+      `DESCRIPTION:${icsEscape(event.description)}`,
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ];
+
+    const blob = new Blob([lines.join("\r\n")], {
+      type: "text/calendar;charset=utf-8",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${filename}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  const calGoogleWedding = $("#calGoogleWedding");
+  const calIcsWedding = $("#calIcsWedding");
+  const calGoogleReception = $("#calGoogleReception");
+  const calIcsReception = $("#calIcsReception");
+
+  if (calGoogleWedding) {
+    calGoogleWedding.href = googleCalendarUrl(CALENDAR_EVENTS.wedding);
+  }
+
+  calIcsWedding?.addEventListener("click", () => {
+    downloadIcsFile(CALENDAR_EVENTS.wedding, "srijita-arnab-wedding");
+  });
+
+  if (calGoogleReception) {
+    calGoogleReception.href = googleCalendarUrl(CALENDAR_EVENTS.reception);
+  }
+
+  calIcsReception?.addEventListener("click", () => {
+    downloadIcsFile(CALENDAR_EVENTS.reception, "srijita-arnab-reception");
+  });
+
+  // Only show the event(s) relevant to this invitation mode.
+  if (mode === "bi-only" && calendarReceptionRow) {
+    calendarReceptionRow.hidden = true;
+  }
+
+  if (mode === "reception-only" && calendarWeddingRow) {
+    calendarWeddingRow.hidden = true;
+  }
+
+  /* =========================================================
      RSVP FORM
   ========================================================= */
+
+  function resetRsvpModalView() {
+    rsvpForm.reset();
+
+    rsvpForm.hidden = false;
+
+    if (rsvpThanks) {
+      rsvpThanks.hidden = true;
+    }
+
+    if (rsvpCalendar) {
+      rsvpCalendar.hidden = true;
+    }
+  }
+
+  rsvpDoneButton?.addEventListener("click", closeAndResetRsvp);
 
   rsvpForm?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -541,19 +687,17 @@
       rsvpThanks.hidden = false;
     }
 
+    const attendingYes = attending === "yes";
+
+    if (rsvpCalendar) {
+      rsvpCalendar.hidden = !attendingYes;
+    }
+
     showToast(`Thank you, ${name} ♥`);
 
-    setTimeout(() => {
-      rsvpForm.reset();
-
-      rsvpForm.hidden = false;
-
-      if (rsvpThanks) {
-        rsvpThanks.hidden = true;
-      }
-
-      closeRsvp();
-    }, 3200);
+    if (!attendingYes) {
+      setTimeout(closeAndResetRsvp, 3200);
+    }
   });
 
   /* =========================================================

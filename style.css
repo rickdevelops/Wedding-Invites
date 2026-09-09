@@ -1317,6 +1317,9 @@ button {
   display: grid;
   gap: 15px;
 }
+.modal-box form[hidden] {
+  display: none;
+}
 .modal-box label {
   display: grid;
   gap: 6px;
@@ -1342,6 +1345,64 @@ button {
   color: var(--wine);
   font-family: var(--serif);
   font-size: 35px;
+}
+.rsvp-calendar {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #e3d3bd;
+}
+.rsvp-calendar-label {
+  margin: 0 0 12px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #8d7b72;
+}
+.calendar-row {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+.calendar-row[hidden] {
+  display: none;
+}
+.calendar-row > span {
+  font-size: 12px;
+  color: var(--wine);
+  font-weight: 600;
+}
+.calendar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cal-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 12px;
+  border: 1px solid var(--wine);
+  background: transparent;
+  color: var(--wine);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cal-btn:hover {
+  background: var(--wine);
+  color: var(--cream);
+}
+.rsvp-done-btn {
+  margin-top: 20px;
+  padding: 10px 26px;
+  border: 1px solid transparent;
+  background: none;
+  color: #8d7b72;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .modal-note {
   display: block;
