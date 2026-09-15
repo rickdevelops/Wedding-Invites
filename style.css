@@ -27,6 +27,8 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 body {
   margin: 0;
@@ -111,6 +113,160 @@ button {
    COVER
 ========================================================= */
 
+/* =========================================================
+   ENVELOPE INTRO
+========================================================= */
+
+.envelope {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  cursor: pointer;
+  transition:
+    opacity 0.7s ease 0.15s,
+    visibility 0.7s ease 0.15s;
+}
+.envelope.open {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.envelope-paper {
+  position: absolute;
+  inset: 0;
+  background:
+    url("assets/invitation-flower-left.png") left top / 260px no-repeat,
+    url("assets/invitation-flower-right.png") right bottom / 260px no-repeat,
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 248, 237, 0) 0%,
+      rgba(111, 16, 45, 0.06) 100%
+    );
+  opacity: 0.9;
+}
+.envelope-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 26px;
+  perspective: 1400px;
+}
+.envelope-box {
+  position: relative;
+  width: min(78vw, 300px);
+  height: min(56vw, 215px);
+  transform: scale(1);
+  transition: transform 0.5s ease 0.55s;
+}
+.envelope.open .envelope-box {
+  transform: scale(0.94);
+}
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #8a1830, var(--wine-deep));
+  box-shadow: 0 25px 60px rgba(45, 6, 16, 0.35);
+}
+.envelope-front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 62%;
+  background: linear-gradient(155deg, #9c1f39, #6f102d);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+.envelope-front::before,
+.envelope-front::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  background: linear-gradient(160deg, #a52344, #7a1531);
+  opacity: 0.55;
+}
+.envelope-front::before {
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.envelope-front::after {
+  right: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62%;
+  background: linear-gradient(200deg, #b3284a, #8a1830);
+  clip-path: polygon(0 0, 100% 0, 50% 92%);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.85s cubic-bezier(0.6, 0.05, 0.25, 1) 0.2s;
+  z-index: 4;
+  border-bottom: 1px solid rgba(239, 212, 155, 0.35);
+}
+.envelope.open .envelope-flap {
+  transform: rotateX(-178deg);
+}
+.envelope-seal {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%) scale(1);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d79b, var(--gold) 70%);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(45, 6, 16, 0.4);
+  z-index: 5;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+.envelope-seal span {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--wine-deep);
+  text-align: center;
+  line-height: 1.2;
+}
+.envelope.open .envelope-seal {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+.envelope-hint {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--wine);
+  animation: envelopePulse 1.8s ease-in-out infinite;
+}
+.envelope.open .envelope-hint {
+  animation: none;
+  opacity: 0;
+}
+@keyframes envelopePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .cover {
   position: fixed;
   inset: 0;
@@ -174,6 +330,19 @@ button {
   transform: translateX(-50%) translateY(-3px);
 }
 
+/* On typical phone-portrait screens the card's own aspect ratio leaves
+   letterboxing under "contain" — fill the screen edge-to-edge instead,
+   trimming a little off the sides rather than showing blurred backdrop. */
+@media (max-width: 700px) {
+  .cover-bg-image {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
 /* =========================================================
    NAV
 ========================================================= */
@@ -232,6 +401,10 @@ button {
   border: 0;
   color: inherit;
   font-size: 22px;
+  padding: 11px;
+  margin: -11px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 /* =========================================================
@@ -254,10 +427,7 @@ button {
   object-fit: cover;
 }
 .hero-cloud {
-  position: absolute;
-  width: 280px;
-  opacity: 0.35;
-  filter: blur(1px);
+  display: none;
 }
 .hero-cloud-1 {
   left: -35px;
@@ -359,6 +529,16 @@ button {
   font-size: 9px;
   letter-spacing: 5px;
 }
+.hero-second-date {
+  display: none;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+}
 .reception-home-copy {
   display: none;
 }
@@ -440,6 +620,15 @@ button {
 .section-bn {
   font-size: 19px;
   color: var(--wine);
+}
+.arrival-copy .section-bn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 12px 26px;
+  background: rgba(255, 248, 237, 0.82);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  line-height: 1.5;
 }
 .split-story {
   position: relative;
@@ -794,6 +983,71 @@ button {
 }
 
 /* =========================================================
+   FAMILY DETAILS
+========================================================= */
+
+.family {
+  padding: 100px 24px;
+  text-align: center;
+  background: var(--cream);
+}
+.family h2 {
+  margin: 10px 0 55px;
+  font-family: var(--serif);
+  color: var(--wine);
+  font-size: clamp(34px, 5vw, 48px);
+}
+.family-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.family-card {
+  padding: 45px 30px;
+  background: linear-gradient(165deg, #9c1f39, var(--wine-deep));
+  border: 1px solid rgba(239, 212, 155, 0.4);
+  color: var(--cream);
+  box-shadow: 0 20px 45px rgba(45, 6, 16, 0.2);
+}
+.family-side {
+  margin: 0 0 8px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+}
+.family-card h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+}
+.family-rule {
+  width: 46px;
+  height: 1px;
+  margin: 18px auto;
+  background: rgba(239, 212, 155, 0.5);
+}
+.family-parents {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--cream);
+}
+.family-parents em {
+  font-style: normal;
+  opacity: 0.85;
+}
+.family-location {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+  text-transform: uppercase;
+}
+
+/* =========================================================
    VENUE
 ========================================================= */
 
@@ -852,6 +1106,22 @@ button {
   letter-spacing: 2px;
   transition: 0.3s;
 }
+.venue-map-frame {
+  margin-top: 26px;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  border: 6px solid #fff;
+  outline: 1px solid #d7c5ad;
+  box-shadow: 0 15px 35px rgba(45, 6, 16, 0.15);
+  background: #eee5d4;
+}
+.venue-map-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 .map-button:hover {
   background: var(--wine);
   color: var(--cream);
@@ -861,6 +1131,11 @@ button {
   min-height: 500px;
   overflow: hidden;
   background: #a9855a;
+}
+.venue-sign-image,
+.venue-lamp-image,
+.venue-camera-image {
+  border: 6px solid var(--cream);
 }
 .venue-sign-image {
   position: absolute;
@@ -875,13 +1150,16 @@ button {
   top: 45px;
   left: 13%;
   width: 130px;
-  opacity: 0.8;
+  transform: rotate(-5deg);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 .venue-camera-image {
   position: absolute;
   right: 5%;
   bottom: 2%;
   width: 180px;
+  transform: rotate(4deg);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================================================
@@ -898,6 +1176,15 @@ button {
   color: var(--wine);
   font-family: var(--serif);
   font-size: 55px;
+}
+.countdown-badge {
+  display: inline-block;
+  margin: 0 auto 40px;
+  padding: 10px 26px;
+  background: linear-gradient(160deg, #9c1f39, var(--wine-deep));
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-size: 14px;
 }
 .countdown {
   display: grid;
@@ -917,8 +1204,18 @@ button {
   color: var(--wine);
 }
 .countdown span {
+  display: block;
   font-size: 8px;
   letter-spacing: 3px;
+}
+.countdown span em {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0;
+  color: var(--wine);
+  opacity: 0.7;
 }
 
 /* =========================================================
@@ -1288,18 +1585,25 @@ button {
   position: relative;
   z-index: 2;
   width: min(500px, 100%);
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 40px 30px;
   background: var(--cream);
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
 }
 .modal-close {
   position: absolute;
-  top: 9px;
-  right: 15px;
+  top: 2px;
+  right: 2px;
+  padding: 14px;
   background: none;
   border: 0;
-  font-size: 30px;
+  font-size: 26px;
+  line-height: 1;
   color: var(--wine);
+  cursor: pointer;
 }
 .modal-bn {
   text-align: center;
@@ -1330,7 +1634,9 @@ button {
 .modal-box input,
 .modal-box select {
   width: 100%;
-  padding: 12px;
+  padding: 13px 12px;
+  font-size: 16px;
+  font-family: var(--sans);
   border: 1px solid #d7c5ad;
   background: white;
 }
@@ -1379,7 +1685,7 @@ button {
 .cal-btn {
   flex: 1;
   min-width: 140px;
-  padding: 10px 12px;
+  padding: 14px 12px;
   border: 1px solid var(--wine);
   background: transparent;
   color: var(--wine);
@@ -1577,20 +1883,41 @@ body.mode-reception-only #cover {
 ========================================================= */
 
 @media (max-width: 900px) {
+  .family {
+    padding: 70px 20px;
+  }
+  .family-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .family-card {
+    padding: 36px 26px;
+  }
   .nav-links {
     display: none;
     position: absolute;
     top: 64px;
     left: 0;
     right: 0;
-    padding: 23px;
+    z-index: 10;
+    padding: 8px 23px 16px;
     flex-direction: column;
-    background: rgba(255, 248, 237, 0.97);
+    gap: 2px;
+    background: #fdf6e9;
     color: var(--wine);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
   }
   .nav-links.open {
     display: flex;
+  }
+  .nav-links a {
+    width: 100%;
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(111, 16, 45, 0.08);
+    text-align: center;
+  }
+  .nav-links a:last-child {
+    border-bottom: none;
   }
   .menu {
     display: block;
@@ -1624,7 +1951,32 @@ body.mode-reception-only #cover {
     grid-template-columns: 1fr;
   }
   .venue-art {
-    min-height: 420px;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .venue-sign-image {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: rotate(-4deg);
+    width: 175px;
+    z-index: 2;
+  }
+  .venue-lamp-image {
+    top: 12%;
+    left: 6%;
+    width: 92px;
+    transform: rotate(-9deg);
+    z-index: 1;
+  }
+  .venue-camera-image {
+    bottom: 8%;
+    right: 6%;
+    width: 120px;
+    transform: rotate(7deg);
+    z-index: 3;
   }
   .reception {
     gap: 25px;
@@ -1640,6 +1992,9 @@ body.mode-reception-only #cover {
   }
   .reception-venue .map-button {
     margin-inline: auto;
+  }
+  .reception-chandelier {
+    display: none;
   }
   .timeline-grid {
     grid-template-columns: 1fr;
@@ -1744,22 +2099,35 @@ body.mode-reception-only #cover {
 .hero-reference-art {
   display: none;
 }
-body.mode-both .hero {
-  background: var(--cream);
+
+/* The reference collage is wide relative to its height, so it only crops
+   to a clean top "banner" on wide desktop screens. On phones the same
+   crop math shows the whole collage crammed into one screen, so mobile
+   uses the polished animated hero (below) instead. */
+@media (min-width: 761px) {
+  body.mode-both .hero {
+    background: var(--cream);
+  }
+  body.mode-both .hero-reference-art {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  body.mode-both .hero > :not(.hero-reference-art) {
+    display: none;
+  }
 }
-body.mode-both .hero-reference-art {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-body.mode-both .hero > :not(.hero-reference-art) {
-  display: none;
+
+@media (max-width: 760px) {
+  body.mode-both .hero-second-date {
+    display: block;
+  }
 }
 
 /* Remove the thin white export edge that appears on several raster assets. */

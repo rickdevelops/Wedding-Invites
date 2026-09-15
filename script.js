@@ -53,6 +53,8 @@
 
   const loader = $("#loader");
 
+  const envelope = $("#envelope");
+
   const cover = $("#cover");
 
   const site = $("#site");
@@ -104,6 +106,10 @@
   /* =========================================================
      OPEN INVITATION
   ========================================================= */
+
+  envelope?.addEventListener("click", () => {
+    envelope.classList.add("open");
+  });
 
   enterButton?.addEventListener("click", () => {
     cover?.classList.add("exit");
