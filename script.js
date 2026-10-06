@@ -2,19 +2,16 @@
   "use strict";
 
   /* =========================================================
-     SRIJITA & ARNAB — FINAL JS
+     ARNAB & SRIJITA — INVITATION SCRIPT
 
-     Invitation modes:
-       ?invite=both
-       ?invite=biye
-       ?invite=boubhat
+     Invitation modes (the 3 links):
+       index.html?invite=both       Biye + Boubhaat
+       index.html?invite=biye       Biye only
+       index.html?invite=boubhat    Boubhaat only
   ========================================================= */
 
   const $ = (selector, root = document) => root.querySelector(selector);
-
-  const $$ = (selector, root = document) => [
-    ...root.querySelectorAll(selector),
-  ];
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
   const body = document.body;
 
@@ -23,7 +20,6 @@
   ========================================================= */
 
   const params = new URLSearchParams(window.location.search);
-
   const requestedMode = (params.get("invite") || "both").toLowerCase();
 
   let mode = "both";
@@ -52,43 +48,30 @@
   ========================================================= */
 
   const loader = $("#loader");
-
   const envelope = $("#envelope");
-
   const cover = $("#cover");
-
   const site = $("#site");
-
   const enterButton = $("#enterBtn");
-
   const nav = $("#nav");
-
   const menuButton = $("#menuBtn");
-
   const navLinks = $("#navLinks");
 
-  const travelPlane = $("#travelPlane");
-
-  const rsvpButton = $("#rsvpBtn");
-
   const rsvpModal = $("#rsvpModal");
-
   const modalClose = $("#modalClose");
-
   const modalBackdrop = $(".modal-backdrop");
-
   const rsvpForm = $("#rsvpForm");
-
+  const rsvpTitle = $("#rsvpTitle");
+  const rsvpAttend = $("#rsvpAttend");
+  const rsvpAttendWrap = $("#rsvpAttendWrap");
+  const rsvpGuests = $("#rsvpGuests");
+  const rsvpGuestsWrap = $("#rsvpGuestsWrap");
+  const rsvpMessage = $("#rsvpMessage");
+  const rsvpMsgLabel = $("#rsvpMsgLabel");
   const rsvpThanks = $("#rsvpThanks");
-
   const rsvpCalendar = $("#rsvpCalendar");
-
   const calendarWeddingRow = $("#calendarWedding");
-
   const calendarReceptionRow = $("#calendarReception");
-
   const rsvpDoneButton = $("#rsvpDone");
-
   const toast = $("#toast");
 
   /* =========================================================
@@ -104,7 +87,7 @@
   });
 
   /* =========================================================
-     OPEN INVITATION
+     OPEN INVITATION  (intro — unchanged)
   ========================================================= */
 
   envelope?.addEventListener("click", () => {
@@ -118,9 +101,7 @@
 
     body.classList.remove("locked");
 
-    /*
-     * Allow the cover transition to finish.
-     */
+    // Allow the cover transition to finish.
     setTimeout(() => {
       if (cover) {
         cover.style.display = "none";
@@ -155,15 +136,10 @@
   ========================================================= */
 
   function updateNavbar() {
-    if (!nav) {
-      return;
-    }
-
-    nav.classList.toggle("scrolled", window.scrollY > 40);
+    nav?.classList.toggle("scrolled", window.scrollY > 40);
   }
 
   window.addEventListener("scroll", updateNavbar, { passive: true });
-
   updateNavbar();
 
   /* =========================================================
@@ -178,13 +154,10 @@
         }
 
         entry.target.classList.add("active");
-
         revealObserver.unobserve(entry.target);
       });
     },
-    {
-      threshold: 0.12,
-    },
+    { threshold: 0.12 },
   );
 
   $$(".reveal, .reveal-left, .reveal-right").forEach((element) => {
@@ -192,209 +165,13 @@
   });
 
   /* =========================================================
-     UTILITY
-  ========================================================= */
-
-  function clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-  }
-
-  function easeInOut(value) {
-    return value * value * (3 - 2 * value);
-  }
-
-  /* =========================================================
-     NEW ZEALAND → KOLKATA TRAVEL
-
-     ONE PLANE
-     TWO PENGUINS
-
-     The plane is intentionally vertical:
-       New Zealand
-           ↓
-           ↓
-           ↓
-         Kolkata
-
-     The whole travel unit descends through the story.
-  ========================================================= */
-
-  let flightFrame = false;
-
-  function updateTravelPlane() {
-    if (!travelPlane) {
-      return;
-    }
-
-    const story = $("#story");
-
-    const arrival = $(".arrival");
-
-    if (!story || !arrival) {
-      return;
-    }
-
-    /*
-     * Start near the New Zealand split scene.
-     */
-    const start = story.offsetTop + window.innerHeight * 0.03;
-
-    /*
-     * End near the Kolkata arrival, or at the end of the story when
-     * reception mode hides the arrival section.
-     */
-    const end = arrival.offsetParent
-      ? arrival.offsetTop + window.innerHeight * 0.45
-      : story.offsetTop + story.offsetHeight;
-
-    const progress = clamp(
-      (window.scrollY - start) / Math.max(1, end - start),
-      0,
-      1,
-    );
-
-    const eased = easeInOut(progress);
-
-    /*
-     * Vertical movement:
-       starts above screen
-       ends below screen
-    */
-    const startY = -270;
-
-    const endY = window.innerHeight + 160;
-
-    const y = startY + (endY - startY) * eased;
-
-    /*
-     * Tiny horizontal flutter.
-     *
-     * The journey stays vertical.
-     */
-    const x = Math.sin(eased * Math.PI * 5) * 8;
-
-    /*
-     * Small natural tilt.
-     */
-    const rotation = Math.sin(eased * Math.PI * 4) * 2.5;
-
-    /*
-     * Slight size change.
-     */
-    const scale = 0.75 + Math.sin(eased * Math.PI) * 0.12;
-
-    /*
-     * Fade.
-     */
-    const fadeIn = clamp(progress / 0.1, 0, 1);
-
-    const fadeOut = clamp((1 - progress) / 0.1, 0, 1);
-
-    const opacity = fadeIn * fadeOut;
-
-    travelPlane.style.opacity = String(opacity);
-
-    travelPlane.style.transform = `
-      translate3d(
-        calc(-50% + ${x}px),
-        ${y}px,
-        0
-      )
-      rotate(
-        ${rotation}deg
-      )
-      scale(
-        ${scale}
-      )
-    `;
-  }
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (flightFrame) {
-        return;
-      }
-
-      flightFrame = true;
-
-      requestAnimationFrame(() => {
-        updateTravelPlane();
-
-        flightFrame = false;
-      });
-    },
-    {
-      passive: true,
-    },
-  );
-
-  window.addEventListener("resize", updateTravelPlane);
-
-  updateTravelPlane();
-
-  /* =========================================================
-     COUNTDOWN
-  ========================================================= */
-
-  const weddingDate = new Date("2027-02-11T19:00:00+05:30").getTime();
-
-  function pad(number, length = 2) {
-    return String(Math.max(0, number)).padStart(length, "0");
-  }
-
-  function updateCountdown() {
-    if (mode === "reception-only") {
-      return;
-    }
-
-    const diff = Math.max(0, weddingDate - Date.now());
-
-    const days = Math.floor(diff / 86400000);
-
-    const hours = Math.floor((diff % 86400000) / 3600000);
-
-    const minutes = Math.floor((diff % 3600000) / 60000);
-
-    const seconds = Math.floor((diff % 60000) / 1000);
-
-    const daysElement = $("#days");
-
-    const hoursElement = $("#hours");
-
-    const minutesElement = $("#minutes");
-
-    const secondsElement = $("#seconds");
-
-    if (daysElement) {
-      daysElement.textContent = pad(days, 3);
-    }
-
-    if (hoursElement) {
-      hoursElement.textContent = pad(hours);
-    }
-
-    if (minutesElement) {
-      minutesElement.textContent = pad(minutes);
-    }
-
-    if (secondsElement) {
-      secondsElement.textContent = pad(seconds);
-    }
-  }
-
-  updateCountdown();
-
-  setInterval(updateCountdown, 1000);
-
-  /* =========================================================
      ACTIVE NAV
   ========================================================= */
 
-  const pageSections = $$("section[id]");
+  const pageSections = $$("main section[id]");
 
   function updateActiveNav() {
-    const marker = window.scrollY + 130;
+    const marker = window.scrollY + window.innerHeight * 0.35;
 
     let current = "";
 
@@ -404,7 +181,6 @@
       }
 
       const top = section.offsetTop;
-
       const bottom = top + section.offsetHeight;
 
       if (marker >= top && marker < bottom) {
@@ -413,25 +189,21 @@
     });
 
     $$(".nav-links a").forEach((link) => {
-      const href = link.getAttribute("href");
-
-      link.style.color = href === `#${current}` ? "#c59b57" : "";
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === `#${current}`,
+      );
     });
   }
 
   window.addEventListener("scroll", updateActiveNav, { passive: true });
-
+  window.addEventListener("resize", updateActiveNav);
   updateActiveNav();
 
   /* =========================================================
      HASH SUPPORT
-     Correct:
-
-       ?invite=biye#rsvp
-
-     Not:
-
-       #rsvp?invite=biye
+     Correct:   ?invite=biye#rsvp
+     Not:       #rsvp?invite=biye
   ========================================================= */
 
   window.addEventListener("load", () => {
@@ -451,14 +223,10 @@
       "click",
       () => {
         setTimeout(() => {
-          target.scrollIntoView({
-            behavior: "smooth",
-          });
+          target.scrollIntoView({ behavior: "smooth" });
         }, 800);
       },
-      {
-        once: true,
-      },
+      { once: true },
     );
   });
 
@@ -466,15 +234,63 @@
      RSVP MODAL
   ========================================================= */
 
-  function openRsvp() {
+  // Which RSVP options exist depends on the invitation link.
+  function configureAttendOptions() {
+    if (!rsvpAttend) {
+      return;
+    }
+
+    $$("option", rsvpAttend).forEach((option) => {
+      const value = option.value;
+
+      if (mode === "bi-only" && (value === "boubhaat" || value === "both")) {
+        option.remove();
+      }
+
+      if (mode === "reception-only" && (value === "biye" || value === "both")) {
+        option.remove();
+      }
+    });
+  }
+
+  configureAttendOptions();
+
+  let rsvpIntent = "rsvp"; // "rsvp" | "message"
+
+  function openRsvp(choice) {
     if (!rsvpModal) {
       return;
     }
 
+    resetRsvpModalView();
+
+    rsvpIntent = choice === "message" ? "message" : "rsvp";
+
+    if (rsvpIntent === "message") {
+      if (rsvpTitle) rsvpTitle.textContent = "Message";
+      if (rsvpMsgLabel) rsvpMsgLabel.textContent = "YOUR MESSAGE FOR US";
+      if (rsvpMessage) rsvpMessage.required = true;
+      if (rsvpAttendWrap) rsvpAttendWrap.hidden = true;
+      if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = true;
+      if (rsvpAttend) rsvpAttend.required = false;
+    } else {
+      if (rsvpTitle) rsvpTitle.textContent = "RSVP";
+      if (rsvpMsgLabel) rsvpMsgLabel.textContent = "A MESSAGE FOR US (OPTIONAL)";
+      if (rsvpMessage) rsvpMessage.required = false;
+      if (rsvpAttendWrap) rsvpAttendWrap.hidden = false;
+      if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = false;
+      if (rsvpAttend) {
+        rsvpAttend.required = true;
+
+        // Pre-select what the guest tapped on the page.
+        if (choice && $(`option[value="${choice}"]`, rsvpAttend)) {
+          rsvpAttend.value = choice;
+        }
+      }
+    }
+
     rsvpModal.classList.add("show");
-
     rsvpModal.setAttribute("aria-hidden", "false");
-
     body.classList.add("locked");
 
     setTimeout(() => {
@@ -488,9 +304,7 @@
     }
 
     rsvpModal.classList.remove("show");
-
     rsvpModal.setAttribute("aria-hidden", "true");
-
     body.classList.remove("locked");
   }
 
@@ -500,10 +314,13 @@
     setTimeout(resetRsvpModalView, 350);
   }
 
-  rsvpButton?.addEventListener("click", openRsvp);
+  $$("[data-rsvp]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openRsvp(button.dataset.rsvp);
+    });
+  });
 
   modalClose?.addEventListener("click", closeAndResetRsvp);
-
   modalBackdrop?.addEventListener("click", closeAndResetRsvp);
 
   document.addEventListener("keydown", (event) => {
@@ -512,33 +329,40 @@
     }
   });
 
+  // Hide the guest count when someone can't come.
+  rsvpAttend?.addEventListener("change", () => {
+    if (rsvpGuestsWrap && rsvpIntent === "rsvp") {
+      rsvpGuestsWrap.hidden = rsvpAttend.value === "no";
+    }
+  });
+
   /* =========================================================
      ADD TO CALENDAR
 
      Times are fixed in IST (UTC+5:30) and expressed below already
-     converted to UTC, since calendar links/ICS files are timezone-
-     agnostic and expect UTC "Z" timestamps.
+     converted to UTC, since calendar links/ICS files expect UTC "Z"
+     timestamps.
   ========================================================= */
 
   const CALENDAR_EVENTS = {
     wedding: {
-      title: "Srijita & Arnab — Wedding",
+      title: "Srijita & Arnab — Biye (Wedding)",
       location:
-        "Select House (The Shooting Bari), 251 S.N. Ghosh Avenue, Ramchandrapur, Elachi, Narendrapur, Kolkata, West Bengal 700103",
+        "The Select House (Shooting Bari), 251 S.N. Ghosh Avenue, Ramchandrapur, Elachi, Narendrapur, Kolkata, West Bengal 700103",
       description:
-        "Join Srijita & Arnab as they tie the knot. Thursday 11 February 2027, 7 PM onwards, at Select House (The Shooting Bari), Kolkata.",
-      // 11 Feb 2027, 7:00 PM – 11:30 PM IST
-      startUTC: "20270211T133000Z",
+        "Join Srijita & Arnab as they tie the knot. Thursday 11 February 2027, from 5:30 PM, at The Select House (Shooting Bari), Narendrapur, Kolkata.",
+      // 11 Feb 2027, 5:30 PM – 11:30 PM IST
+      startUTC: "20270211T120000Z",
       endUTC: "20270211T180000Z",
     },
     reception: {
-      title: "Srijita & Arnab — Reception (Bou Bhat)",
+      title: "Arnab & Srijita — Boubhaat (Reception)",
       location:
         "Singhi Palace, Orchestra Co-Operative Housing Society, Gariahat Road, near Pantaloons, Dover Terrace, Ballygunge, Kolkata, West Bengal 700019",
       description:
-        "Celebrate the reception of Srijita & Arnab. Saturday 13 February 2027, evening, at Singhi Palace, Kolkata.",
-      // 13 Feb 2027, 7:00 PM – 11:00 PM IST (time assumed; adjust if confirmed)
-      startUTC: "20270213T133000Z",
+        "Celebrate the Boubhaat of Arnab & Srijita. Saturday 13 February 2027, from 6 PM, with dinner, at Singhi Palace, Gariahat, Kolkata.",
+      // 13 Feb 2027, 6:00 PM – 11:00 PM IST (end time assumed)
+      startUTC: "20270213T123000Z",
       endUTC: "20270213T173000Z",
     },
   };
@@ -608,7 +432,7 @@
   }
 
   calIcsWedding?.addEventListener("click", () => {
-    downloadIcsFile(CALENDAR_EVENTS.wedding, "srijita-arnab-wedding");
+    downloadIcsFile(CALENDAR_EVENTS.wedding, "srijita-arnab-biye");
   });
 
   if (calGoogleReception) {
@@ -616,34 +440,21 @@
   }
 
   calIcsReception?.addEventListener("click", () => {
-    downloadIcsFile(CALENDAR_EVENTS.reception, "srijita-arnab-reception");
+    downloadIcsFile(CALENDAR_EVENTS.reception, "srijita-arnab-boubhaat");
   });
-
-  // Only show the event(s) relevant to this invitation mode.
-  if (mode === "bi-only" && calendarReceptionRow) {
-    calendarReceptionRow.hidden = true;
-  }
-
-  if (mode === "reception-only" && calendarWeddingRow) {
-    calendarWeddingRow.hidden = true;
-  }
 
   /* =========================================================
      RSVP FORM
   ========================================================= */
 
   function resetRsvpModalView() {
-    rsvpForm.reset();
+    rsvpForm?.reset();
 
-    rsvpForm.hidden = false;
-
-    if (rsvpThanks) {
-      rsvpThanks.hidden = true;
-    }
-
-    if (rsvpCalendar) {
-      rsvpCalendar.hidden = true;
-    }
+    if (rsvpForm) rsvpForm.hidden = false;
+    if (rsvpThanks) rsvpThanks.hidden = true;
+    if (rsvpCalendar) rsvpCalendar.hidden = true;
+    if (rsvpAttendWrap) rsvpAttendWrap.hidden = false;
+    if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = false;
   }
 
   rsvpDoneButton?.addEventListener("click", closeAndResetRsvp);
@@ -652,56 +463,54 @@
     event.preventDefault();
 
     const name = $("#rsvpName")?.value.trim() || "";
-
-    const attending = $("#rsvpAttend")?.value || "";
-
-    const guests = $("#rsvpGuests")?.value || "1";
+    const attending = rsvpAttend?.value || "";
+    const guests = rsvpGuests?.value || "1";
+    const message = rsvpMessage?.value.trim() || "";
+    const isMessage = rsvpIntent === "message";
 
     if (!name) {
       showToast("Please enter your name.");
-
       return;
     }
 
-    if (!attending) {
-      showToast("Please select your response.");
+    if (isMessage && !message) {
+      showToast("Please write your message.");
+      return;
+    }
 
+    if (!isMessage && !attending) {
+      showToast("Please select your response.");
       return;
     }
 
     const data = {
       name,
-      attending,
-      guests,
-
+      attending: isMessage ? "message" : attending,
+      guests: isMessage || attending === "no" ? "" : guests,
+      message,
       submittedAt: new Date().toISOString(),
     };
 
-    /*
-     * Demo only.
-     * This does not transmit data to you.
-     */
+    // Demo only. This does not transmit data to anyone.
     try {
       localStorage.setItem("srijitaArnabWeddingRSVP", JSON.stringify(data));
     } catch (error) {
       console.warn("Unable to save RSVP.", error);
     }
 
-    rsvpForm.hidden = true;
+    if (rsvpForm) rsvpForm.hidden = true;
+    if (rsvpThanks) rsvpThanks.hidden = false;
 
-    if (rsvpThanks) {
-      rsvpThanks.hidden = false;
-    }
+    const comingBiye = attending === "biye" || attending === "both";
+    const comingBoubhaat = attending === "boubhaat" || attending === "both";
 
-    const attendingYes = attending === "yes";
-
-    if (rsvpCalendar) {
-      rsvpCalendar.hidden = !attendingYes;
-    }
+    if (calendarWeddingRow) calendarWeddingRow.hidden = !comingBiye;
+    if (calendarReceptionRow) calendarReceptionRow.hidden = !comingBoubhaat;
+    if (rsvpCalendar) rsvpCalendar.hidden = !(comingBiye || comingBoubhaat);
 
     showToast(`Thank you, ${name} ♥`);
 
-    if (!attendingYes) {
+    if (!(comingBiye || comingBoubhaat)) {
       setTimeout(closeAndResetRsvp, 3200);
     }
   });
@@ -718,7 +527,6 @@
     }
 
     toast.textContent = message;
-
     toast.classList.add("show");
 
     clearTimeout(toastTimer);
@@ -748,26 +556,5 @@
     console.warn("Unable to restore saved RSVP.", error);
   }
 
-  /* =========================================================
-     DEBUG
-  ========================================================= */
-
-  console.log(
-    "%cSRIJITA ♥ ARNAB",
-    `
-      font-size:24px;
-      color:#6f102d;
-      font-family:Georgia,serif;
-    `,
-  );
-
   console.log("Invitation mode:", mode);
-
-  console.log("Biye:", "11 February 2027 · 7 PM onwards");
-
-  console.log("Bou Bhat:", "13 February 2027 · Singhi Palace");
-
-  console.log("Arnab:", "Hamilton, New Zealand");
-
-  console.log("Srijita:", "Wellington, New Zealand");
 })();

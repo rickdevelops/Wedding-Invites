@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Srijita & Arnab — শুভ বিবাহ</title>
+    <title>Arnab &amp; Srijita — শুভ বিবাহ</title>
     <meta
       name="description"
       content="Wedding invitation for Srijita Seal & Arnab Deb."
@@ -12,18 +12,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Query modes:
+    <!-- Query modes (the 3 invitation links):
        ?invite=both
        ?invite=biye
        ?invite=boubhat
   -->
+
+    <!-- Shared icons -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect x="3.5" y="5" width="17" height="15.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M8 13.5h2M11 13.5h2M14 13.5h2M8 16.5h2M11 16.5h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="M12 7v5.3l3.4 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24">
+          <path d="M12 21s-6.5-6.1-6.5-11A6.5 6.5 0 0 1 18.5 10c0 4.9-6.5 11-6.5 11Z" fill="currentColor" />
+          <circle cx="12" cy="10" r="2.4" fill="#fbe9c8" />
+        </symbol>
+        <symbol id="i-food" viewBox="0 0 24 24">
+          <path d="M3 17.5h18M5 17.5a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <circle cx="12" cy="8.2" r="1.3" fill="currentColor" />
+          <path d="M2.5 20h19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </symbol>
+        <symbol id="i-lotus" viewBox="0 0 24 24">
+          <path d="M12 4c-2.4 2.6-2.4 6 0 9 2.4-3 2.4-6.4 0-9Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M4 8.5c.4 4.2 3.4 6.7 8 6.5-.6-4.2-3.6-6.6-8-6.5ZM20 8.5c-.4 4.2-3.4 6.7-8 6.5.6-4.2 3.6-6.6 8-6.5Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M5 18.5c4.6 1.6 9.4 1.6 14 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </symbol>
+        <symbol id="i-rings" viewBox="0 0 24 24">
+          <circle cx="8.8" cy="14" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="15.2" cy="14" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+          <path d="M7 5.2 8.8 3l1.8 2.2-1.8 1.4Z" fill="currentColor" />
+        </symbol>
+        <symbol id="i-quill" viewBox="0 0 24 24">
+          <path d="M20.5 3.5C13 4 8.5 8.5 7 15l-2.5 5.5 1 .5L9 17c6.5-1.2 11-5.6 11.5-13.5Z" fill="currentColor" />
+          <path d="M9 17c1.5-3.8 4-6.6 8-9" fill="none" stroke="#fbe9c8" stroke-width="1" />
+        </symbol>
+      </defs>
+    </svg>
 
     <div id="loader" class="loader">
       <div class="loader-flower">✦</div>
@@ -31,7 +69,7 @@
       <span>SRIJITA & ARNAB</span>
     </div>
 
-    <!-- ================= ENVELOPE ================= -->
+    <!-- ================= ENVELOPE (intro — unchanged) ================= -->
     <section id="envelope" class="envelope">
       <div class="envelope-paper" aria-hidden="true"></div>
 
@@ -49,7 +87,7 @@
       </div>
     </section>
 
-    <!-- ================= COVER ================= -->
+    <!-- ================= COVER (intro — unchanged) ================= -->
     <section id="cover" class="cover">
       <div class="cover-backdrop" aria-hidden="true"></div>
 
@@ -65,28 +103,24 @@
     </section>
 
     <div id="site" class="site">
+      <!-- ================= NAV ================= -->
       <header id="nav" class="nav">
-        <a class="brand" href="#home" aria-label="Srijita & Arnab — Home">
-          <svg class="brand-mark" viewBox="0 0 40 32" aria-hidden="true">
-            <g fill="currentColor">
-              <path d="M20 4C17 9 17 14 20 18C23 14 23 9 20 4Z" />
-              <path d="M11 9C13 14 17 17 21.5 17.5C20 13 16 9.5 11 9Z" />
-              <path d="M29 9C27 14 23 17 18.5 17.5C20 13 24 9.5 29 9Z" />
-              <path d="M6 17C10 20 15 21 20 19.5C17 16 11.5 15 6 17Z" />
-              <path d="M34 17C30 20 25 21 20 19.5C23 16 28.5 15 34 17Z" />
-              <ellipse cx="20" cy="21" rx="5.5" ry="2.6" />
-            </g>
-          </svg>
+        <a class="brand" href="#home" aria-label="Arnab & Srijita — Home">
+          <span class="brand-name">Arnab</span>
+          <span class="brand-orn">❖</span>
+          <span class="brand-name">Srijita</span>
         </a>
 
         <nav id="navLinks" class="nav-links">
           <a href="#home">Home</a>
-          <a href="#story">Story</a>
-          <a class="biye-link" href="#wedding">Wedding</a>
-          <a class="biye-link" href="#venue">Venue</a>
-          <a id="navReception" class="reception-link" href="#reception"
-            >Reception</a
+          <a href="#story">Our Story</a>
+          <a href="#srijita">Srijita</a>
+          <a href="#arnab">Arnab</a>
+          <a class="biye-link" href="#biye">Biye</a>
+          <a id="navReception" class="reception-link" href="#boubhaat"
+            >Boubhaat</a
           >
+          <a href="#culture">Our Culture</a>
           <a href="#rsvp">RSVP</a>
         </nav>
 
@@ -94,484 +128,604 @@
       </header>
 
       <main>
-        <!-- ================= HERO ================= -->
-        <section id="home" class="hero">
-          <img
-            class="hero-reference-art"
-            src="assets/invitation-artwork.png"
-            alt="Illustrated wedding invitation for Srijita and Arnab, from New Zealand to Kolkata"
-          />
-          <img class="hero-bg" src="assets/hero-sky.png" alt="" />
-          <img
-            class="hero-cloud hero-cloud-1"
-            src="assets/cloud-1.png"
-            alt=""
-          />
-          <img
-            class="hero-cloud hero-cloud-2"
-            src="assets/cloud-2.png"
-            alt=""
-          />
-          <img class="hero-stars-image" src="assets/hero-stars.png" alt="" />
-          <img class="hero-moon-image" src="assets/hero-moon.png" alt="" />
+        <!-- =====================================================
+             HOME  (client design: Intro)
+        ====================================================== -->
+        <section id="home" class="plate p-intro">
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/intro.jpg" alt="" />
 
-          <div class="hero-copy reveal">
-            <p class="bengali hero-bn">শুভ বিবাহ</p>
-            <p class="hero-kicker">TWO CITIES · ONE BEAUTIFUL JOURNEY</p>
-
-            <h2 class="hero-names">
-              <span>Srijita</span>
-              <i>&</i>
-              <span>Arnab</span>
-            </h2>
-
-            <div class="hero-line"><span></span><b>❦</b><span></span></div>
-
-            <div class="date-lockup">
-              <small>THURSDAY</small>
-              <strong>11 FEBRUARY 2027</strong>
-              <em>7 PM ONWARDS</em>
+            <p class="tx tx-intro-cap script">Auckland,<br />New Zealand</p>
+            <div class="tx tx-intro-stamp stamp">
+              <b>AUCKLAND</b>
+              <i>✈</i>
+              <span>TO</span>
+              <b>KOLKATA</b>
             </div>
 
-            <p class="hero-location">KOLKATA · INDIA</p>
-
-            <p class="hero-second-date">&amp; RECEPTION · 13 FEBRUARY 2027</p>
+            <div class="col col-intro">
+              <h1 class="c-title script">We have<br />chosen a date</h1>
+              <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
+              <p class="c-sub">
+                Two lives, two cities,<br />one home to call our own.
+              </p>
+              <p class="c-body">
+                From different skies to a shared horizon, we are coming
+                together to celebrate with our families and the people who
+                shaped our story.
+              </p>
+              <a class="c-btn pill-btn" href="#story">
+                BEGIN THE JOURNEY <span>→</span>
+              </a>
+            </div>
           </div>
+        </section>
 
-          <div class="reception-home-copy">
-            <p class="bengali reception-home-bn">বউভাত</p>
-            <p class="reception-home-kicker">THE RECEPTION</p>
-            <h1>Srijita <span>&amp;</span> Arnab</h1>
-            <div class="hero-line"><span></span><b>❦</b><span></span></div>
+        <!-- =====================================================
+             OUR STORY — A Poetic Prelude  (client design: Page 2)
+        ====================================================== -->
+        <section id="story" class="plate p-prelude">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/prelude.jpg" alt="" />
 
-            <div class="reception-home-date">
-              <small>SATURDAY · 13 FEBRUARY 2027</small>
-              <strong>Singhi Palace</strong>
-              <p>
-                Orchestra Co-Operative Housing Society, Gariahat Road,<br />
-                near Pantaloons, Dover Terrace, Ballygunge, Kolkata — 700019
+            <p class="tx tx-pre-from script">From<br />New Zealand...</p>
+            <p class="tx tx-pre-to script">...to Kolkata</p>
+
+            <div class="tx tx-pre-stamp-a stamp stamp-ink">
+              <b>AUCKLAND</b>
+              <span>DEPARTURE</span>
+              <em>24 JAN 2027</em>
+            </div>
+            <div class="tx tx-pre-stamp-b stamp stamp-red">
+              <b>KOLKATA</b>
+              <span>ARRIVAL</span>
+              <em>22 FEB 2027</em>
+            </div>
+
+            <div class="col col-pre">
+              <h2 class="c-title script">A Poetic Prelude</h2>
+              <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
+
+              <p class="c-p c-p1">
+                Love did not arrive with thunder.<br />It came softly,<br />like
+                a prayer learning its own name.
+              </p>
+              <b class="c-orn orn">❖</b>
+              <p class="c-p">
+                Across distance,<br />through changing skies and waiting
+                days,<br />it kept returning to the same two hearts.
+              </p>
+              <b class="c-orn orn">❖</b>
+              <p class="c-p">
+                And somewhere between journey and home,<br />what began as a
+                story<br />became a promise.
+              </p>
+
+              <a class="c-btn pill-btn" href="#srijita">
+                CONTINUE TO OUR STORY <span>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             ABOUT SRIJITA  (client design: Page 3)
+        ====================================================== -->
+        <section id="srijita" class="plate p-srijita">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/srijita.jpg" alt="" />
+
+            <p class="tx tx-sri-from script">From<br />New Zealand...</p>
+            <p class="tx tx-sri-to script">...to<br />Kolkata</p>
+            <p class="tx tx-sri-note script">
+              Same cities.<br />New dreams.<br />Together always… ♡♡
+            </p>
+
+            <h2 class="tx tx-sri-title script">Srijita</h2>
+
+            <div class="col col-sri">
+              <p class="c-sub">
+                Where love found<br />its gentlest strength.
+              </p>
+              <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
+
+              <p class="c-p c-p1">
+                Srijita came into Arnab’s life like a familiar song, gentle at
+                first and unforgettable thereafter. In her, he found not only
+                love, but a companion with whom every season felt more
+                meaningful.
+              </p>
+              <p class="c-p">
+                She carries a quiet warmth that turns ordinary moments into
+                memory. With her, distances felt shorter, dreams grew larger,
+                and life learned how to bloom with tenderness.
+              </p>
+              <p class="c-p c-p3">
+                Together, they have grown through time, cities and change. In
+                Arnab’s story, Srijita is not a passing chapter. She is the
+                grace, the wonder and the home he kept finding, again and
+                again.
+              </p>
+              <div class="c-rule c-rule2 rule"><i></i><b>❖</b><i></i></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             ABOUT ARNAB  (client design: Page 4)
+        ====================================================== -->
+        <section id="arnab" class="plate p-arnab">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/arnab.jpg" alt="" />
+
+            <p class="tx tx-arn-note script">
+              Same<br />Cities<br />Different<br />Journeys<br />Now Ours<br />Together. ♡
+            </p>
+            <p class="tx tx-arn-pol script">
+              Still the<br />same skies,<br />now a brighter<br />story... ♡<br />- A
+            </p>
+
+            <h2 class="tx tx-arn-title script">Arnab</h2>
+
+            <div class="col col-arn">
+              <p class="c-sub">Where love found its steady shore.</p>
+              <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
+
+              <p class="c-p c-p1">
+                Arnab entered Srijita’s life with a quiet certainty, the kind
+                that does not need noise to be known. In him, she found a heart
+                that could hold dreams, distance and devotion with equal grace.
+              </p>
+              <div class="c-rule c-rule2 rule"><i></i><b>❖</b><i></i></div>
+              <p class="c-p">
+                He is the calm beside the tide, the hand that stays, and the
+                presence that turns uncertainty into trust. With him, love
+                became not only a feeling to cherish, but a future to believe
+                in.
+              </p>
+              <div class="c-rule c-rule2 rule"><i></i><b>❖</b><i></i></div>
+              <p class="c-p c-p3">
+                Together, they have grown through patience, laughter and time.
+                In Srijita’s story, Arnab is not merely a companion. He is the
+                shelter, the promise and the tomorrow she chose.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             BIYE  — শুভ পরিণয়  (client design: Page 5)
+        ====================================================== -->
+        <section id="biye" class="plate p-biye page-biye">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/biye.jpg" alt="" />
+
+            <p class="tx tx-biye-kol script">Kolkata</p>
+
+            <div class="inv bengali">
+              <p class="inv-invoke">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
+              <b class="orn">❖</b>
+              <h2 class="inv-title">শুভ পরিণয়</h2>
+              <p class="inv-quote">“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
+              <p class="inv-by">রবীন্দ্রনাথ ঠাকুর</p>
+              <div class="rule"><i></i><b>❖</b><i></i></div>
+
+              <p class="inv-p">
+                পরম মঙ্গলময়ের আশিসে<br />আমার আদরের নাতনি
+              </p>
+              <p class="inv-name">সৃজিতা</p>
+              <p class="inv-p">আজ জীবনের এক নতুন অধ্যায়ের দ্বারপ্রান্তে।</p>
+              <p class="inv-p inv-gap">
+                সেই পরম আনন্দের ক্ষণে<br />আপনজনের স্নেহ, আশীর্বাদ ও
+                শুভকামনায়<br />তাহার বিবাহের মঙ্গলবাস পূর্ণ হউক,<br />এই
+                আন্তরিক অভিলাষে<br />আপনাদের সপরিবারে সাদর আমন্ত্রণ
+                জানাইতেছেন
+              </p>
+              <p class="inv-host">শ্রীমতী বেলা শীল</p>
+              <p class="inv-sm">সৃজিতার দিদুন</p>
+              <div class="rule"><i></i><b>❖</b><i></i></div>
+
+              <div class="inv-parents">
+                <div class="inv-par">
+                  <p class="inv-p">
+                    শ্রী শুভব্রত শীল<br />ও<br />শ্রীমতী বিজলী শীলের<br />আদরের
+                    কন্যা
+                  </p>
+                  <p class="inv-name inv-name-sm">॥ সৃজিতা ॥</p>
+                </div>
+                <div class="inv-mid"><span>সঙ্গে</span><b>❖</b></div>
+                <div class="inv-par">
+                  <p class="inv-p">
+                    শ্রী সমীর দেব<br />ও<br />শ্রীমতী চন্দ্রানী দেবের<br />আদরের
+                    পুত্র
+                  </p>
+                  <p class="inv-name inv-name-sm">॥ অর্ণব ॥</p>
+                </div>
+              </div>
+
+              <p class="inv-p">
+                দুই ঘরের দুই আপনজন,<br />দুই পরিবারের স্নেহধারা,<br />এক
+                শুভলগ্নে বাঁধা পড়িবে<br />একই আত্মীয়তার বন্ধনে।
+              </p>
+              <p class="inv-p inv-gap">
+                তাই এই দিনটি শুধু<br />সৃজিতা ও অর্ণবের পরিণয়ের দিন
+                নহে,<br />দুই পরিবারেরও আপন হইয়া ওঠার দিন।
+              </p>
+
+              <div class="inv-info">
+                <div class="inv-cell">
+                  <svg class="ic"><use href="#i-cal" /></svg>
+                  <strong>১১ই ফেব্রুয়ারি ২০২৭</strong>
+                  <span>বৃহস্পতিবার</span>
+                </div>
+                <div class="inv-cell">
+                  <svg class="ic"><use href="#i-clock" /></svg>
+                  <strong>সন্ধ্যা ৫টা ৩০ মিনিট হইতে</strong>
+                  <span>বিবাহবাসর</span>
+                </div>
+                <a
+                  class="inv-cell"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.google.com/maps/search/?api=1&query=Select+House+The+Shooting+Bari+251+S.N.+Ghosh+Avenue+Narendrapur+Kolkata"
+                >
+                  <svg class="ic"><use href="#i-pin" /></svg>
+                  <strong>দ্য সিলেক্ট হাউস<br />“শুটিং বাড়ি”</strong>
+                  <span>নারেন্দ্রপুর, কলকাতা</span>
+                </a>
+              </div>
+
+              <div class="rule"><i></i><b>❖</b><i></i></div>
+              <p class="inv-p">
+                শঙ্খধ্বনি, উলুধ্বনি ও মঙ্গলপ্রদীপের আলোয়<br />যখন আরম্ভ হইবে
+                তাহাদের একসঙ্গে পথচলা,<br />সেই শুভক্ষণে আপনাদের
+                উপস্থিতি<br />হউক আমাদের আনন্দের অংশ,<br />আর আপনাদের
+                আশীর্বাদ<br />হউক নবদম্পতির আগামী দিনের পাথেয়।
+              </p>
+              <div class="rule"><i></i><b>❖</b><i></i></div>
+              <p class="inv-sign">সৃজিতা • অর্ণব</p>
+              <p class="inv-sm">
+                আপনাদের শুভাগমনেই<br />মঙ্গলময় হউক আমাদের এই আনন্দ-আয়োজন।
               </p>
             </div>
 
-            <a
-              class="reception-home-button"
-              href="https://www.google.com/maps/search/?api=1&amp;query=Singhi+Palace+Orchestra+Co-Operative+Housing+Society+Gariahat+Road+Dover+Terrace+Ballygunge+Kolkata+700019"
-              target="_blank"
-              rel="noopener"
-              >VIEW VENUE <span>→</span></a
-            >
+            <a class="inv-btn pill-btn only-both" href="#boubhaat">
+              CONTINUE TO BOUBHAAT DETAILS <span>→</span>
+            </a>
+            <a class="inv-btn pill-btn only-biye" href="#rsvp">
+              CONTINUE TO RSVP <span>→</span>
+            </a>
           </div>
-
-          <!-- <div class="hero-ground">
-            <img src="assets/kolkata-skyline.png" alt="" class="hero-skyline" />
-            <img src="assets/howrah-bridge.png" alt="" class="hero-bridge" />
-            <img src="assets/river.png" alt="" class="hero-river" />
-            <img src="assets/boat.png" alt="" class="hero-boat" />
-          </div> -->
         </section>
 
-        <!-- ================= STORY ================= -->
-        <section id="story" class="story">
-          <div class="story-heading reveal">
-            <p class="section-kicker">OUR JOURNEY</p>
-            <h2>Different places.<br /><span>Same sky.</span></h2>
-            <p class="bengali section-bn">দুই শহর, এক সুন্দর পথচলা</p>
-          </div>
+        <!-- =====================================================
+             BOUBHAAT — শুভ বৌভাত  (client design: Page 6)
+        ====================================================== -->
+        <section id="boubhaat" class="plate p-boubhaat page-reception">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="stage">
+            <img class="plate-bg" src="assets/design/boubhaat.jpg" alt="" />
 
-          <div class="split-story">
-            <article class="city-card reveal-left">
+            <p class="tx tx-bou-kol script">Kolkata</p>
+
+            <div class="inv bengali">
+              <p class="inv-invoke">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
+              <b class="orn">❖</b>
+              <h2 class="inv-title">শুভ বৌভাত</h2>
+
+              <p class="inv-p">
+                পরম মঙ্গলময়ের আশিসে<br />আমাদের আদরের
+              </p>
+              <p class="inv-name">॥ অর্ণব ॥</p>
+              <p class="inv-p">
+                জীবনের নব অধ্যায়ে<br />আপন সঙ্গিনীকে লইয়া<br />নতুন সংসারের
+                পথে পদার্পণ করিয়াছে।
+              </p>
+              <p class="inv-p inv-gap">
+                তাহার এই শুভ পরিণয়ে<br />দুই পরিবারের স্নেহ ও আত্মীয়তার
+                বন্ধনে<br />আমাদের ঘর আলো করিয়া আসিয়াছে
+              </p>
+              <p class="inv-name">॥ সৃজিতা ॥</p>
+              <p class="inv-p">
+                এই পরম আনন্দের ক্ষণে<br />নবদম্পতিকে আপনাদের স্নেহ, আশীর্বাদ ও
+                শুভকামনায়<br />বরণ করিয়া লইবার আন্তরিক অভিলাষে<br />আপনাদের
+                সপরিবারে সাদর আমন্ত্রণ জানাইতেছেন
+              </p>
+
+              <div class="inv-parents inv-parents-b">
+                <div class="inv-par inv-par-l">
+                  <p class="inv-host">শ্রী উৎপল দেব</p>
+                  <p class="inv-p">অর্ণবের জেঠু<br />ও</p>
+                  <p class="inv-host">শ্রীমতী ঝর্ণা দত্ত</p>
+                  <p class="inv-p">অর্ণবের মাম্মা</p>
+                </div>
+                <div class="inv-mid inv-mid-line"><b>❖</b></div>
+                <div class="inv-par">
+                  <p class="inv-host">শ্রী সমীর দেব<br /><small>ও</small></p>
+                  <p class="inv-host">শ্রীমতী চন্দ্রানী দেবের</p>
+                  <p class="inv-p">আদরের পুত্র</p>
+                  <p class="inv-name inv-name-sm">॥ অর্ণব ॥</p>
+                </div>
+              </div>
+
+              <p class="inv-p inv-with">সঙ্গে</p>
+              <p class="inv-host">শ্রী শুভব্রত শীল</p>
+              <p class="inv-p inv-tight">ও</p>
+              <p class="inv-host">শ্রীমতী বিজলী শীলের</p>
+              <p class="inv-p">আদরের কন্যা</p>
+              <p class="inv-name">॥ সৃজিতা ॥</p>
+
+              <p class="inv-p">
+                দুই ঘরের দুই স্নেহধারা<br />আজ মিলিয়াছে একই পরিবারের
+                আনন্দে।<br />বিবাহের মঙ্গলবন্ধনে যে আত্মীয়তার সূচনা,<br />বৌভাতের
+                এই সন্ধ্যায়<br />তাহাই হউক আরও আপন, আরও নিবিড়।
+              </p>
+              <p class="inv-p inv-gap">
+                তাই এই আয়োজন শুধু<br />অর্ণব ও সৃজিতার বৌভাত নহে,<br />দুই
+                পরিবারের নববন্ধন<br />আপনজনের সহিত উদযাপনেরও এক আনন্দসন্ধ্যা।
+              </p>
+
+              <div class="inv-info">
+                <div class="inv-cell">
+                  <svg class="ic"><use href="#i-cal" /></svg>
+                  <strong>১৩ই ফেব্রুয়ারি ২০২৭</strong>
+                  <span>শনিবার</span>
+                </div>
+                <div class="inv-cell">
+                  <svg class="ic"><use href="#i-clock" /></svg>
+                  <strong>সন্ধ্যা ৬টা হইতে</strong>
+                </div>
+                <div class="inv-cell">
+                  <svg class="ic"><use href="#i-food" /></svg>
+                  <strong>বৌভাত ও প্রীতিভোজ</strong>
+                </div>
+              </div>
+
+              <a
+                class="inv-venue"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=Singhi+Palace+Orchestra+Co-Operative+Housing+Society+Gariahat+Road+Dover+Terrace+Ballygunge+Kolkata+700019"
+              >
+                <svg class="ic"><use href="#i-pin" /></svg>
+                <strong>সিংহী প্যালেস</strong>
+                <span>গড়িয়াহাট, কলকাতা</span>
+              </a>
+
+              <b class="orn orn-sm">❖</b>
+              <p class="inv-p">
+                আলো, ফুল ও আপনজনের কলরবে<br />যখন মুখর হইবে এই আনন্দসন্ধ্যা,<br />তখন
+                আপনাদের সস্নেহ উপস্থিতি<br />হউক আমাদের আনন্দের পূর্ণতা,<br />আর
+                আপনাদের আশীর্বাদ<br />হউক নবদম্পতির আগামী জীবনের পাথেয়।
+              </p>
+              <p class="inv-sign">অর্ণব • সৃজিতা</p>
+              <p class="inv-sm">
+                আপনাদের শুভাগমন ও আশীর্বাদে<br />পরিপূর্ণ হউক আমাদের এই<br />বৌভাতের
+                আনন্দ-আয়োজন।
+              </p>
+            </div>
+
+            <a class="inv-btn pill-btn" href="#rsvp">
+              CONTINUE TO RSVP <span>→</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             OUR CULTURE  (client design: Page 7, top half)
+        ====================================================== -->
+        <section id="culture" class="culture">
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="culture-wrap">
+            <div class="culture-head">
+              <div class="culture-title">
+                <h2 class="script">Bengali<br />Marriage Culture</h2>
+                <p class="culture-tag">
+                  Traditions, rituals<br />and the stories behind them
+                </p>
+                <p class="culture-bn bengali">
+                  আমাদের বিবাহ হচ্ছে বেদবিধি অনুযায়ী, আচার, মন্ত্র, অগ্নি ও সাক্ষী
+                  দৈবতাদের সম্মুখে দুই হৃদয়ের মিলন।<br />এই পরম্পরায় প্রতিটি রীতির
+                  মধ্যে আছে ভালোবাসা, আশীর্বাদ, পরিবার ও জীবনের নতুন সূচনার প্রতীক।
+                </p>
+              </div>
+
               <img
-                src="assets/hamilton-bg.png"
-                alt="Hamilton inspired landscape"
+                class="culture-couple"
+                src="assets/design/culture/couple.jpg"
+                alt=""
               />
-              <div class="city-overlay"></div>
-              <div class="city-text">
-                <span>01</span>
-                <h3>Hamilton</h3>
-                <p>NEW ZEALAND</p>
-                <small>Arnab's home today</small>
-              </div>
-            </article>
 
-            <div class="story-center">
-              <div class="route-top">HAMILTON</div>
-              <div class="route-line"></div>
-              <div class="route-heart">✦</div>
-              <div class="route-line"></div>
-              <div class="route-bottom">KOLKATA</div>
+              <aside class="culture-vedic">
+                <h3 class="script">Vedic Marriage</h3>
+                <p class="culture-vedic-sub">A Sacred Union</p>
+                <b class="orn orn-sm">❖</b>
+                <p>
+                  Our marriage will be solemnised according to Vedic
+                  traditions, where agni (the sacred fire) witnesses our
+                  vows.<br />Through mantras, rituals and blessings, we take a
+                  step together towards a life of dharma, love, respect and
+                  companionship.
+                </p>
+                <img
+                  src="assets/design/culture/vedic.jpg"
+                  alt=""
+                  class="culture-vedic-art"
+                />
+              </aside>
             </div>
 
-            <article class="city-card reveal-right">
-              <img
-                src="assets/wellington-bg.png"
-                alt="Wellington inspired landscape"
-              />
-              <div class="city-overlay"></div>
-              <div class="city-text city-text-right">
-                <span>02</span>
-                <h3>Wellington</h3>
-                <p>NEW ZEALAND</p>
-                <small>Srijita's home today</small>
-              </div>
-            </article>
+            <ul class="rituals">
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t1.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">আশীর্বাদ</h4>
+                  <em>Blessings</em>
+                  <p class="bengali">
+                    পরিবার ও আপনজনের আশীর্বাদে শুরু হয় আমাদের শুভযাত্রা।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t2.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">আইবুড়ো ভাত</h4>
+                  <em>Last Meal as Individuals</em>
+                  <p class="bengali">
+                    শৈশব থেকে যৌবন, এক জীবনের অধ্যায় শেষ করে নতুন জীবনের
+                    প্রস্তুতি।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t3.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">গায়ে হলুদ</h4>
+                  <em>Haldi Ceremony</em>
+                  <p class="bengali">
+                    শুভ্রতা, আভা ও মঙ্গলবাণে রাঙিয়ে তোলে নতুন জীবনের পথচলা।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t4.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">বরযাত্রা</h4>
+                  <em>The Groom’s Procession</em>
+                  <p class="bengali">
+                    আনন্দ, উল্লাস ও পরিবারের মিলনে বরের আগমন।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t5.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">শুভ দৃষ্টি</h4>
+                  <em>The First Glance</em>
+                  <p class="bengali">
+                    দুই প্রকাণ্ডে প্রথম দেখা, লজ্জা, মধুরতা ও নতুন অধ্যায়ের
+                    সূচনা।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t6.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">মালা বদল</h4>
+                  <em>Exchange of Garlands</em>
+                  <p class="bengali">
+                    দুই হৃদয়ের গ্রহণা ও স্বীকৃতির এক সুন্দর মুহূর্ত।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t7.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">সপ্তপদী</h4>
+                  <em>Seven Steps</em>
+                  <p class="bengali">
+                    অগ্নিকে সাক্ষী রেখে সাতটি পদক্ষেপ একসঙ্গে জীবনের প্রতিজ্ঞা।
+                  </p>
+                </div>
+              </li>
+              <li class="ritual reveal">
+                <img src="assets/design/culture/t8.jpg" alt="" />
+                <div>
+                  <h4 class="bengali">সিঁদুরদান</h4>
+                  <em>Vermilion</em>
+                  <p class="bengali">চিরসঙ্গীর চিহ্ন, এক অটুট বন্ধনের প্রতীক।</p>
+                </div>
+              </li>
+            </ul>
+
           </div>
 
-          <div class="story-copy reveal">
-            <p>
-              Life took us across oceans to New Zealand<br />Arnab in Hamilton,
-              Srijita in Wellington. Different cities, one little universe, and
-              now a shared journey home to Kolkata.
-            </p>
-          </div>
-
-          <!-- Flight scene -->
-          <div id="travelPlane" class="travel-plane" aria-hidden="true">
-            <img src="assets/flight-path.png" class="flight-path-img" alt="" />
-            <img src="assets/plane.png" class="plane-image" alt="" />
-            <img
-              src="assets/penguin-left.png"
-              class="plane-penguin plane-penguin-left"
-              alt=""
-            />
-            <img
-              src="assets/penguin-right.png"
-              class="plane-penguin plane-penguin-right"
-              alt=""
-            />
-          </div>
-        </section>
-
-        <!-- ================= ARRIVAL ================= -->
-        <section class="arrival page-biye">
-          <img src="assets/arrival-bg.png" class="full-bg-image" alt="" />
-
-          <div class="arrival-copy reveal">
-            <p class="section-kicker">FROM NEW ZEALAND TO KOLKATA</p>
-            <h2>Kolkata,<br /><span>we're coming home.</span></h2>
-            <div class="hero-line"><span></span><b>❦</b><span></span></div>
-            <p class="bengali section-bn">
-              দূরত্ব শুধু মানচিত্রে,<br />
-              ভালোবাসার পথে নয়।
-            </p>
-          </div>
-        </section>
-
-        <!-- ================= BENGALI QUOTE ================= -->
-        <section class="quote page-biye">
-          <img src="assets/leaf-left.png" class="quote-leaf left" alt="" />
-          <img src="assets/leaf-right.png" class="quote-leaf right" alt="" />
-          <div class="quote-inner reveal">
-            <p class="bengali">
-              যত দূরেই যাই,<br />
-              <strong>ভালোবাসা ঘরে ফিরিয়ে আনে।</strong>
-            </p>
-            <small>Wherever life takes us, love brings us home.</small>
-          </div>
-        </section>
-
-        <!-- ================= WEDDING ================= -->
-        <section id="wedding" class="wedding page-biye">
-          <img src="assets/wedding-bg.png" class="wedding-bg-image" alt="" />
-          <img
-            src="assets/wedding-flowers-left.png"
-            class="wedding-flower left"
-            alt=""
-          />
-          <img
-            src="assets/wedding-flowers-right.png"
-            class="wedding-flower right"
-            alt=""
-          />
-
-          <div class="wedding-card reveal">
-            <p class="section-kicker light">THE WEDDING</p>
-            <h2 class="bengali">শুভ বিবাহ</h2>
-            <div class="wedding-names">Srijita <i>&</i> Arnab</div>
-
-            <div class="wedding-info-grid">
-              <div>
-                <span>WHEN</span>
-                <strong>THURSDAY</strong>
-                <p>11 FEBRUARY 2027</p>
-              </div>
-
-              <div>
-                <span>TIME</span>
-                <strong>7 PM</strong>
-                <p>ONWARDS</p>
-              </div>
-
-              <div>
-                <span>WHERE</span>
-                <strong>SELECT HOUSE</strong>
-                <p>The Shooting Bari</p>
-              </div>
-            </div>
-
-            <a href="#venue" class="outline-light">VIEW VENUE</a>
-          </div>
-        </section>
-
-        <!-- ================= FAMILY ================= -->
-        <section id="family" class="family">
-          <p class="section-kicker">WITH LOVE FROM</p>
-          <h2>Our Families</h2>
-
-          <div class="family-grid">
-            <article class="family-card reveal-left">
-              <p class="family-side">Bride's Side</p>
-              <h3>Srijita Seal</h3>
-              <div class="family-rule"></div>
-              <p class="family-parents">
-                Father — <em>Subrata Seal</em><br />
-                Mother — <em>Bijoli Seal</em>
-              </p>
-              <p class="family-location">Wellington, New Zealand</p>
-            </article>
-
-            <article class="family-card reveal-right">
-              <p class="family-side">Groom's Side</p>
-              <h3>Arnab Deb</h3>
-              <div class="family-rule"></div>
-              <p class="family-parents">
-                Father — <em>Samir Deb</em><br />
-                Mother — <em>Chandrani Deb</em>
-              </p>
-              <p class="family-location">Hamilton, New Zealand</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- ================= VENUE ================= -->
-        <section id="venue" class="venue page-biye">
-          <div class="venue-copy reveal-left">
-            <p class="section-kicker">WHERE WE CELEBRATE</p>
-            <h2>Select House</h2>
-            <p class="venue-alt">
-              also known as <strong>The Shooting Bari</strong>
-            </p>
-            <div class="gold-rule"></div>
-            <p class="venue-address">
-              251, S.N. Ghosh Avenue,<br />
-              Ramchandrapur, Elachi,<br />
-              Narendrapur, Kolkata,<br />
-              West Bengal — 700103
-            </p>
-
-            <div class="venue-map-frame">
-              <iframe
-                class="venue-map-embed"
-                title="Map to Select House, The Shooting Bari"
-                src="https://www.google.com/maps?q=Select+House+The+Shooting+Bari+251+S.N.+Ghosh+Avenue+Narendrapur+Kolkata&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            <a
-              class="map-button"
-              target="_blank"
-              rel="noopener"
-              href="https://www.google.com/maps/search/?api=1&query=Select+House+The+Shooting+Bari+251+S.N.+Ghosh+Avenue+Narendrapur+Kolkata"
-              >OPEN IN MAPS</a
-            >
-          </div>
-
-          <div class="venue-art reveal-right">
-            <img
-              src="assets/venue-sign.png"
-              class="venue-sign-image"
-              alt="Select House"
-            />
-            <img src="assets/venue-lamp.png" class="venue-lamp-image" alt="" />
-            <img
-              src="assets/venue-camera.png"
-              class="venue-camera-image"
-              alt=""
-            />
-          </div>
-        </section>
-
-        <!-- ================= COUNTDOWN ================= -->
-        <section id="countdownSection" class="countdown-section page-biye">
-          <p class="section-kicker">COUNTING DOWN TO</p>
-          <h2>Our beautiful day</h2>
-          <p class="countdown-badge bengali">আর মাত্র কয়েক দিন বাকি</p>
-
-          <div class="countdown">
-            <div>
-              <strong id="days">000</strong>
-              <span>DAYS<em class="bengali">দিন</em></span>
-            </div>
-            <div>
-              <strong id="hours">00</strong>
-              <span>HOURS<em class="bengali">ঘণ্টা</em></span>
-            </div>
-            <div>
-              <strong id="minutes">00</strong>
-              <span>MINUTES<em class="bengali">মিনিট</em></span>
-            </div>
-            <div>
-              <strong id="seconds">00</strong>
-              <span>SECONDS<em class="bengali">সেকেন্ড</em></span>
+          <div class="culture-quote">
+            <div class="cq-in">
+              <img src="assets/design/culture/river.jpg" alt="" />
+              <blockquote class="bengali">
+                <p>“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
+                <cite>— রবীন্দ্রনাথ ঠাকুর</cite>
+              </blockquote>
             </div>
           </div>
         </section>
 
-        <!-- ================= TIMELINE ================= -->
-        <section id="timeline" class="timeline page-biye">
-          <p class="section-kicker">THE EVENING</p>
-          <h2>A celebration of love</h2>
-
-          <div class="timeline-grid">
-            <article class="timeline-card reveal">
-              <span>7:00 PM</span>
-              <h3>Welcome</h3>
-              <p>Arrive, settle in and let the celebration begin.</p>
-            </article>
-
-            <article class="timeline-card reveal">
-              <span>7:30 PM</span>
-              <h3>Wedding Ceremony</h3>
-              <p>Two journeys become one.</p>
-            </article>
-
-            <article class="timeline-card reveal">
-              <span>9:00 PM</span>
-              <h3>Dinner & Celebration</h3>
-              <p>Good food, laughter and beautiful memories.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- ================= RECEPTION ================= -->
-        <section id="reception" class="reception page-reception">
-          <img src="assets/palace-bg.png" class="reception-bg" alt="" />
-          <img
-            src="assets/palace-chandelier.png"
-            class="reception-chandelier"
-            alt=""
-          />
-          <img
-            src="assets/reception-kolkata-bg.png"
-            class="reception-kolkata"
-            alt=""
-          />
-          <img
-            src="assets/reception-flower-left.png"
-            class="reception-flower left"
-            alt=""
-          />
-          <img
-            src="assets/reception-flower-right.png"
-            class="reception-flower right"
-            alt=""
-          />
-
-          <div class="reception-copy reveal-left">
-            <p class="section-kicker">THE NEXT CHAPTER</p>
-            <h2 class="bengali">বউভাত</h2>
-            <p class="reception-sub">THE RECEPTION</p>
-
-            <div class="reception-date">
-              <span>SATURDAY</span>
-              <strong>13 FEBRUARY 2027</strong>
-            </div>
-
-            <div class="gold-rule"></div>
-
-            <p class="bengali reception-line">নতুন ঘরের নতুন আনন্দ</p>
-          </div>
-
-          <div class="reception-art reveal">
-            <img src="assets/palace-hall.png" class="palace-image" alt="" />
-            <img
-              src="assets/palace-chandelier.png"
-              class="chandelier-image"
-              alt=""
-            />
-          </div>
-
-          <div class="reception-venue reveal-right">
-            <p class="section-kicker">KOLKATA · WEST BENGAL</p>
-            <h3>Singhi Palace</h3>
-            <p>
-              Orchestra Co-Operative Housing Society,<br />
-              Gariahat Road, near Pantaloons,<br />
-              Dover Terrace, Ballygunge,<br />
-              Kolkata, West Bengal — 700019
-            </p>
-
-            <a
-              class="map-button"
-              target="_blank"
-              rel="noopener"
-              href="https://www.google.com/maps/search/?api=1&query=Singhi+Palace+Orchestra+Co-Operative+Housing+Society+Gariahat+Road+Dover+Terrace+Ballygunge+Kolkata+700019"
-              >OPEN IN MAPS</a
-            >
-          </div>
-        </section>
-
-        <!-- ================= BENGALI INVITATION ================= -->
-        <section id="invitation" class="invitation">
-          <img src="assets/invitation-bg.png" class="invitation-bg" alt="" />
-          <img
-            src="assets/invitation-flower-left.png"
-            class="invitation-flower left"
-            alt=""
-          />
-          <img
-            src="assets/invitation-flower-right.png"
-            class="invitation-flower right"
-            alt=""
-          />
-          <img src="assets/namaste-hands.png" class="namaste" alt="" />
-
-          <div class="invitation-copy reveal">
-            <p class="section-kicker">একান্ত অনুরোধ</p>
-
-            <h2 class="bengali">
-              আপনাদের উপস্থিতি<br />
-              একান্ত কাম্য
-            </h2>
-
-            <div class="hero-line"><span></span><b>❦</b><span></span></div>
-
-            <p class="bengali">
-              আমাদের জীবনের এই নতুন অধ্যায়ে<br />
-              আপনাদের ভালোবাসা ও আশীর্বাদ<br />
-              আমাদের কাছে অমূল্য।
-            </p>
-
-            <p class="bengali">
-              সপরিবারে উপস্থিত হয়ে<br />
-              আমাদের এই আনন্দকে পূর্ণতা দেবেন —<br />
-              এই আমাদের আন্তরিক অনুরোধ।
-            </p>
-          </div>
-        </section>
-
-        <!-- ================= RSVP ================= -->
+        <!-- =====================================================
+             RSVP  (client design: Page 7, bottom half)
+        ====================================================== -->
         <section id="rsvp" class="rsvp">
-          <img src="assets/rsvp-kolkata-bg.png" class="rsvp-bg" alt="" />
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <div class="rsvp-stage">
+            <div class="rsvp-inner">
+              <h2 class="script">Will you<br />celebrate with us?</h2>
 
-          <div class="rsvp-copy reveal">
-            <p class="section-kicker">WITH LOVE</p>
-            <h2>We would love<br />to have you.</h2>
-            <p>Your presence is the most beautiful gift.</p>
+              <p class="rsvp-lead for-both">
+                Your presence will make<br />our days even more special.<br />Please
+                let us know if you will be joining us<br />for the Biye, the
+                Boubhaat, or both.
+              </p>
+              <p class="rsvp-lead for-biye">
+                Your presence will make<br />our days even more special.<br />Please
+                let us know if you will be joining us<br />for the Biye.
+              </p>
+              <p class="rsvp-lead for-boubhat">
+                Your presence will make<br />our days even more special.<br />Please
+                let us know if you will be joining us<br />for the Boubhaat.
+              </p>
 
-            <button id="rsvpBtn" class="rsvp-button">RSVP NOW</button>
+              <b class="orn orn-sm">❖</b>
+
+              <div class="rsvp-choices">
+                <button type="button" class="choice choice-biye" data-rsvp="biye">
+                  <svg class="ic"><use href="#i-lotus" /></svg>
+                  <span>I’LL JOIN THE BIYE</span>
+                </button>
+                <button type="button" class="choice choice-boubhat" data-rsvp="boubhaat">
+                  <svg class="ic"><use href="#i-rings" /></svg>
+                  <span>I’LL JOIN THE BOUBHAAT</span>
+                </button>
+                <button type="button" class="choice choice-both" data-rsvp="both">
+                  <svg class="ic"><use href="#i-lotus" /></svg>
+                  <span>I’LL JOIN BOTH</span>
+                </button>
+              </div>
+
+              <div class="rsvp-or"><i></i><span>OR</span><i></i></div>
+
+              <button type="button" id="msgBtn" class="msg-btn script" data-rsvp="message">
+                Send us a message
+                <svg class="ic"><use href="#i-quill" /></svg>
+              </button>
+            </div>
+
+            <aside class="rsvp-note rsvp-note-a">
+              <h3 class="script">A little note...</h3>
+              <p>
+                Whether you are travelling<br />from near or far,<br />your
+                presence, love and blessings<br />mean the world to us.
+              </p>
+              <p>
+                Please let us know your plans<br />at your earliest convenience<br />to
+                help us with our arrangements.
+              </p>
+            </aside>
+
+            <aside class="rsvp-note rsvp-note-b script">
+              Different places.<br />Same people.<br />Always us.
+            </aside>
           </div>
         </section>
 
         <footer class="footer">
-          <img src="assets/footer-bg.png" class="footer-bg" alt="" />
-          <img src="assets/footer-lotus.png" class="footer-lotus" alt="" />
-          <div class="footer-copy">
-            <p class="bengali">শুভ বিবাহ</p>
-            <h2>Srijita <span>&</span> Arnab</h2>
-            <small>11 FEBRUARY 2027 · 13 FEBRUARY 2027</small>
-          </div>
+          <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
+          <p class="bengali">শুভ বিবাহ</p>
+          <h2 class="script">Arnab <span>❖</span> Srijita</h2>
+          <small>11 FEBRUARY 2027 · 13 FEBRUARY 2027</small>
         </footer>
       </main>
     </div>
@@ -586,7 +740,7 @@
         </button>
 
         <p class="bengali modal-bn">আপনাদের উপস্থিতি একান্ত কাম্য</p>
-        <h2>RSVP</h2>
+        <h2 id="rsvpTitle">RSVP</h2>
 
         <form id="rsvpForm">
           <label>
@@ -594,16 +748,18 @@
             <input id="rsvpName" type="text" required />
           </label>
 
-          <label>
+          <label id="rsvpAttendWrap">
             <span>WILL YOU JOIN US?</span>
-            <select id="rsvpAttend" required>
+            <select id="rsvpAttend">
               <option value="">Select</option>
-              <option value="yes">Joyfully, yes!</option>
+              <option value="biye" class="page-biye">Joyfully — the Biye (11 Feb)</option>
+              <option value="boubhaat" class="page-reception">Joyfully — the Boubhaat (13 Feb)</option>
+              <option value="both" class="opt-both">Joyfully — both!</option>
               <option value="no">Regretfully, no</option>
             </select>
           </label>
 
-          <label>
+          <label id="rsvpGuestsWrap">
             <span>NUMBER OF GUESTS</span>
             <select id="rsvpGuests">
               <option value="1">1</option>
@@ -613,7 +769,12 @@
             </select>
           </label>
 
-          <button type="submit" class="rsvp-button">SEND RSVP</button>
+          <label>
+            <span id="rsvpMsgLabel">A MESSAGE FOR US (OPTIONAL)</span>
+            <textarea id="rsvpMessage" rows="3"></textarea>
+          </label>
+
+          <button type="submit" class="rsvp-button">SEND</button>
         </form>
 
         <div id="rsvpThanks" hidden>
@@ -624,7 +785,7 @@
             <p class="rsvp-calendar-label">Save the date</p>
 
             <div id="calendarWedding" class="calendar-row">
-              <span>Wedding · 11 Feb, Select House</span>
+              <span>Biye · 11 Feb, Select House</span>
               <div class="calendar-actions">
                 <a
                   id="calGoogleWedding"
@@ -640,7 +801,7 @@
             </div>
 
             <div id="calendarReception" class="calendar-row">
-              <span>Reception · 13 Feb, Singhi Palace</span>
+              <span>Boubhaat · 13 Feb, Singhi Palace</span>
               <div class="calendar-actions">
                 <a
                   id="calGoogleReception"
