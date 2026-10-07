@@ -16,7 +16,7 @@ Put the query **before** any hash: `?invite=biye#rsvp`.
 ## Page order
 
 Envelope → Cover (both unchanged) → Home → Our Story → Srijita → Arnab →
-Biye → Boubhaat → Our Culture → RSVP
+Our Culture → Biye → Boubhaat → RSVP
 
 ## Section dividers
 
@@ -25,11 +25,32 @@ artwork fades into the same deep wine (`--edge-bg`) at its top/bottom edge. Tune
 look in `style.css` → "SECTION TRANSITIONS" (`--edge` = fade length, `--band` = divider
 height). Sections hidden by `?invite=` modes hide their own divider automatically.
 
+## Desktop width
+
+On screens ≥700px the artwork fills the width up to `--wide` (1440px, in `style.css` →
+"DESKTOP — full-width artwork"); wider screens get a blurred backdrop of the same picture
+at the sides. All overlay text is in `cqw`, so it scales with the picture. Text blocks
+fade up as they scroll into view (`.reveal`).
+
+## Phones (< 700px)
+
+Artwork is never zoomed or cropped on phones. Home shows the whole picture with its
+short text on the parchment. Story / Srijita / Arnab / Biye / Boubhaat are built as
+`top slice of the art` → `paper card with the text` → `bottom slice of the art`
+(markup: `.art-top`, the card (`.col` / `.inv`), `.art-bot`). The card grows with the
+text, so any length / any screen width works. Biye and Boubhaat keep their flower
+borders from `assets/design/band-*.jpg`; the card paper is `assets/design/paper.jpg`.
+
+Tune a plate in `style.css` → "PHONES": `--a` = where the top slice ends, `--b` = where
+the bottom slice starts (fractions of the picture height). Screens ≥ 700px are unchanged.
+If you edit text in a plate's top section, edit the second copy inside `.art-bot` too
+(it is the same caption, aria-hidden).
+
 ## How to change text
 
 Every word that used to be baked into the client's images is now live HTML in
 `index.html`, in the same section order as above. Search for the words you want
-to change. Section ids: `#home #story #srijita #arnab #biye #boubhaat #culture #rsvp`.
+to change. Section ids: `#home #story #srijita #arnab #culture #biye #boubhaat #rsvp`.
 
 * **Home / Story / Srijita / Arnab** – text sits in a `.col` block (title, sub,
   paragraphs) inside the section. Edit the text freely; the column flows, so

@@ -495,6 +495,7 @@ main section[id] {
 ========================================================= */
 
 .plate {
+  --q: 1cqw;
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -769,110 +770,110 @@ h2.tx {
   white-space: nowrap;
 }
 .inv p {
-  font-size: calc(2.4cqw * var(--u, 1));
-  line-height: calc(2.9cqw * var(--u, 1));
+  font-size: calc(2.4 * var(--q) * var(--u, 1));
+  line-height: calc(2.9 * var(--q) * var(--u, 1));
   font-weight: 500;
 }
 .inv .rule {
-  margin: calc(0.9cqw * var(--u, 1)) calc(3cqw * var(--u, 1));
-  height: calc(2cqw * var(--u, 1));
+  margin: calc(0.9 * var(--q) * var(--u, 1)) calc(3 * var(--q) * var(--u, 1));
+  height: calc(2 * var(--q) * var(--u, 1));
 }
 .inv .rule b {
-  font-size: calc(2.4cqw * var(--u, 1));
+  font-size: calc(2.4 * var(--q) * var(--u, 1));
 }
 .inv .orn {
-  font-size: calc(2.3cqw * var(--u, 1));
-  margin: calc(0.3cqw * var(--u, 1)) 0 calc(0.1cqw * var(--u, 1));
+  font-size: calc(2.3 * var(--q) * var(--u, 1));
+  margin: calc(0.3 * var(--q) * var(--u, 1)) 0 calc(0.1 * var(--q) * var(--u, 1));
 }
 .inv .orn-sm {
-  font-size: calc(1.8cqw * var(--u, 1));
-  margin: calc(0.6cqw * var(--u, 1)) 0 calc(0.4cqw * var(--u, 1));
+  font-size: calc(1.8 * var(--q) * var(--u, 1));
+  margin: calc(0.6 * var(--q) * var(--u, 1)) 0 calc(0.4 * var(--q) * var(--u, 1));
 }
 .inv-invoke {
-  font-size: calc(1.8cqw * var(--u, 1)) !important;
-  line-height: calc(2.3cqw * var(--u, 1)) !important;
+  font-size: calc(1.8 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(2.3 * var(--q) * var(--u, 1)) !important;
   color: var(--wine2);
   font-weight: 600 !important;
 }
 .inv-title {
-  font-size: calc(9.2cqw * var(--u, 1));
-  line-height: calc(9.6cqw * var(--u, 1));
+  font-size: calc(9.2 * var(--q) * var(--u, 1));
+  line-height: calc(9.6 * var(--q) * var(--u, 1));
   font-weight: 700;
   color: var(--wine2);
   margin: 0;
 }
 .inv-quote {
-  font-size: calc(2.8cqw * var(--u, 1)) !important;
-  line-height: calc(3.4cqw * var(--u, 1)) !important;
+  font-size: calc(2.8 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(3.4 * var(--q) * var(--u, 1)) !important;
   font-weight: 600 !important;
   color: var(--wine2);
 }
 .inv-by {
-  font-size: calc(1.9cqw * var(--u, 1)) !important;
-  line-height: calc(2.4cqw * var(--u, 1)) !important;
+  font-size: calc(1.9 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(2.4 * var(--q) * var(--u, 1)) !important;
 }
 .inv-name {
-  font-size: calc(4.7cqw * var(--u, 1)) !important;
-  line-height: calc(5.2cqw * var(--u, 1)) !important;
+  font-size: calc(4.7 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(5.2 * var(--q) * var(--u, 1)) !important;
   font-weight: 700 !important;
   color: var(--wine2);
   margin: 0 !important;
 }
 .inv-name-sm {
-  font-size: calc(4.1cqw * var(--u, 1)) !important;
-  line-height: calc(4.8cqw * var(--u, 1)) !important;
+  font-size: calc(4.1 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(4.8 * var(--q) * var(--u, 1)) !important;
 }
 .inv-host {
-  font-size: calc(2.9cqw * var(--u, 1)) !important;
-  line-height: calc(3.4cqw * var(--u, 1)) !important;
+  font-size: calc(2.9 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(3.4 * var(--q) * var(--u, 1)) !important;
   font-weight: 700 !important;
   color: var(--wine2);
 }
 .inv-host small {
-  font-size: calc(2.4cqw * var(--u, 1));
+  font-size: calc(2.4 * var(--q) * var(--u, 1));
   font-weight: 500;
   color: var(--ink);
 }
 .inv-sm {
-  font-size: calc(2.25cqw * var(--u, 1)) !important;
-  line-height: calc(2.8cqw * var(--u, 1)) !important;
+  font-size: calc(2.25 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(2.8 * var(--q) * var(--u, 1)) !important;
 }
 .inv-gap {
-  margin-top: calc(1.1cqw * var(--u, 1)) !important;
+  margin-top: calc(1.1 * var(--q) * var(--u, 1)) !important;
 }
 .inv-with {
-  margin-top: calc(0.8cqw * var(--u, 1)) !important;
+  margin-top: calc(0.8 * var(--q) * var(--u, 1)) !important;
 }
 .inv-tight {
-  line-height: calc(2.4cqw * var(--u, 1)) !important;
+  line-height: calc(2.4 * var(--q) * var(--u, 1)) !important;
 }
 .inv-sign {
-  font-size: calc(4.1cqw * var(--u, 1)) !important;
-  line-height: calc(4.8cqw * var(--u, 1)) !important;
+  font-size: calc(4.1 * var(--q) * var(--u, 1)) !important;
+  line-height: calc(4.8 * var(--q) * var(--u, 1)) !important;
   font-weight: 700 !important;
   color: var(--wine2);
-  margin-top: calc(0.6cqw * var(--u, 1)) !important;
+  margin-top: calc(0.6 * var(--q) * var(--u, 1)) !important;
 }
 
 .inv-parents {
   display: grid;
-  grid-template-columns: 1fr calc(5.5cqw * var(--u, 1)) 1fr;
+  grid-template-columns: 1fr calc(5.5 * var(--q) * var(--u, 1)) 1fr;
   align-items: start;
-  margin: calc(0.8cqw * var(--u, 1)) calc(-2.4cqw * var(--u, 1)) calc(1cqw * var(--u, 1));
+  margin: calc(0.8 * var(--q) * var(--u, 1)) calc(-2.4 * var(--q) * var(--u, 1)) calc(1 * var(--q) * var(--u, 1));
 }
 .inv-mid {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(0.6cqw * var(--u, 1));
-  padding-top: calc(4.6cqw * var(--u, 1));
-  font-size: calc(1.8cqw * var(--u, 1));
+  gap: calc(0.6 * var(--q) * var(--u, 1));
+  padding-top: calc(4.6 * var(--q) * var(--u, 1));
+  font-size: calc(1.8 * var(--q) * var(--u, 1));
   font-weight: 600;
   color: var(--wine2);
 }
 .inv-mid b {
-  font-size: calc(2.4cqw * var(--u, 1));
+  font-size: calc(2.4 * var(--q) * var(--u, 1));
   font-weight: 400;
   line-height: 1;
 }
@@ -890,20 +891,20 @@ h2.tx {
   background: rgba(142, 20, 40, 0.65);
 }
 .inv-mid-line::before {
-  min-height: calc(6cqw * var(--u, 1));
+  min-height: calc(6 * var(--q) * var(--u, 1));
 }
 .inv-mid-line::after {
-  min-height: calc(9cqw * var(--u, 1));
+  min-height: calc(9 * var(--q) * var(--u, 1));
 }
 
 .inv-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: calc(1.2cqw * var(--u, 1)) calc(-7cqw * var(--u, 1)) 0;
+  margin: calc(1.2 * var(--q) * var(--u, 1)) calc(-7 * var(--q) * var(--u, 1)) 0;
 }
 .inv-cell {
   display: block;
-  padding: 0 calc(1cqw * var(--u, 1));
+  padding: 0 calc(1 * var(--q) * var(--u, 1));
   border-left: 1px solid rgba(142, 20, 40, 0.5);
   color: var(--wine2);
   text-align: center;
@@ -912,20 +913,20 @@ h2.tx {
   border-left: 0;
 }
 .inv-cell .ic {
-  width: calc(4cqw * var(--u, 1));
-  height: calc(4cqw * var(--u, 1));
-  margin: 0 auto calc(0.3cqw * var(--u, 1));
+  width: calc(4 * var(--q) * var(--u, 1));
+  height: calc(4 * var(--q) * var(--u, 1));
+  margin: 0 auto calc(0.3 * var(--q) * var(--u, 1));
 }
 .inv-cell strong {
   display: block;
-  font-size: calc(2.15cqw * var(--u, 1));
-  line-height: calc(2.7cqw * var(--u, 1));
+  font-size: calc(2.15 * var(--q) * var(--u, 1));
+  line-height: calc(2.7 * var(--q) * var(--u, 1));
   font-weight: 700;
 }
 .inv-cell span {
   display: block;
-  font-size: calc(2.25cqw * var(--u, 1));
-  line-height: calc(2.8cqw * var(--u, 1));
+  font-size: calc(2.25 * var(--q) * var(--u, 1));
+  line-height: calc(2.8 * var(--q) * var(--u, 1));
   color: var(--ink);
   font-weight: 500;
 }
@@ -938,23 +939,23 @@ a.inv-cell:hover strong {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0 calc(1.2cqw * var(--u, 1));
-  margin-top: calc(0.8cqw * var(--u, 1));
+  gap: 0 calc(1.2 * var(--q) * var(--u, 1));
+  margin-top: calc(0.8 * var(--q) * var(--u, 1));
   color: var(--wine2);
 }
 .inv-venue .ic {
-  width: calc(3.4cqw * var(--u, 1));
-  height: calc(3.4cqw * var(--u, 1));
+  width: calc(3.4 * var(--q) * var(--u, 1));
+  height: calc(3.4 * var(--q) * var(--u, 1));
 }
 .inv-venue strong {
-  font-size: calc(3.8cqw * var(--u, 1));
-  line-height: calc(4.4cqw * var(--u, 1));
+  font-size: calc(3.8 * var(--q) * var(--u, 1));
+  line-height: calc(4.4 * var(--q) * var(--u, 1));
   font-weight: 700;
 }
 .inv-venue span {
   flex-basis: 100%;
-  font-size: calc(2.6cqw * var(--u, 1));
-  line-height: calc(3cqw * var(--u, 1));
+  font-size: calc(2.6 * var(--q) * var(--u, 1));
+  line-height: calc(3 * var(--q) * var(--u, 1));
   color: var(--ink);
   font-weight: 500;
 }
@@ -2037,4 +2038,349 @@ body.mode-reception-only .choice-both {
   background: linear-gradient(180deg, var(--edge-bg), rgba(43, 11, 21, 0));
   pointer-events: none;
   z-index: 1;
+}
+
+/* =========================================================
+   DESKTOP — full-width artwork
+   Text is sized in cqw, so widening the stage scales the picture
+   and everything on it together. Beyond 1440px the blurred
+   backdrop of the same picture fills the sides.
+========================================================= */
+
+:root {
+  --wide: 1440px;
+  --feather: 4%;
+}
+
+@media (min-width: 700px) {
+  .stage {
+    width: min(100%, var(--wide)) !important;
+  }
+  .plate-bg {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 var(--edge), #000 calc(100% - var(--edge)), transparent 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 var(--edge), #000 calc(100% - var(--edge)), transparent 100%);
+  }
+  .rsvp-stage {
+    max-width: var(--wide);
+  }
+  .rsvp-stage::before {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 var(--edge), #000 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 var(--edge), #000 100%);
+  }
+  .cq-in {
+    max-width: var(--wide);
+  }
+  .cq-in img {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, #000 0, #000 calc(100% - var(--edge)), transparent 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, #000 0, #000 calc(100% - var(--edge)), transparent 100%);
+  }
+  .culture-wrap {
+    max-width: 1200px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .culture-head {
+    font-size: clamp(14px, 1.2vw, 17px);
+  }
+}
+
+/* hide the leftover decorative strip at the very top of the RSVP artwork */
+.rsvp-stage::before {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 5%, #000 calc(5% + var(--edge)), #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0, transparent 5%, #000 calc(5% + var(--edge)), #000 100%);
+}
+@media (min-width: 700px) {
+  .rsvp-stage::before {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, transparent 5%, #000 calc(5% + var(--edge)), #000 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%),
+      linear-gradient(180deg, transparent 0, transparent 5%, #000 calc(5% + var(--edge)), #000 100%);
+  }
+}
+
+
+/* =========================================================
+   PHONES (< 700px) — artwork is NEVER cropped or zoomed.
+
+   Every picture is shown at 100% width, at its own aspect ratio.
+   Text plates are built as:  [top slice of the art]
+                              [paper card with the live text]
+                              [bottom slice of the art]
+   so the artwork always shows in full width, and the text card
+   grows to whatever length the words need — on any screen size.
+   Tune a plate with --a (where the top slice ends) and --b (where
+   the bottom slice starts), both fractions of the picture height.
+========================================================= */
+
+/* desktop / tablet: the wrappers are invisible, the 2nd copy is unused */
+.art,
+.art-in {
+  display: contents;
+}
+.art-bot {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  .plate {
+    --cut: 46px; /* soft fade where a slice meets the card */
+    --gut: clamp(12px, 4vw, 22px); /* card side margin */
+    --q: clamp(4.1px, 1.42cqw, 5.8px); /* text unit for invitation cards */
+    --u: 1 !important;
+  }
+  .p-intro,
+  .p-prelude,
+  .p-srijita,
+  .p-arnab,
+  .p-biye,
+  .p-boubhaat {
+    --mz: 1;
+    --mx: 50;
+  }
+  .p-prelude { --r: 1.4258; --a: 0.17; --b: 0.66; }
+  .p-srijita { --r: 1.6472; --a: 0.2;  --b: 0.40; }
+  .p-arnab   { --r: 1.6918; --a: 0.27; --b: 0.36; }
+  .p-biye    { --r: 1.7003; --a: 0.09; --b: 0.87; }
+  .p-boubhaat{ --r: 1.6961; --a: 0.09; --b: 0.87; }
+
+  .stage {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* ---------- picture slices ---------- */
+  .art {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .art-top {
+    background: var(--edge-bg);
+    height: calc(var(--a) * var(--r) * 100cqw);
+    -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - var(--cut)), transparent 100%);
+    mask-image: linear-gradient(180deg, #000 calc(100% - var(--cut)), transparent 100%);
+  }
+  .art-bot {
+    background: var(--edge-bg);
+    height: calc((1 - var(--b)) * var(--r) * 100cqw);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--cut));
+    mask-image: linear-gradient(180deg, transparent 0, #000 var(--cut));
+  }
+  .art-in {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: calc(var(--r) * 100cqw);
+  }
+  .art-top .art-in { top: 0; }
+  .art-bot .art-in { bottom: 0; }
+  .art-in .plate-bg {
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* the section's outer fade (top of first slice / bottom of last) */
+  .art-top .art-in .plate-bg {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--edge));
+    mask-image: linear-gradient(180deg, transparent 0, #000 var(--edge));
+  }
+  .art-bot .art-in .plate-bg {
+    -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - var(--edge)), transparent 100%);
+    mask-image: linear-gradient(180deg, #000 calc(100% - var(--edge)), transparent 100%);
+  }
+  .art .tx {
+    font-size-adjust: none;
+  }
+
+  /* what shows between the slices: Biye/Boubhaat garlands, wine elsewhere */
+  .p-biye .stage {
+    background: url("assets/design/band-biye.jpg") 0 calc(var(--a) * var(--r) * 100cqw) / 100% auto repeat-y;
+  }
+  .p-boubhaat .stage {
+    background: url("assets/design/band-boubhaat.jpg") 0 calc(var(--a) * var(--r) * 100cqw) / 100% auto repeat-y;
+  }
+
+  /* ---------- paper card ---------- */
+  .col,
+  .inv {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: calc(100% - 2 * var(--gut));
+    max-width: 600px;
+    margin: calc(var(--cut) * -0.55) auto calc(var(--cut) * -0.55);
+    z-index: 2;
+    padding: 28px clamp(14px, 5vw, 26px) 30px;
+    background:
+      radial-gradient(ellipse at 50% 0, rgba(255, 244, 218, 0.55), rgba(255, 244, 218, 0) 70%),
+      url("assets/design/paper.jpg") 0 0 / 200px auto,
+      #f3dfb4;
+    border: 1px solid rgba(190, 140, 70, 0.85);
+    border-radius: 16px;
+    box-shadow:
+      0 0 0 3px rgba(43, 11, 21, 0.92),
+      0 0 0 4px rgba(217, 171, 98, 0.8),
+      0 14px 30px rgba(20, 3, 8, 0.5),
+      inset 0 0 28px rgba(150, 90, 30, 0.22);
+  }
+  .col::before,
+  .inv::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(142, 20, 40, 0.28);
+    border-radius: 11px;
+    pointer-events: none;
+  }
+
+  /* story columns: natural, readable type */
+  .col {
+    gap: 0;
+  }
+  .col .c-title {
+    font-size: clamp(38px, 11.5vw, 54px) !important;
+    line-height: 1.08 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    white-space: normal !important;
+  }
+  .col .c-sub {
+    font-size: clamp(17px, 4.7vw, 21px) !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+    white-space: normal !important;
+    margin-top: 0 !important;
+  }
+  .col-intro .c-sub { margin-top: 4px !important; }
+  .col .c-rule {
+    width: 62% !important;
+    height: 16px !important;
+    margin: 10px 0 12px !important;
+  }
+  .col .c-rule b { font-size: 12px; margin: 0 8px; }
+  .col .c-p {
+    font-size: clamp(15px, 4.2vw, 17.5px) !important;
+    line-height: 1.55 !important;
+    width: 100% !important;
+    margin: 0 0 12px !important;
+    text-align: center !important;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+  .col-sri .c-p,
+  .col-arn .c-p {
+    text-align: left !important;
+  }
+  .col .c-p1 { margin-top: 0 !important; }
+  .col .c-p:last-of-type { margin-bottom: 0 !important; }
+  .col .c-orn {
+    font-size: 13px !important;
+    margin: 0 0 12px !important;
+  }
+  .col .c-btn {
+    width: auto !important;
+    height: auto !important;
+    margin: 18px 0 0 !important;
+    padding: 13px 22px !important;
+    font-size: clamp(11.5px, 3.2vw, 13.5px) !important;
+  }
+  .col-sri .c-rule2,
+  .col-arn .c-rule2 {
+    margin: 4px 0 14px !important;
+  }
+
+  /* invitation cards: the Bengali lines wrap safely on narrow phones */
+  .inv p,
+  .inv h2 {
+    white-space: normal;
+    text-wrap: balance;
+  }
+  .inv .inv-title { white-space: nowrap; }
+  .inv-info {
+    margin-left: 0;
+    margin-right: 0;
+    gap: 14px 0;
+  }
+  .inv-parents {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .inv-btn {
+    position: relative;
+    left: auto;
+    top: auto !important;
+    transform: none;
+    display: flex;
+    width: fit-content;
+    margin: calc(var(--cut) * 0.55 + 12px) auto 0;
+    padding: 13px 22px;
+    font-size: clamp(11.5px, 3.2vw, 13.5px);
+    z-index: 3;
+  }
+  .inv-btn:hover { transform: none; }
+  .inv-btn.only-both,
+  .inv-btn.only-biye { display: none; }
+  body.mode-both .inv-btn.only-both,
+  body.mode-bi-only .inv-btn.only-biye { display: flex; }
+  .p-biye .inv-btn,
+  .p-boubhaat .inv-btn { margin-bottom: 4px; }
+
+  /* ---------- Home: art whole, short text sits in the parchment ---------- */
+  .p-intro { --r: 1.66; }
+  .col-intro {
+    position: absolute;
+    left: 31.1%;
+    top: 5.5%;
+    width: 53.1%;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    z-index: 2;
+  }
+  .col-intro::before { display: none; }
+  .col-intro .c-title {
+    font-size: 10cqw !important;
+    line-height: 1.04 !important;
+    white-space: nowrap !important;
+  }
+  .col-intro .c-rule { margin: 4px 0 4px !important; width: 70% !important; height: 8px !important; }
+  .col-intro .c-sub {
+    font-size: clamp(11.5px, 3.3cqw, 15px) !important;
+    line-height: 1.25 !important;
+    width: 100% !important;
+  }
+  .col-intro .c-body {
+    font-size: clamp(10.5px, 2.75cqw, 13px) !important;
+    line-height: 1.34 !important;
+    width: 100% !important;
+    margin-top: 6px !important;
+    text-align: center;
+  }
+  .col-intro .c-btn {
+    margin-top: 10px !important;
+    padding: clamp(8px, 2.4cqw, 11px) clamp(12px, 3.6cqw, 18px) !important;
+    font-size: clamp(9.5px, 2.5cqw, 12px) !important;
+  }
+  .p-intro .stamp { font-size: 1.65cqw; }
+  .p-intro .stamp::after { inset: 0.5cqw; }
 }

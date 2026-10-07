@@ -11,7 +11,9 @@
   ========================================================= */
 
   const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const $$ = (selector, root = document) => [
+    ...root.querySelectorAll(selector),
+  ];
 
   const body = document.body;
 
@@ -92,6 +94,7 @@
 
   envelope?.addEventListener("click", () => {
     envelope.classList.add("open");
+    cover.style.display = "none";
   });
 
   enterButton?.addEventListener("click", () => {
@@ -275,7 +278,8 @@
       if (rsvpAttend) rsvpAttend.required = false;
     } else {
       if (rsvpTitle) rsvpTitle.textContent = "RSVP";
-      if (rsvpMsgLabel) rsvpMsgLabel.textContent = "A MESSAGE FOR US (OPTIONAL)";
+      if (rsvpMsgLabel)
+        rsvpMsgLabel.textContent = "A MESSAGE FOR US (OPTIONAL)";
       if (rsvpMessage) rsvpMessage.required = false;
       if (rsvpAttendWrap) rsvpAttendWrap.hidden = false;
       if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = false;
