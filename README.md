@@ -57,7 +57,7 @@ to change. Section ids: `#home #story #srijita #arnab #culture #biye #boubhaat #
   longer/shorter text will not overlap.
 * **Biye / Boubhaat cards** – all inside `<div class="inv bengali">`. Each line
   break is a `<br />`. Dates, times and venues are in the `.inv-info` row.
-  Venue blocks link to Google Maps.
+  The venue is a small sketch map + an "Open in Google Maps" button (see Venue map below).
 * **Our Culture** – the 8 rituals are `<li class="ritual">` items (title, English
   name, description). Add/remove items freely; the grid reflows.
 * **RSVP** – heading, intro line (one variant per invitation link:
@@ -90,3 +90,17 @@ End times are placeholders.
 Demo only: the response is saved in the visitor's own browser (`localStorage`);
 nothing is sent anywhere. Hook `rsvpForm`'s submit handler in `script.js` to a
 form service/backend to receive real responses.
+
+## Venue map (Biye + Boubhaat)
+
+Each venue shows a small sketch map (venue pin in the centre, landmarks around it)
+with an **OPEN IN GOOGLE MAPS** button; the map and the button both open Google Maps.
+Markup: `<div class="venue-map">` in `index.html` (one per invitation); styles at the end
+of `style.css`. The maps are hand-drawn inline SVGs, so they are **schematic, not to scale**
+(the card says so). To change a landmark, edit its `<text class="vm-lm">` label and its
+marker position inside the `<svg class="vm-svg">`. To use a real screenshot/photo of the
+map instead, replace the `<svg class="vm-svg">…</svg>` with
+`<img class="vm-svg" src="assets/map-biye.jpg" alt="" style="object-fit:cover">`.
+The Google Maps links are the `href`s on the `.vm-card` and `.vm-btn` anchors.
+On screens >= 700px the Biye/Boubhaat text scale (`--u`) was reduced slightly
+(0.95 -> 0.85, 0.8 -> 0.74) to make room for the map.
