@@ -8,6 +8,11 @@
        index.html?invite=both       Biye + Boubhaat
        index.html?invite=biye       Biye only
        index.html?invite=boubhat    Boubhaat only
+
+     Language (Bengali is the default):
+       index.html?lang=en           English
+       index.html?lang=bn           Bengali
+       Both can be combined: index.html?invite=biye&lang=en#rsvp
   ========================================================= */
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -42,6 +47,7 @@
     if (coverImage) {
       coverImage.src = "assets/cover-card-reception.png";
       coverImage.alt = "Reception invitation — Srijita & Arnab, Kolkata";
+      coverImage.removeAttribute("data-en-alt");
     }
   }
 
@@ -95,12 +101,18 @@
   envelope?.addEventListener("click", () => {
     envelope.classList.add("open");
     cover.style.display = "none";
+
+    // The intro-screen language pill is done; the top bar has its own.
+    body.classList.add("site-open");
+    closeLangMenus();
   });
 
   enterButton?.addEventListener("click", () => {
     cover?.classList.add("exit");
 
     site?.classList.add("show");
+    body.classList.add("site-open");
+    closeLangMenus();
 
     body.classList.remove("locked");
 
@@ -133,6 +145,275 @@
       }
     });
   });
+
+  /* =========================================================
+     LANGUAGE  (Bengali = default / current design, English = translated)
+
+     Every element that has a translation carries it in a data-en
+     attribute. The original (Bengali) markup is remembered once at
+     start-up, so switching back and forth is lossless.
+
+     Priority: ?lang=en|bn in the link  >  the guest's last choice
+     (saved in this browser)  >  Bengali.
+  ========================================================= */
+
+  const LANG_KEY = "srijitaArnabLang";
+  const TITLES = {
+    bn: "Arnab & Srijita — শুভ বিবাহ",
+    en: "Arnab & Srijita — Wedding Invitation",
+  };
+  const LANG_LABEL = { bn: "বাংলা", en: "English" };
+
+  const translatable = $$("[data-en]").map((el) => {
+    const plain =
+      el.tagName === "OPTION" ||
+      el.namespaceURI !== "http://www.w3.org/1999/xhtml";
+    return {
+      el,
+      plain,
+      bn: plain ? el.textContent : el.innerHTML,
+      en: el.getAttribute("data-en"),
+    };
+  });
+
+  const altTargets = $$("[data-en-alt]").map((el) => ({
+    el,
+    bn: el.getAttribute("alt"),
+    en: el.getAttribute("data-en-alt"),
+  }));
+
+  function readLangParam() {
+    const value = (params.get("lang") || "").toLowerCase();
+
+    if (["en", "eng", "english"].includes(value)) return "en";
+    if (["bn", "bangla", "bengali"].includes(value)) return "bn";
+
+    return "";
+  }
+
+  function initialLang() {
+    const fromLink = readLangParam();
+
+    if (fromLink) return fromLink;
+
+    try {
+      const saved = localStorage.getItem(LANG_KEY);
+
+      if (saved === "en" || saved === "bn") return saved;
+    } catch (error) {
+      /* storage blocked — fall through to the default */
+    }
+
+    return "bn";
+  }
+
+  let currentLang = "bn";
+  let languageApplied = false;
+
+  function applyLanguage(lang, { persist = false } = {}) {
+    if (lang !== "en" && lang !== "bn") return;
+
+    // Keep the guest looking at the same spot while text re-flows.
+    let anchor = null;
+
+    if (site?.classList.contains("show") && window.scrollY > 0) {
+      const marker = window.scrollY + window.innerHeight * 0.35;
+
+      pageSections.forEach((section) => {
+        if (window.getComputedStyle(section).display === "none") return;
+
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+
+        if (marker >= top && marker < top + height) {
+          anchor = { section, ratio: (marker - top) / height };
+        }
+      });
+    }
+
+    currentLang = lang;
+    document.documentElement.setAttribute("data-lang", lang);
+    document.title = TITLES[lang];
+
+    // At start-up the page is already in Bengali, so nothing to rewrite.
+    const skipRewrite = !languageApplied && lang === "bn";
+    languageApplied = true;
+
+    translatable.forEach((item) => {
+      if (skipRewrite) return;
+
+      const value = lang === "en" ? item.en : item.bn;
+
+      if (item.plain) {
+        item.el.textContent = value;
+      } else {
+        item.el.innerHTML = value;
+      }
+    });
+
+    altTargets.forEach((item) => {
+      if (skipRewrite) return;
+
+      item.el.setAttribute("alt", lang === "en" ? item.en : item.bn);
+    });
+
+    $$(".lang").forEach((widget) => {
+      const label = $(".lang-cur", widget);
+
+      if (label) label.textContent = LANG_LABEL[lang];
+
+      $$(".lang-opt", widget).forEach((option) => {
+        option.setAttribute(
+          "aria-selected",
+          option.dataset.lang === lang ? "true" : "false",
+        );
+      });
+    });
+
+    if (anchor) {
+      const root = document.documentElement;
+      const previousBehavior = root.style.scrollBehavior;
+
+      root.style.scrollBehavior = "auto";
+
+      const { section, ratio } = anchor;
+      window.scrollTo(
+        0,
+        section.offsetTop +
+          ratio * section.offsetHeight -
+          window.innerHeight * 0.35,
+      );
+
+      root.style.scrollBehavior = previousBehavior;
+    }
+
+    updateActiveNav();
+
+    if (persist) {
+      try {
+        localStorage.setItem(LANG_KEY, lang);
+      } catch (error) {
+        /* ignore */
+      }
+
+      // Make the link shareable: ?lang=en is added, Bengali (default) is not.
+      // The ?invite= mode and the #hash are left exactly as they were.
+      try {
+        const url = new URL(window.location.href);
+
+        if (lang === "en") {
+          url.searchParams.set("lang", "en");
+        } else {
+          url.searchParams.delete("lang");
+        }
+
+        window.history.replaceState(null, "", url.toString());
+      } catch (error) {
+        /* e.g. some file:// contexts — harmless */
+      }
+    }
+  }
+
+  /* ---------- the dropdown ---------- */
+
+  function closeLangMenus(exceptWidget) {
+    $$(".lang").forEach((widget) => {
+      if (widget === exceptWidget) return;
+
+      const menu = $(".lang-menu", widget);
+      const trigger = $(".lang-btn", widget);
+
+      if (menu) menu.hidden = true;
+      if (trigger) trigger.setAttribute("aria-expanded", "false");
+      widget.classList.remove("open");
+    });
+  }
+
+  $$(".lang").forEach((widget) => {
+    const trigger = $(".lang-btn", widget);
+    const menu = $(".lang-menu", widget);
+    const options = $$(".lang-opt", widget);
+
+    function openMenu() {
+      closeLangMenus(widget);
+
+      // Don't stack the mobile page menu under the language menu.
+      navLinks?.classList.remove("open");
+      if (menuButton) menuButton.textContent = "☰";
+
+      menu.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+      widget.classList.add("open");
+
+      const selected = options.find(
+        (option) => option.dataset.lang === currentLang,
+      );
+      (selected || options[0]).focus();
+    }
+
+    function closeMenu(returnFocus) {
+      menu.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+      widget.classList.remove("open");
+
+      if (returnFocus) trigger.focus();
+    }
+
+    trigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (menu.hidden) {
+        openMenu();
+      } else {
+        closeMenu(false);
+      }
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        openMenu();
+      }
+    });
+
+    options.forEach((option, index) => {
+      option.addEventListener("click", (event) => {
+        event.stopPropagation();
+        applyLanguage(option.dataset.lang, { persist: true });
+        closeMenu(true);
+      });
+
+      option.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          options[(index + 1) % options.length].focus();
+        } else if (event.key === "ArrowUp") {
+          event.preventDefault();
+          options[(index - 1 + options.length) % options.length].focus();
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          options[0].focus();
+        } else if (event.key === "End") {
+          event.preventDefault();
+          options[options.length - 1].focus();
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          closeMenu(true);
+        } else if (event.key === "Tab") {
+          closeMenu(false);
+        }
+      });
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".lang")) closeLangMenus();
+  });
+
+  window.addEventListener("scroll", () => closeLangMenus(), { passive: true });
+
+  menuButton?.addEventListener("click", () => closeLangMenus());
 
   /* =========================================================
      NAVBAR
@@ -202,6 +483,12 @@
   window.addEventListener("scroll", updateActiveNav, { passive: true });
   window.addEventListener("resize", updateActiveNav);
   updateActiveNav();
+
+  /* =========================================================
+     LANGUAGE — first paint
+  ========================================================= */
+
+  applyLanguage(initialLang());
 
   /* =========================================================
      HASH SUPPORT

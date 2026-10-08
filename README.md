@@ -13,6 +13,30 @@ Static site (HTML + CSS + JS). No build step. Open `index.html`, or double-click
 
 Put the query **before** any hash: `?invite=biye#rsvp`.
 
+## Language: বাংলা / English
+
+A dropdown (globe icon + current language) sits top-right on the envelope/cover screens and
+in the top bar of the site. **Bengali is the default and is exactly the original design;**
+choosing **English** swaps every Bengali line to English (invitation cards, Our Culture,
+map labels, RSVP wording) and uses the Latin serif for the cards.
+
+* The choice is remembered in the guest's browser and can be forced from the link:
+  `index.html?lang=en` (English) or `?lang=bn`. It combines with the invitation modes and
+  hashes, e.g. `index.html?invite=biye&lang=en#rsvp`. Picking a language in the dropdown adds
+  / removes `lang=en` in the address bar so the link can be shared as-is.
+* How it works: every translated element has a `data-en="..."` attribute holding its
+  English text (`<br>` = line break). `script.js` → "LANGUAGE" remembers the original
+  Bengali markup and swaps it back and forth. **To change an English line, edit its
+  `data-en` in `index.html`; to change the Bengali, edit the element's normal content.**
+  New text you add only needs a `data-en` to be translatable.
+* English wording uses *Wedding* / *Reception* for Biye / Boubhaat in the menu, buttons and
+  RSVP; the Bengali design is unchanged (still Biye / Boubhaat).
+* Styles: end of `style.css` ("LANGUAGE SWITCH" and "ENGLISH MODE").
+* Not translatable: the text baked into `assets/cover-card*.png` (the opening card) — that
+  is artwork, so it stays as designed in both languages.
+* Names in English are transliterated from the Bengali (e.g. Shubhabrata Seal,
+  Bijli Seal, Jharna Dutta); please check the spellings with the families.
+
 ## Page order
 
 Envelope → Cover (both unchanged) → Home → Our Story → Srijita → Arnab →

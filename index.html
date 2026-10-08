@@ -63,9 +63,21 @@
       </defs>
     </svg>
 
+    <div class="lang lang-intro">
+  <button type="button" class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / ভাষা">
+    <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.4 12h17.2M12 3.4c2.6 2.4 3.9 5.3 3.9 8.6s-1.3 6.2-3.9 8.6c-2.6-2.4-3.9-5.3-3.9-8.6S9.4 5.800 12 3.400Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span class="lang-cur">বাংলা</span>
+    <svg class="lang-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1.500 1.500 6 6l4.500-4.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <ul class="lang-menu" role="listbox" aria-label="Language / ভাষা" hidden>
+    <li role="presentation"><button type="button" role="option" class="lang-opt" data-lang="bn" aria-selected="true"><span class="lang-tick" aria-hidden="true">✓</span><span class="lang-name">বাংলা</span><small>Bengali</small></button></li>
+    <li role="presentation"><button type="button" role="option" class="lang-opt" data-lang="en" aria-selected="false"><span class="lang-tick" aria-hidden="true">✓</span><span class="lang-name">English</span><small>ইংরেজি</small></button></li>
+  </ul>
+</div>
+
     <div id="loader" class="loader">
       <div class="loader-flower">✦</div>
-      <p class="bengali">শুভ বিবাহ</p>
+      <p class="bengali" data-en="Shubho Bibaho">শুভ বিবাহ</p>
       <span>SRIJITA & ARNAB</span>
     </div>
 
@@ -78,7 +90,7 @@
           <div class="envelope-back"></div>
           <div class="envelope-flap"></div>
           <div class="envelope-seal">
-            <span>শুভ বিবাহ</span>
+            <span data-en="Shubho Bibaho">শুভ বিবাহ</span>
           </div>
           <div class="envelope-front"></div>
         </div>
@@ -94,7 +106,7 @@
       <img
         class="cover-bg-image"
         src="assets/cover-card.png"
-        alt="শুভ বিবাহ — Srijita &amp; Arnab, 11 February 2027, Kolkata"
+        alt="শুভ বিবাহ — Srijita &amp; Arnab, 11 February 2027, Kolkata" data-en-alt="Shubho Bibaho — Srijita &amp; Arnab, 11 February 2027, Kolkata"
       />
 
       <button id="enterBtn" class="cover-button">
@@ -117,14 +129,25 @@
           <a href="#srijita">Srijita</a>
           <a href="#arnab">Arnab</a>
           <a href="#culture">Our Culture</a>
-          <a class="biye-link" href="#biye">Biye</a>
-          <a id="navReception" class="reception-link" href="#boubhaat"
-            >Boubhaat</a
-          >
+          <a class="biye-link" href="#biye" data-en="Wedding">Biye</a>
+          <a id="navReception" class="reception-link" href="#boubhaat" data-en="Reception">Boubhaat</a>
           <a href="#rsvp">RSVP</a>
         </nav>
 
-        <button id="menuBtn" class="menu" aria-label="Open menu">☰</button>
+        <div class="nav-tools">
+          <div class="lang lang-nav">
+            <button type="button" class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / ভাষা">
+              <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.4 12h17.2M12 3.4c2.6 2.4 3.9 5.3 3.9 8.6s-1.3 6.2-3.9 8.6c-2.6-2.4-3.9-5.3-3.9-8.6S9.4 5.800 12 3.400Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span class="lang-cur">বাংলা</span>
+              <svg class="lang-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1.500 1.500 6 6l4.500-4.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="lang-menu" role="listbox" aria-label="Language / ভাষা" hidden>
+              <li role="presentation"><button type="button" role="option" class="lang-opt" data-lang="bn" aria-selected="true"><span class="lang-tick" aria-hidden="true">✓</span><span class="lang-name">বাংলা</span><small>Bengali</small></button></li>
+              <li role="presentation"><button type="button" role="option" class="lang-opt" data-lang="en" aria-selected="false"><span class="lang-tick" aria-hidden="true">✓</span><span class="lang-name">English</span><small>ইংরেজি</small></button></li>
+            </ul>
+          </div>
+          <button id="menuBtn" class="menu" aria-label="Open menu">☰</button>
+        </div>
       </header>
 
       <main>
@@ -354,7 +377,7 @@
                 <p class="culture-tag">
                   Traditions, rituals<br />and the stories behind them
                 </p>
-                <p class="culture-bn bengali">
+                <p class="culture-bn bengali" data-en="Our wedding follows the Vedic rites, the union of two hearts before ritual, mantra, the sacred fire and the divine witnesses.&lt;br&gt;In this tradition, every custom carries love, blessings, family, and the promise of a new beginning.">
                   আমাদের বিবাহ হচ্ছে বেদবিধি অনুযায়ী, আচার, মন্ত্র, অগ্নি ও সাক্ষী
                   দৈবতাদের সম্মুখে দুই হৃদয়ের মিলন।<br />এই পরম্পরায় প্রতিটি রীতির
                   মধ্যে আছে ভালোবাসা, আশীর্বাদ, পরিবার ও জীবনের নতুন সূচনার প্রতীক।
@@ -390,9 +413,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t1.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">আশীর্বাদ</h4>
+                  <h4 class="bengali" data-en="Ashirbad">আশীর্বাদ</h4>
                   <em>Blessings</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="Our auspicious journey begins with the blessings of family and loved ones.">
                     পরিবার ও আপনজনের আশীর্বাদে শুরু হয় আমাদের শুভযাত্রা।
                   </p>
                 </div>
@@ -400,9 +423,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t2.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">আইবুড়ো ভাত</h4>
+                  <h4 class="bengali" data-en="Aiburo Bhaat">আইবুড়ো ভাত</h4>
                   <em>Last Meal as Individuals</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="From childhood to youth, one chapter closes as we prepare for a new life.">
                     শৈশব থেকে যৌবন, এক জীবনের অধ্যায় শেষ করে নতুন জীবনের
                     প্রস্তুতি।
                   </p>
@@ -411,9 +434,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t3.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">গায়ে হলুদ</h4>
+                  <h4 class="bengali" data-en="Gaye Holud">গায়ে হলুদ</h4>
                   <em>Haldi Ceremony</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="Purity, glow and auspicious blessings colour the start of a new journey.">
                     শুভ্রতা, আভা ও মঙ্গলবাণে রাঙিয়ে তোলে নতুন জীবনের পথচলা।
                   </p>
                 </div>
@@ -421,9 +444,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t4.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">বরযাত্রা</h4>
+                  <h4 class="bengali" data-en="Boroyatra">বরযাত্রা</h4>
                   <em>The Groom’s Procession</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="The groom arrives amid joy, celebration and the coming together of families.">
                     আনন্দ, উল্লাস ও পরিবারের মিলনে বরের আগমন।
                   </p>
                 </div>
@@ -431,9 +454,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t5.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">শুভ দৃষ্টি</h4>
+                  <h4 class="bengali" data-en="Shubho Drishti">শুভ দৃষ্টি</h4>
                   <em>The First Glance</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="The first glance between two hearts: shyness, sweetness and the start of a new chapter.">
                     দুই প্রকাণ্ডে প্রথম দেখা, লজ্জা, মধুরতা ও নতুন অধ্যায়ের
                     সূচনা।
                   </p>
@@ -442,9 +465,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t6.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">মালা বদল</h4>
+                  <h4 class="bengali" data-en="Mala Bodol">মালা বদল</h4>
                   <em>Exchange of Garlands</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="A beautiful moment of two hearts accepting and acknowledging each other.">
                     দুই হৃদয়ের গ্রহণা ও স্বীকৃতির এক সুন্দর মুহূর্ত।
                   </p>
                 </div>
@@ -452,9 +475,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t7.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">সপ্তপদী</h4>
+                  <h4 class="bengali" data-en="Saptapadi">সপ্তপদী</h4>
                   <em>Seven Steps</em>
-                  <p class="bengali">
+                  <p class="bengali" data-en="With the sacred fire as witness, seven steps together become a lifelong vow.">
                     অগ্নিকে সাক্ষী রেখে সাতটি পদক্ষেপ একসঙ্গে জীবনের প্রতিজ্ঞা।
                   </p>
                 </div>
@@ -462,9 +485,9 @@
               <li class="ritual reveal">
                 <img src="assets/design/culture/t8.jpg" alt="" />
                 <div>
-                  <h4 class="bengali">সিঁদুরদান</h4>
+                  <h4 class="bengali" data-en="Sindoor Daan">সিঁদুরদান</h4>
                   <em>Vermilion</em>
-                  <p class="bengali">চিরসঙ্গীর চিহ্ন, এক অটুট বন্ধনের প্রতীক।</p>
+                  <p class="bengali" data-en="The mark of a lifelong companion, a symbol of an unbreakable bond.">চিরসঙ্গীর চিহ্ন, এক অটুট বন্ধনের প্রতীক।</p>
                 </div>
               </li>
             </ul>
@@ -475,8 +498,8 @@
             <div class="cq-in">
               <img src="assets/design/culture/river.jpg" alt="" />
               <blockquote class="bengali">
-                <p>“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
-                <cite>— রবীন্দ্রনাথ ঠাকুর</cite>
+                <p data-en="“When the rivers of two hearts flow into one”">“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
+                <cite data-en="— Rabindranath Tagore">— রবীন্দ্রনাথ ঠাকুর</cite>
               </blockquote>
             </div>
           </div>
@@ -495,51 +518,51 @@
 
 
             <div class="inv bengali reveal">
-              <p class="inv-invoke">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
+              <p class="inv-invoke" data-en="॥ Shri Shri Prajapataye Namah ॥">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
               <b class="orn">❖</b>
-              <h2 class="inv-title">শুভ পরিণয়</h2>
-              <p class="inv-quote">“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
-              <p class="inv-by">রবীন্দ্রনাথ ঠাকুর</p>
+              <h2 class="inv-title" data-en="The Wedding">শুভ পরিণয়</h2>
+              <p class="inv-quote" data-en="“When the rivers of two hearts flow into one”">“দুই হৃদয়ের নদী একত্র মিলিল যদি”</p>
+              <p class="inv-by" data-en="Rabindranath Tagore">রবীন্দ্রনাথ ঠাকুর</p>
               <div class="rule"><i></i><b>❖</b><i></i></div>
 
-              <p class="inv-p">
+              <p class="inv-p" data-en="By the grace of the Almighty,&lt;br&gt;my beloved granddaughter">
                 পরম মঙ্গলময়ের আশিসে<br />আমার আদরের নাতনি
               </p>
-              <p class="inv-name">সৃজিতা</p>
-              <p class="inv-p">আজ জীবনের এক নতুন অধ্যায়ের দ্বারপ্রান্তে।</p>
-              <p class="inv-p inv-gap">
+              <p class="inv-name" data-en="Srijita">সৃজিতা</p>
+              <p class="inv-p" data-en="stands today on the threshold of a new chapter.">আজ জীবনের এক নতুন অধ্যায়ের দ্বারপ্রান্তে।</p>
+              <p class="inv-p inv-gap" data-en="In this moment of great joy,&lt;br&gt;may the love, blessings and good wishes&lt;br&gt;of her loved ones make her wedding complete.&lt;br&gt;With this heartfelt wish, you and your family&lt;br&gt;are warmly invited by">
                 সেই পরম আনন্দের ক্ষণে<br />আপনজনের স্নেহ, আশীর্বাদ ও
                 শুভকামনায়<br />তাহার বিবাহের মঙ্গলবাস পূর্ণ হউক,<br />এই
                 আন্তরিক অভিলাষে<br />আপনাদের সপরিবারে সাদর আমন্ত্রণ
                 জানাইতেছেন
               </p>
-              <p class="inv-host">শ্রীমতী বেলা শীল</p>
-              <p class="inv-sm">সৃজিতার দিদুন</p>
+              <p class="inv-host" data-en="Smt. Bela Seal">শ্রীমতী বেলা শীল</p>
+              <p class="inv-sm" data-en="Srijita’s grandmother (Didun)">সৃজিতার দিদুন</p>
               <div class="rule"><i></i><b>❖</b><i></i></div>
 
               <div class="inv-parents">
                 <div class="inv-par">
-                  <p class="inv-p">
+                  <p class="inv-p" data-en="Shri Shubhabrata Seal&lt;br&gt;&amp;&lt;br&gt;Smt. Bijli Seal’s&lt;br&gt;beloved daughter">
                     শ্রী শুভব্রত শীল<br />ও<br />শ্রীমতী বিজলী শীলের<br />আদরের
                     কন্যা
                   </p>
-                  <p class="inv-name inv-name-sm">॥ সৃজিতা ॥</p>
+                  <p class="inv-name inv-name-sm" data-en="॥ Srijita ॥">॥ সৃজিতা ॥</p>
                 </div>
-                <div class="inv-mid"><span>সঙ্গে</span><b>❖</b></div>
+                <div class="inv-mid"><span data-en="with">সঙ্গে</span><b>❖</b></div>
                 <div class="inv-par">
-                  <p class="inv-p">
+                  <p class="inv-p" data-en="Shri Samir Deb&lt;br&gt;&amp;&lt;br&gt;Smt. Chandrani Deb’s&lt;br&gt;beloved son">
                     শ্রী সমীর দেব<br />ও<br />শ্রীমতী চন্দ্রানী দেবের<br />আদরের
                     পুত্র
                   </p>
-                  <p class="inv-name inv-name-sm">॥ অর্ণব ॥</p>
+                  <p class="inv-name inv-name-sm" data-en="॥ Arnab ॥">॥ অর্ণব ॥</p>
                 </div>
               </div>
 
-              <p class="inv-p">
+              <p class="inv-p" data-en="Two loved ones from two homes,&lt;br&gt;the affection of two families,&lt;br&gt;will be bound in one auspicious hour&lt;br&gt;by a single bond of kinship.">
                 দুই ঘরের দুই আপনজন,<br />দুই পরিবারের স্নেহধারা,<br />এক
                 শুভলগ্নে বাঁধা পড়িবে<br />একই আত্মীয়তার বন্ধনে।
               </p>
-              <p class="inv-p inv-gap">
+              <p class="inv-p inv-gap" data-en="So this day is not only&lt;br&gt;the day of Srijita and Arnab’s wedding,&lt;br&gt;but the day two families become one.">
                 তাই এই দিনটি শুধু<br />সৃজিতা ও অর্ণবের পরিণয়ের দিন
                 নহে,<br />দুই পরিবারেরও আপন হইয়া ওঠার দিন।
               </p>
@@ -547,13 +570,13 @@
               <div class="inv-info inv-info-2">
                 <div class="inv-cell">
                   <svg class="ic"><use href="#i-cal" /></svg>
-                  <strong>১১ই ফেব্রুয়ারি ২০২৭</strong>
-                  <span>বৃহস্পতিবার</span>
+                  <strong data-en="11 February 2027">১১ই ফেব্রুয়ারি ২০২৭</strong>
+                  <span data-en="Thursday">বৃহস্পতিবার</span>
                 </div>
                 <div class="inv-cell">
                   <svg class="ic"><use href="#i-clock" /></svg>
-                  <strong>সন্ধ্যা ৫টা ৩০ মিনিট হইতে</strong>
-                  <span>বিবাহবাসর</span>
+                  <strong data-en="From 5:30 PM">সন্ধ্যা ৫টা ৩০ মিনিট হইতে</strong>
+                  <span data-en="Wedding ceremony">বিবাহবাসর</span>
                 </div>
               </div>
 
@@ -576,15 +599,15 @@
         <path d="M-8 108 C60 100 120 92 180 80 S300 58 368 52" stroke="#fff6e0" stroke-width="9" fill="none" />
         <path d="M60 -6 L86 168" stroke="#fff6e0" stroke-width="3" fill="none" opacity=".9" />
         <path d="M300 168 L282 70" stroke="#fff6e0" stroke-width="3" fill="none" opacity=".9" />
-        <text class="vm-road"><textPath href="#vmr1" startOffset="57%">এস. এন. ঘোষ অ্যাভিনিউ</textPath></text>
-        <text class="vm-area" x="38" y="30" text-anchor="middle">রামচন্দ্রপুর</text>
+        <text class="vm-road"><textPath href="#vmr1" startOffset="57%" data-en="S.N. Ghosh Avenue">এস. এন. ঘোষ অ্যাভিনিউ</textPath></text>
+        <text class="vm-area" x="38" y="30" text-anchor="middle" data-en="Ramchandrapur">রামচন্দ্রপুর</text>
         <g>
           <rect x="281" y="35" width="6" height="6" transform="rotate(45 284 38)" fill="#c59b57" stroke="#6f102d" stroke-width="1.1" />
-          <text class="vm-lm" x="284" y="30" text-anchor="middle">রামকৃষ্ণ মিশন</text>
+          <text class="vm-lm" x="284" y="30" text-anchor="middle" data-en="Ramakrishna Mission">রামকৃষ্ণ মিশন</text>
         </g>
         <g>
           <rect x="25" y="145" width="6" height="6" transform="rotate(45 28 148)" fill="#c59b57" stroke="#6f102d" stroke-width="1.1" />
-          <text class="vm-lm" x="38" y="137" text-anchor="start">নরেন্দ্রপুর স্টেশন</text>
+          <text class="vm-lm" x="38" y="137" text-anchor="start" data-en="Narendrapur Station">নরেন্দ্রপুর স্টেশন</text>
         </g>
         <g transform="translate(180 82)">
           <ellipse class="vm-pulse" cx="0" cy="0" rx="9" ry="4.5" fill="#8e1428" />
@@ -592,8 +615,8 @@
           <path d="M0 0C-4.6-6.6-9-10.6-9-16.4a9 9 0 1 1 18 0C9-10.6 4.6-6.6 0 0Z" fill="#8e1428" stroke="#fbe9c8" stroke-width="1.6" />
           <circle cx="0" cy="-16.4" r="3.5" fill="#fbe9c8" />
         </g>
-        <text class="vm-venue" x="180" y="104" text-anchor="middle">দ্য সিলেক্ট হাউস</text>
-      <text class="vm-area vm-tiny" x="354" y="9" text-anchor="end">আনুমানিক মানচিত্র</text>
+        <text class="vm-venue" x="180" y="104" text-anchor="middle" data-en="The Select House">দ্য সিলেক্ট হাউস</text>
+      <text class="vm-area vm-tiny" x="354" y="9" text-anchor="end" data-en="Approximate map">আনুমানিক মানচিত্র</text>
       </svg>
                 </a>
                 <a class="vm-btn pill-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Select+House+The+Shooting+Bari+251+S.N.+Ghosh+Avenue+Narendrapur+Kolkata" aria-label="Open The Select House in Google Maps">
@@ -603,20 +626,20 @@
               </div>
 
               <div class="rule"><i></i><b>❖</b><i></i></div>
-              <p class="inv-p">
+              <p class="inv-p" data-en="In the sound of conch shells and the glow&lt;br&gt;of sacred lamps, as their journey begins,&lt;br&gt;in that blessed hour, may your presence&lt;br&gt;be a part of our joy,&lt;br&gt;and may your blessings be the newlyweds’&lt;br&gt;strength for the days ahead.">
                 শঙ্খধ্বনি, উলুধ্বনি ও মঙ্গলপ্রদীপের আলোয়<br />যখন আরম্ভ হইবে
                 তাহাদের একসঙ্গে পথচলা,<br />সেই শুভক্ষণে আপনাদের
                 উপস্থিতি<br />হউক আমাদের আনন্দের অংশ,<br />আর আপনাদের
                 আশীর্বাদ<br />হউক নবদম্পতির আগামী দিনের পাথেয়।
               </p>
               <div class="rule"><i></i><b>❖</b><i></i></div>
-              <p class="inv-sign">সৃজিতা • অর্ণব</p>
-              <p class="inv-sm">
+              <p class="inv-sign" data-en="Srijita • Arnab">সৃজিতা • অর্ণব</p>
+              <p class="inv-sm" data-en="May your gracious presence&lt;br&gt;bless this celebration of ours.">
                 আপনাদের শুভাগমনেই<br />মঙ্গলময় হউক আমাদের এই আনন্দ-আয়োজন।
               </p>
             </div>
 
-            <a class="inv-btn pill-btn only-both" href="#boubhaat">
+            <a class="inv-btn pill-btn only-both" href="#boubhaat" data-en="CONTINUE TO RECEPTION DETAILS &lt;span&gt;→&lt;/span&gt;">
               CONTINUE TO BOUBHAAT DETAILS <span>→</span>
             </a>
             <a class="inv-btn pill-btn only-biye" href="#rsvp">
@@ -643,24 +666,24 @@
 
 
             <div class="inv bengali reveal">
-              <p class="inv-invoke">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
+              <p class="inv-invoke" data-en="॥ Shri Shri Prajapataye Namah ॥">॥ শ্রী শ্রী প্রজাপতয়ে নমঃ ॥</p>
               <b class="orn">❖</b>
-              <h2 class="inv-title">শুভ বৌভাত</h2>
+              <h2 class="inv-title" data-en="The Reception">শুভ বৌভাত</h2>
 
-              <p class="inv-p">
+              <p class="inv-p" data-en="By the grace of the Almighty,&lt;br&gt;our beloved">
                 পরম মঙ্গলময়ের আশিসে<br />আমাদের আদরের
               </p>
-              <p class="inv-name">॥ অর্ণব ॥</p>
-              <p class="inv-p">
+              <p class="inv-name" data-en="॥ Arnab ॥">॥ অর্ণব ॥</p>
+              <p class="inv-p" data-en="has stepped into a new chapter of life,&lt;br&gt;and onto the path of a new home,&lt;br&gt;with his own companion.">
                 জীবনের নব অধ্যায়ে<br />আপন সঙ্গিনীকে লইয়া<br />নতুন সংসারের
                 পথে পদার্পণ করিয়াছে।
               </p>
-              <p class="inv-p inv-gap">
+              <p class="inv-p inv-gap" data-en="Through this auspicious marriage,&lt;br&gt;in the bond of two families’ love and kinship,&lt;br&gt;she has come to light up our home">
                 তাহার এই শুভ পরিণয়ে<br />দুই পরিবারের স্নেহ ও আত্মীয়তার
                 বন্ধনে<br />আমাদের ঘর আলো করিয়া আসিয়াছে
               </p>
-              <p class="inv-name">॥ সৃজিতা ॥</p>
-              <p class="inv-p">
+              <p class="inv-name" data-en="॥ Srijita ॥">॥ সৃজিতা ॥</p>
+              <p class="inv-p" data-en="In this moment of great joy,&lt;br&gt;with the heartfelt wish to welcome the newlyweds&lt;br&gt;with your love, blessings and good wishes,&lt;br&gt;you and your family are warmly invited by">
                 এই পরম আনন্দের ক্ষণে<br />নবদম্পতিকে আপনাদের স্নেহ, আশীর্বাদ ও
                 শুভকামনায়<br />বরণ করিয়া লইবার আন্তরিক অভিলাষে<br />আপনাদের
                 সপরিবারে সাদর আমন্ত্রণ জানাইতেছেন
@@ -668,33 +691,33 @@
 
               <div class="inv-parents inv-parents-b">
                 <div class="inv-par inv-par-l">
-                  <p class="inv-host">শ্রী উৎপল দেব</p>
-                  <p class="inv-p">অর্ণবের জেঠু<br />ও</p>
-                  <p class="inv-host">শ্রীমতী ঝর্ণা দত্ত</p>
-                  <p class="inv-p">অর্ণবের মাম্মা</p>
+                  <p class="inv-host" data-en="Shri Utpal Deb">শ্রী উৎপল দেব</p>
+                  <p class="inv-p" data-en="Arnab’s Jethu (uncle)&lt;br&gt;&amp;">অর্ণবের জেঠু<br />ও</p>
+                  <p class="inv-host" data-en="Smt. Jharna Dutta">শ্রীমতী ঝর্ণা দত্ত</p>
+                  <p class="inv-p" data-en="Arnab’s Mamma">অর্ণবের মাম্মা</p>
                 </div>
                 <div class="inv-mid inv-mid-line"><b>❖</b></div>
                 <div class="inv-par">
-                  <p class="inv-host">শ্রী সমীর দেব<br /><small>ও</small></p>
-                  <p class="inv-host">শ্রীমতী চন্দ্রানী দেবের</p>
-                  <p class="inv-p">আদরের পুত্র</p>
-                  <p class="inv-name inv-name-sm">॥ অর্ণব ॥</p>
+                  <p class="inv-host" data-en="Shri Samir Deb&lt;br&gt;&lt;small&gt;&amp;&lt;/small&gt;">শ্রী সমীর দেব<br /><small>ও</small></p>
+                  <p class="inv-host" data-en="Smt. Chandrani Deb’s">শ্রীমতী চন্দ্রানী দেবের</p>
+                  <p class="inv-p" data-en="beloved son">আদরের পুত্র</p>
+                  <p class="inv-name inv-name-sm" data-en="॥ Arnab ॥">॥ অর্ণব ॥</p>
                 </div>
               </div>
 
-              <p class="inv-p inv-with">সঙ্গে</p>
-              <p class="inv-host">শ্রী শুভব্রত শীল</p>
-              <p class="inv-p inv-tight">ও</p>
-              <p class="inv-host">শ্রীমতী বিজলী শীলের</p>
-              <p class="inv-p">আদরের কন্যা</p>
-              <p class="inv-name">॥ সৃজিতা ॥</p>
+              <p class="inv-p inv-with" data-en="with">সঙ্গে</p>
+              <p class="inv-host" data-en="Shri Shubhabrata Seal">শ্রী শুভব্রত শীল</p>
+              <p class="inv-p inv-tight" data-en="&amp;">ও</p>
+              <p class="inv-host" data-en="Smt. Bijli Seal’s">শ্রীমতী বিজলী শীলের</p>
+              <p class="inv-p" data-en="beloved daughter">আদরের কন্যা</p>
+              <p class="inv-name" data-en="॥ Srijita ॥">॥ সৃজিতা ॥</p>
 
-              <p class="inv-p">
+              <p class="inv-p" data-en="Two streams of love from two homes&lt;br&gt;have merged today in the joy of one family.&lt;br&gt;The kinship begun in the sacred bond of marriage,&lt;br&gt;this Boubhaat evening,&lt;br&gt;let it grow ever closer, ever deeper.">
                 দুই ঘরের দুই স্নেহধারা<br />আজ মিলিয়াছে একই পরিবারের
                 আনন্দে।<br />বিবাহের মঙ্গলবন্ধনে যে আত্মীয়তার সূচনা,<br />বৌভাতের
                 এই সন্ধ্যায়<br />তাহাই হউক আরও আপন, আরও নিবিড়।
               </p>
-              <p class="inv-p inv-gap">
+              <p class="inv-p inv-gap" data-en="So this gathering is not only&lt;br&gt;the Boubhaat of Arnab and Srijita,&lt;br&gt;but a joyful evening to celebrate, with loved ones,&lt;br&gt;the new bond between two families.">
                 তাই এই আয়োজন শুধু<br />অর্ণব ও সৃজিতার বৌভাত নহে,<br />দুই
                 পরিবারের নববন্ধন<br />আপনজনের সহিত উদযাপনেরও এক আনন্দসন্ধ্যা।
               </p>
@@ -702,16 +725,16 @@
               <div class="inv-info">
                 <div class="inv-cell">
                   <svg class="ic"><use href="#i-cal" /></svg>
-                  <strong>১৩ই ফেব্রুয়ারি ২০২৭</strong>
-                  <span>শনিবার</span>
+                  <strong data-en="13 February 2027">১৩ই ফেব্রুয়ারি ২০২৭</strong>
+                  <span data-en="Saturday">শনিবার</span>
                 </div>
                 <div class="inv-cell">
                   <svg class="ic"><use href="#i-clock" /></svg>
-                  <strong>সন্ধ্যা ৬টা হইতে</strong>
+                  <strong data-en="From 6:00 PM">সন্ধ্যা ৬টা হইতে</strong>
                 </div>
                 <div class="inv-cell">
                   <svg class="ic"><use href="#i-food" /></svg>
-                  <strong>বৌভাত ও প্রীতিভোজ</strong>
+                  <strong data-en="Reception &amp; dinner">বৌভাত ও প্রীতিভোজ</strong>
                 </div>
               </div>
 
@@ -731,29 +754,29 @@
         <path d="M120 -6 C124 30 128 70 134 168" stroke="#fff6e0" stroke-width="3" fill="none" opacity=".9" />
         <path d="M-8 118 C60 112 110 118 150 124 S250 118 368 100" stroke="#fff6e0" stroke-width="3" fill="none" opacity=".9" />
         <path d="M162 70 C168 92 170 110 168 126" stroke="#fff6e0" stroke-width="3.6" fill="none" />
-        <text class="vm-road"><textPath href="#vmr2" startOffset="19%">গড়িয়াহাট রোড</textPath></text>
-        <text class="vm-road" x="168" y="146" text-anchor="middle" opacity=".0">ডোভার টেরেস</text>
+        <text class="vm-road"><textPath href="#vmr2" startOffset="19%" data-en="Gariahat Road">গড়িয়াহাট রোড</textPath></text>
+        <text class="vm-road" x="168" y="146" text-anchor="middle" opacity=".0" data-en="Dover Terrace">ডোভার টেরেস</text>
         <g>
           <rect x="47" y="39" width="6" height="6" transform="rotate(45 50 42)" fill="#c59b57" stroke="#6f102d" stroke-width="1.1" />
-          <text class="vm-lm" x="40" y="30" text-anchor="start">গড়িয়াহাট মোড়</text>
+          <text class="vm-lm" x="40" y="30" text-anchor="start" data-en="Gariahat Crossing">গড়িয়াহাট মোড়</text>
         </g>
         <g>
           <rect x="275" y="115" width="6" height="6" transform="rotate(45 278 118)" fill="#c59b57" stroke="#6f102d" stroke-width="1.1" />
-          <text class="vm-lm" x="278" y="135" text-anchor="middle">বালিগঞ্জ ফাঁড়ি</text>
+          <text class="vm-lm" x="278" y="135" text-anchor="middle" data-en="Ballygunge Phari">বালিগঞ্জ ফাঁড়ি</text>
         </g>
         <g>
           <rect x="249" y="25" width="6" height="6" transform="rotate(45 252 28)" fill="#c59b57" stroke="#6f102d" stroke-width="1.1" />
-          <text class="vm-lm" x="252" y="20" text-anchor="middle">গড়িয়াহাট মার্কেট</text>
+          <text class="vm-lm" x="252" y="20" text-anchor="middle" data-en="Gariahat Market">গড়িয়াহাট মার্কেট</text>
         </g>
-        <text class="vm-area" x="92" y="104" text-anchor="middle">ডোভার টেরেস</text>
+        <text class="vm-area" x="92" y="104" text-anchor="middle" data-en="Dover Terrace">ডোভার টেরেস</text>
         <g transform="translate(180 82)">
           <ellipse class="vm-pulse" cx="0" cy="0" rx="9" ry="4.5" fill="#8e1428" />
           <ellipse cx="0" cy="0.5" rx="6" ry="2.4" fill="rgba(60,5,15,.28)" />
           <path d="M0 0C-4.6-6.6-9-10.6-9-16.4a9 9 0 1 1 18 0C9-10.6 4.6-6.6 0 0Z" fill="#8e1428" stroke="#fbe9c8" stroke-width="1.6" />
           <circle cx="0" cy="-16.4" r="3.5" fill="#fbe9c8" />
         </g>
-        <text class="vm-venue" x="180" y="104" text-anchor="middle">সিংহী প্যালেস</text>
-      <text class="vm-area vm-tiny" x="354" y="9" text-anchor="end">আনুমানিক মানচিত্র</text>
+        <text class="vm-venue" x="180" y="104" text-anchor="middle" data-en="Singhi Palace">সিংহী প্যালেস</text>
+      <text class="vm-area vm-tiny" x="354" y="9" text-anchor="end" data-en="Approximate map">আনুমানিক মানচিত্র</text>
       </svg>
                 </a>
                 <a class="vm-btn pill-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Singhi+Palace+Orchestra+Co-Operative+Housing+Society+Gariahat+Road+Dover+Terrace+Ballygunge+Kolkata+700019" aria-label="Open Singhi Palace in Google Maps">
@@ -763,13 +786,13 @@
               </div>
 
               <b class="orn orn-sm">❖</b>
-              <p class="inv-p">
+              <p class="inv-p" data-en="In the glow of lights and flowers,&lt;br&gt;amid the chatter of loved ones,&lt;br&gt;as this joyful evening comes alive,&lt;br&gt;may your affectionate presence&lt;br&gt;complete our happiness,&lt;br&gt;and may your blessings be the newlyweds’&lt;br&gt;strength for the days ahead.">
                 আলো, ফুল ও আপনজনের কলরবে<br />যখন মুখর হইবে এই আনন্দসন্ধ্যা,<br />তখন
                 আপনাদের সস্নেহ উপস্থিতি<br />হউক আমাদের আনন্দের পূর্ণতা,<br />আর
                 আপনাদের আশীর্বাদ<br />হউক নবদম্পতির আগামী জীবনের পাথেয়।
               </p>
-              <p class="inv-sign">অর্ণব • সৃজিতা</p>
-              <p class="inv-sm">
+              <p class="inv-sign" data-en="Arnab • Srijita">অর্ণব • সৃজিতা</p>
+              <p class="inv-sm" data-en="May your gracious presence and blessings&lt;br&gt;make this Boubhaat celebration&lt;br&gt;of ours complete.">
                 আপনাদের শুভাগমন ও আশীর্বাদে<br />পরিপূর্ণ হউক আমাদের এই<br />বৌভাতের
                 আনন্দ-আয়োজন।
               </p>
@@ -797,16 +820,16 @@
             <div class="rsvp-inner">
               <h2 class="script">Will you<br />celebrate with us?</h2>
 
-              <p class="rsvp-lead for-both">
+              <p class="rsvp-lead for-both" data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Wedding, the Reception, or both.">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Biye, the
                 Boubhaat, or both.
               </p>
-              <p class="rsvp-lead for-biye">
+              <p class="rsvp-lead for-biye" data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Wedding.">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Biye.
               </p>
-              <p class="rsvp-lead for-boubhat">
+              <p class="rsvp-lead for-boubhat" data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Reception.">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Boubhaat.
               </p>
@@ -816,11 +839,11 @@
               <div class="rsvp-choices">
                 <button type="button" class="choice choice-biye" data-rsvp="biye">
                   <svg class="ic"><use href="#i-lotus" /></svg>
-                  <span>I’LL JOIN THE BIYE</span>
+                  <span data-en="I’LL JOIN THE WEDDING">I’LL JOIN THE BIYE</span>
                 </button>
                 <button type="button" class="choice choice-boubhat" data-rsvp="boubhaat">
                   <svg class="ic"><use href="#i-rings" /></svg>
-                  <span>I’LL JOIN THE BOUBHAAT</span>
+                  <span data-en="I’LL JOIN THE RECEPTION">I’LL JOIN THE BOUBHAAT</span>
                 </button>
                 <button type="button" class="choice choice-both" data-rsvp="both">
                   <svg class="ic"><use href="#i-lotus" /></svg>
@@ -856,7 +879,7 @@
 
         <footer class="footer">
           <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
-          <p class="bengali">শুভ বিবাহ</p>
+          <p class="bengali" data-en="Shubho Bibaho">শুভ বিবাহ</p>
           <h2 class="script">Arnab <span>❖</span> Srijita</h2>
           <small>11 FEBRUARY 2027 · 13 FEBRUARY 2027</small>
         </footer>
@@ -872,7 +895,7 @@
           ×
         </button>
 
-        <p class="bengali modal-bn">আপনাদের উপস্থিতি একান্ত কাম্য</p>
+        <p class="bengali modal-bn" data-en="Your presence is our dearest wish">আপনাদের উপস্থিতি একান্ত কাম্য</p>
         <h2 id="rsvpTitle">RSVP</h2>
 
         <form id="rsvpForm">
@@ -885,8 +908,8 @@
             <span>WILL YOU JOIN US?</span>
             <select id="rsvpAttend">
               <option value="">Select</option>
-              <option value="biye" class="page-biye">Joyfully — the Biye (11 Feb)</option>
-              <option value="boubhaat" class="page-reception">Joyfully — the Boubhaat (13 Feb)</option>
+              <option value="biye" class="page-biye" data-en="Joyfully — the Wedding (11 Feb)">Joyfully — the Biye (11 Feb)</option>
+              <option value="boubhaat" class="page-reception" data-en="Joyfully — the Reception (13 Feb)">Joyfully — the Boubhaat (13 Feb)</option>
               <option value="both" class="opt-both">Joyfully — both!</option>
               <option value="no">Regretfully, no</option>
             </select>
@@ -918,7 +941,7 @@
             <p class="rsvp-calendar-label">Save the date</p>
 
             <div id="calendarWedding" class="calendar-row">
-              <span>Biye · 11 Feb, Select House</span>
+              <span data-en="Wedding · 11 Feb, Select House">Biye · 11 Feb, Select House</span>
               <div class="calendar-actions">
                 <a
                   id="calGoogleWedding"
@@ -934,7 +957,7 @@
             </div>
 
             <div id="calendarReception" class="calendar-row">
-              <span>Boubhaat · 13 Feb, Singhi Palace</span>
+              <span data-en="Reception · 13 Feb, Singhi Palace">Boubhaat · 13 Feb, Singhi Palace</span>
               <div class="calendar-actions">
                 <a
                   id="calGoogleReception"
