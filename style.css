@@ -1189,7 +1189,7 @@ a.inv-cell:hover strong {
   position: relative;
   max-width: 860px;
   margin: 0 auto;
-  aspect-ratio: 941 / 772;
+  aspect-ratio: 815 / 772;
   container-type: inline-size;
   overflow: hidden;
 }
@@ -1198,7 +1198,7 @@ a.inv-cell:hover strong {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("assets/design/rsvp.jpg") center / 100% auto no-repeat;
+  background: url("assets/design/rsvp.jpg") right center / 115.46% auto no-repeat;
 }
 .rsvp-inner,
 .rsvp-note {
@@ -1212,24 +1212,24 @@ a.inv-cell:hover strong {
 }
 .rsvp-inner {
   position: absolute;
-  left: 39.2%;
-  width: 35%;
+  left: 29.8%;
+  width: 40.4%;
   top: 19.8%;
   text-align: center;
   color: var(--ink);
 }
 .rsvp-inner h2 {
-  margin: 0 -6cqw 2.2cqw;
-  font-size: 5.3cqw;
+  margin: 0 -6.93cqw 2.54cqw;
+  font-size: 6.12cqw;
   line-height: 1.06;
   white-space: nowrap;
 }
 .rsvp-lead {
   display: none;
-  margin: 0 -3cqw 1.2cqw;
+  margin: 0 -3.46cqw 1.39cqw;
   font-family: var(--serif);
-  font-size: 1.85cqw;
-  line-height: 2.7cqw;
+  font-size: 2.14cqw;
+  line-height: 3.12cqw;
   white-space: nowrap;
   font-weight: 500;
 }
@@ -1239,13 +1239,13 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
   display: block;
 }
 .rsvp-inner .orn-sm {
-  font-size: 1.5cqw;
-  margin: 1cqw 0 1.6cqw;
+  font-size: 1.73cqw;
+  margin: 1.15cqw 0 1.85cqw;
   color: var(--wine2);
 }
 .rsvp-choices {
   display: grid;
-  gap: 1.5cqw;
+  gap: 1.73cqw;
 }
 .choice {
   position: relative;
@@ -1253,9 +1253,9 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 1.15cqw 4.4cqw;
+  padding: 1.33cqw 5.08cqw;
   font-family: var(--serif);
-  font-size: 1.6cqw;
+  font-size: 1.85cqw;
   letter-spacing: 0.06em;
   white-space: nowrap;
   font-weight: 600;
@@ -1269,9 +1269,9 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
 }
 .choice .ic {
   position: absolute;
-  left: 2.2cqw;
-  width: 2.8cqw;
-  height: 2.8cqw;
+  left: 2.54cqw;
+  width: 3.23cqw;
+  height: 3.23cqw;
 }
 .choice:hover {
   background: var(--wine2);
@@ -1280,10 +1280,10 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
 .rsvp-or {
   display: flex;
   align-items: center;
-  gap: 1.6cqw;
-  margin: 2.2cqw 0 1.2cqw;
+  gap: 1.85cqw;
+  margin: 2.54cqw 0 1.39cqw;
   font-family: var(--serif);
-  font-size: 1.5cqw;
+  font-size: 1.73cqw;
   letter-spacing: 0.12em;
   color: var(--ink);
 }
@@ -1295,8 +1295,8 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
 .msg-btn {
   display: inline-flex;
   align-items: center;
-  gap: 1cqw;
-  font-size: 3.3cqw;
+  gap: 1.15cqw;
+  font-size: 3.81cqw;
   line-height: 1.2;
   background: none;
   border: 0;
@@ -1304,8 +1304,8 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
   white-space: nowrap;
 }
 .msg-btn .ic {
-  width: 3cqw;
-  height: 3cqw;
+  width: 3.46cqw;
+  height: 3.46cqw;
 }
 .msg-btn:hover {
   text-decoration: underline;
@@ -1316,34 +1316,34 @@ body.mode-reception-only .rsvp-lead.for-boubhat {
   color: var(--ink);
 }
 .rsvp-note-a {
-  left: 78.6%;
-  width: 19.4%;
+  left: 76.5%;
+  width: 22%;
   top: 29.6%;
   transform: rotate(-5deg);
   text-align: left;
 }
 .rsvp-note-a h3 {
-  margin: 0 0 0.8cqw;
+  margin: 0 0 0.92cqw;
   font-family: var(--script);
   font-weight: 400;
-  font-size: 2.5cqw;
+  font-size: 2.89cqw;
   color: var(--wine2);
   white-space: nowrap;
 }
 .rsvp-note-a p {
-  margin: 0 0 1cqw;
+  margin: 0 0 1.15cqw;
   font-family: var(--serif);
-  font-size: 1.22cqw;
-  line-height: 1.85cqw;
+  font-size: 1.41cqw;
+  line-height: 2.14cqw;
   font-weight: 500;
   white-space: nowrap;
 }
 .rsvp-note-b {
-  left: 77.6%;
-  width: 21%;
+  left: 75.1%;
+  width: 24%;
   top: 74.6%;
   transform: rotate(-9deg);
-  font-size: 2.05cqw;
+  font-size: 2.37cqw;
   line-height: 1.12;
   color: #7a3b2c;
   white-space: nowrap;
@@ -2855,4 +2855,75 @@ html[data-lang="en"] .inv-parents .inv-host {
 html[data-lang="en"] .inv-quote,
 html[data-lang="en"] .inv-by {
   padding: 0 calc(1 * var(--q));
+}
+
+/* =========================================================
+   ALIGNMENT FIXES — RSVP + footer
+   - RSVP artwork is framed so its clear parchment sits on the page's
+     centre line (same axis as the nav, section dividers and footer).
+   - Letter-spaced lines get matching start padding so the trailing
+     tracking gap doesn't push them off-centre.
+========================================================= */
+.footer small {
+  padding-left: 3px; /* balances the 3px letter-spacing after the last glyph */
+  text-wrap: balance;
+}
+.footer h2 {
+  text-wrap: balance;
+}
+.rsvp-or span {
+  padding-left: 0.12em; /* balances the 0.12em tracking on "OR" */
+}
+.choice span {
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .rsvp-note-a p {
+    font-size: max(1.41cqw, 9.5px);
+    line-height: max(2.14cqw, 14px);
+  }
+  .rsvp-note-b {
+    font-size: max(2.37cqw, 14px);
+  }
+}
+@media (max-width: 380px) {
+  .footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .footer small {
+    letter-spacing: 2px;
+    padding-left: 2px;
+  }
+}
+
+@media (max-width: 360px) {
+  .msg-btn {
+    font-size: 24px;
+    gap: 8px;
+  }
+  .msg-btn .ic {
+    width: 20px;
+    height: 20px;
+  }
+  .rsvp-stage {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .rsvp-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .rsvp-inner h2 {
+    font-size: 40px;
+  }
+  .choice {
+    padding-left: 40px;
+    padding-right: 14px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+}
+.rsvp-lead {
+  text-wrap: balance;
 }
