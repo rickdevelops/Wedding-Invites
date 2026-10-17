@@ -128,3 +128,49 @@ map instead, replace the `<svg class="vm-svg">…</svg>` with
 The Google Maps links are the `href`s on the `.vm-card` and `.vm-btn` anchors.
 On screens >= 700px the Biye/Boubhaat text scale (`--u`) was reduced slightly
 (0.95 -> 0.85, 0.8 -> 0.74) to make room for the map.
+
+## Ambient motion (water, flames, sun)
+
+Soft, endlessly looping life on the artwork. Files: `ambient.css` + `ambient.js`
+(linked at the end of `index.html`; delete those two lines to switch it all off).
+
+* **Water** – the river in every picture ripples gently and glitters. The artwork's own
+  pixels are redrawn with a slow wave (14 s loop, built from whole-number waves so it
+  never jumps), so reflections and boats sway naturally.
+* **Diya flames** pulse with a big, warm, uneven glow; the **sun** has a breathing halo and
+  slowly turning rays.
+* **Petals** – jasmine and rose petals drift down every picture (behind the text).
+* **Headings** get a slow gold shimmer sweep.
+* **Opening picture** has a few slow golden motes; the main "Begin the journey" button
+  breathes, and the ❖ dividers glint.
+* Runs only while on screen, ~30 fps (24 on phones), pauses in hidden tabs, and is
+  fully off for visitors with "reduce motion" set on their device.
+* **Tuning:** `ambient.js` → `SCENES` lists, per picture, the water bands
+  `[x0, y0, x1, y1, strength]`, flames `[x, y, size]` and sun `[x, y, size]` in pixels of
+  the original artwork. Raise/lower `strength` for a livelier/calmer ripple, change
+  `PERIOD` for slower/faster water. Glow looks are in `ambient.css`.
+* If you swap an artwork file, update its entry in `SCENES` so the water lines up.
+
+**Not seeing any motion?** The site respects the device setting "reduce motion"
+(Windows: Settings → Accessibility → Visual effects → Animation effects; Mac: Accessibility → Display →
+Reduce motion). Open `index.html?motion=on` to see it regardless. The water is lower
+down in each picture, so scroll to the river to see it.
+
+
+## Ambient motion (ambient.js + ambient.css)
+
+* **Headings** – every title (home, Our Story, Srijita, Arnab, Our Culture, Vedic Marriage,
+  Wedding / Reception cards, RSVP, the note, the footer) has the slow gold shimmer. The words are
+  wrapped in a `<fx-ink>` box that is taller than the line, so the tall swashes of the script
+  lettering (e.g. the A and P of "A Poetic Prelude") are no longer cut off at the top.
+* **Leaves & flowers** – hanging garlands, jasmine strands and foliage sway very gently
+  (`sway:` lists in `SCENES`, edges are fractions of the artwork). Raise the 4th/5th number of a
+  patch (strength, 3-6) to move it more, lower it to move it less.
+* Everything is off for visitors who ask their device for reduced motion
+  (add `?motion=on` to the link to preview it anyway).
+* **Birds** – the gulls over the river in the Boubhaat picture bob and flap slightly
+  (`birds:` in `ambient.js` → `SCENES["boubhaat.jpg"]`: `[x, y, width, height]` per bird, in artwork pixels).
+* Every moving patch (water, leaves, birds) copies the picture's own fade at the top / bottom / sides,
+  so it never looks brighter than the artwork around it.
+* **Hanging strands on Arnab's page** and the **palm trees on the Kolkata map** (Biye, Boubhaat) sway
+  too (extra `sway:` patches; the palms are anchored at the trunk base, so the crown moves most).
