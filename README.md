@@ -24,11 +24,12 @@ map labels, RSVP wording) and uses the Latin serif for the cards.
   `index.html?lang=en` (English) or `?lang=bn`. It combines with the invitation modes and
   hashes, e.g. `index.html?invite=biye&lang=en#rsvp`. Picking a language in the dropdown adds
   / removes `lang=en` in the address bar so the link can be shared as-is.
-* How it works: every translated element has a `data-en="..."` attribute holding its
-  English text (`<br>` = line break). `script.js` → "LANGUAGE" remembers the original
-  Bengali markup and swaps it back and forth. **To change an English line, edit its
-  `data-en` in `index.html`; to change the Bengali, edit the element's normal content.**
-  New text you add only needs a `data-en` to be translatable.
+* How it works: every translated element carries `data-bn="..."` (Bengali) and/or
+  `data-en="..."` (English) (`<br>` = line break); whichever is missing is whatever is written
+  inside the element. `script.js` → "LANGUAGE" swaps them. Bengali is now complete for the
+  whole page (menu, story pages, culture, RSVP, pop-up, toasts, calendar entries). **To change a
+  line, edit its `data-bn` / `data-en` in `index.html`.** aria-labels use `data-bn-aria`.
+  Bengali-mode styling is at the end of `style.css` ("BENGALI MODE").
 * English wording uses *Wedding* / *Reception* for Biye / Boubhaat in the menu, buttons and
   RSVP; the Bengali design is unchanged (still Biye / Boubhaat).
 * Styles: end of `style.css` ("LANGUAGE SWITCH" and "ENGLISH MODE").
@@ -174,3 +175,10 @@ down in each picture, so scroll to the river to see it.
   so it never looks brighter than the artwork around it.
 * **Hanging strands on Arnab's page** and the **palm trees on the Kolkata map** (Biye, Boubhaat) sway
   too (extra `sway:` patches; the palms are anchored at the trunk base, so the crown moves most).
+
+
+## Browser-tab icon
+
+`favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`,
+`icon-512.png`, `site.webmanifest` (linked in `<head>`): a wine-and-gold "AS" monogram.
+The tab title is `Arnab & Srijita — Wedding Invitation` in English and `অর্ণব ও সৃজিতা — শুভ বিবাহ` in Bengali.

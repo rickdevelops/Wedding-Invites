@@ -2927,3 +2927,201 @@ html[data-lang="en"] .inv-by {
 .rsvp-lead {
   text-wrap: balance;
 }
+
+/* =========================================================
+   BENGALI MODE  (html[data-lang="bn"])  — the default language
+   The page text that used to be English (menu, story pages, RSVP,
+   pop-up) is now Bengali. Bengali fonts are added behind the Latin
+   ones, display sizes are eased down (the script face for Latin is
+   very small on the line; Bengali glyphs are much taller), and
+   letter-spacing is removed (tracking breaks Bengali conjuncts).
+========================================================= */
+
+html[data-lang="bn"] {
+  --serif: "Cormorant Garamond", "Noto Serif Bengali", "Kohinoor Bangla",
+    "Bangla Sangam MN", "Nirmala UI", "Vrinda", Georgia, serif;
+  --script: "Great Vibes", "Tiro Bangla", "Noto Serif Bengali",
+    "Kohinoor Bangla", "Bangla Sangam MN", "Nirmala UI", serif;
+  --sans: "DM Sans", "Hind Siliguri", "Noto Sans Bengali", "Kohinoor Bangla",
+    "Bangla Sangam MN", "Nirmala UI", "Segoe UI", sans-serif;
+}
+
+/* ---- no tracking on Bengali ---- */
+html[data-lang="bn"] .loader span,
+html[data-lang="bn"] .envelope-hint,
+html[data-lang="bn"] .cover-button,
+html[data-lang="bn"] .nav-links a,
+html[data-lang="bn"] .stamp,
+html[data-lang="bn"] .pill-btn,
+html[data-lang="bn"] .choice,
+html[data-lang="bn"] .rsvp-or,
+html[data-lang="bn"] .footer small,
+html[data-lang="bn"] .rsvp-button,
+html[data-lang="bn"] .modal-box label,
+html[data-lang="bn"] .rsvp-calendar-label,
+html[data-lang="bn"] .cal-btn,
+html[data-lang="bn"] .rsvp-done-btn {
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[data-lang="bn"] .footer small,
+html[data-lang="bn"] .rsvp-or span {
+  padding-left: 0;
+}
+
+/* the English "TO" between the two cities is dropped: Auckland ✈ Kolkata */
+html[data-lang="bn"] .stamp span:empty {
+  display: none;
+}
+
+/* ---- small UI text: Bengali needs a little more size and air ---- */
+html[data-lang="bn"] .loader span {
+  font-size: 12px;
+  font-family: var(--sans);
+}
+html[data-lang="bn"] .envelope-hint {
+  font-size: 14px;
+}
+html[data-lang="bn"] .cover-button {
+  font-size: 14px;
+}
+html[data-lang="bn"] .nav-links a {
+  font-size: 16px;
+}
+html[data-lang="bn"] .brand-name {
+  font-size: 21px;
+  line-height: 1.25;
+}
+html[data-lang="bn"] .modal-box label {
+  font-size: 13px;
+}
+html[data-lang="bn"] .rsvp-button {
+  font-size: 15px;
+}
+html[data-lang="bn"] .rsvp-calendar-label {
+  font-size: 13px;
+}
+html[data-lang="bn"] .cal-btn,
+html[data-lang="bn"] .rsvp-done-btn {
+  font-size: 13px;
+}
+html[data-lang="bn"] .modal-box h2 {
+  font-size: 38px;
+}
+html[data-lang="bn"] .footer small {
+  font-size: 15px;
+}
+html[data-lang="bn"] .footer h2 {
+  font-size: clamp(36px, 6vw, 52px);
+  line-height: 1.3;
+}
+html[data-lang="bn"] .modal-note {
+  line-height: 1.5;
+}
+
+/* ---- script headings (Tiro Bangla stands in for the Latin script) ---- */
+html[data-lang="bn"] .script {
+  line-height: 1.3;
+}
+html[data-lang="bn"] .col-intro .c-title {
+  font-size: 6.6cqw;
+  line-height: 1.25;
+}
+html[data-lang="bn"] .col-pre .c-title {
+  font-size: 5.2cqw;
+  line-height: 1.25;
+}
+html[data-lang="bn"] .tx-sri-title {
+  font-size: 7.4cqw;
+}
+html[data-lang="bn"] .tx-arn-title {
+  font-size: 9cqw;
+}
+html[data-lang="bn"] .culture-title h2 {
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.25;
+}
+html[data-lang="bn"] .culture-vedic h3 {
+  font-size: clamp(27px, 3.4vw, 34px);
+  line-height: 1.3;
+}
+html[data-lang="bn"] .rsvp-inner h2 {
+  font-size: 4.3cqw;
+  line-height: 1.3;
+}
+html[data-lang="bn"] .rsvp-note-a h3 {
+  font-size: 2.3cqw;
+}
+html[data-lang="bn"] .msg-btn {
+  font-size: 2.8cqw;
+}
+html[data-lang="bn"] .col-sri .c-sub {
+  font-size: 2.7cqw;
+  line-height: 1.35;
+}
+html[data-lang="bn"] .col-arn .c-sub {
+  font-size: 2.7cqw;
+}
+
+/* Bengali on phones: the home plate is a small, picture-sized block, so
+   its Bengali lines get a little more size than the Latin ones had. */
+@media (max-width: 699px) {
+  html[data-lang="bn"] .col-intro .c-title {
+    font-size: 8.4cqw !important;
+    line-height: 1.2 !important;
+  }
+  html[data-lang="bn"] .col-intro .c-sub {
+    font-size: clamp(13px, 3.9cqw, 17px) !important;
+    line-height: 1.35 !important;
+  }
+  html[data-lang="bn"] .col-intro .c-body {
+    font-size: clamp(12px, 3.2cqw, 14.5px) !important;
+    line-height: 1.45 !important;
+  }
+  html[data-lang="bn"] .col-intro .c-btn,
+  html[data-lang="bn"] .p-intro .c-btn {
+    font-size: clamp(12px, 3.4cqw, 15px);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  html[data-lang="bn"] .col .c-title {
+    font-size: clamp(30px, 9vw, 44px) !important;
+    line-height: 1.25 !important;
+  }
+  html[data-lang="bn"] .col .c-sub {
+    font-size: clamp(16px, 4.4vw, 19px) !important;
+  }
+  html[data-lang="bn"] .col .c-p {
+    font-size: clamp(14.5px, 4vw, 16.5px) !important;
+    line-height: 1.7 !important;
+  }
+  html[data-lang="bn"] .p-intro .stamp {
+    font-size: 2cqw;
+  }
+}
+@media (max-width: 699px) {
+  html[data-lang="bn"] .col-intro .c-body {
+    font-size: max(13px, 3.2cqw) !important;
+  }
+  html[data-lang="bn"] .col-intro .c-sub {
+    font-size: max(15px, 3.9cqw) !important;
+  }
+  html[data-lang="bn"] .msg-btn {
+    font-size: 24px;
+  }
+  html[data-lang="bn"] .rsvp-note-a h3 {
+    font-size: 24px;
+  }
+  html[data-lang="bn"] .rsvp-note-b {
+    font-size: 24px;
+  }
+  html[data-lang="bn"] .choice {
+    font-size: 15.5px;
+  }
+  html[data-lang="bn"] .rsvp-or {
+    font-size: 14px;
+  }
+}
+html[data-lang="bn"] .modal-note {
+  font-size: 12.5px;
+}

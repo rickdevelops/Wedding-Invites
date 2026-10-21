@@ -47,7 +47,14 @@
     if (coverImage) {
       coverImage.src = "assets/cover-card-reception.png";
       coverImage.alt = "Reception invitation — Srijita & Arnab, Kolkata";
-      coverImage.removeAttribute("data-en-alt");
+      coverImage.setAttribute(
+        "data-en-alt",
+        "Reception invitation — Srijita & Arnab, Kolkata",
+      );
+      coverImage.setAttribute(
+        "data-bn-alt",
+        "বৌভাতের আমন্ত্রণ — সৃজিতা ও অর্ণব, কলকাতা",
+      );
     }
   }
 
@@ -149,9 +156,14 @@
   /* =========================================================
      LANGUAGE  (Bengali = default / current design, English = translated)
 
-     Every element that has a translation carries it in a data-en
-     attribute. The original (Bengali) markup is remembered once at
-     start-up, so switching back and forth is lossless.
+     Every translated element carries its text in data attributes:
+       data-bn="..."  the Bengali wording      (the default language)
+       data-en="..."  the English wording
+     An element that has only one of the two keeps whatever is written
+     inside it as the other language. "<br>" in a value = line break.
+     (Same idea for aria-label: data-bn-aria, and image alt: data-en-alt /
+     data-bn-alt.) Both versions are remembered at start-up, so switching
+     back and forth is lossless.
 
      Priority: ?lang=en|bn in the link  >  the guest's last choice
      (saved in this browser)  >  Bengali.
@@ -159,28 +171,100 @@
 
   const LANG_KEY = "srijitaArnabLang";
   const TITLES = {
-    bn: "Arnab & Srijita — শুভ বিবাহ",
+    bn: "অর্ণব ও সৃজিতা — শুভ বিবাহ",
     en: "Arnab & Srijita — Wedding Invitation",
   };
   const LANG_LABEL = { bn: "বাংলা", en: "English" };
 
-  const translatable = $$("[data-en]").map((el) => {
+  const translatable = $$("[data-en],[data-bn]").map((el) => {
     const plain =
       el.tagName === "OPTION" ||
       el.namespaceURI !== "http://www.w3.org/1999/xhtml";
+    const original = plain ? el.textContent : el.innerHTML;
+
     return {
       el,
       plain,
-      bn: plain ? el.textContent : el.innerHTML,
-      en: el.getAttribute("data-en"),
+      current: original,
+      bn: el.hasAttribute("data-bn") ? el.getAttribute("data-bn") : original,
+      en: el.hasAttribute("data-en") ? el.getAttribute("data-en") : original,
     };
   });
 
-  const altTargets = $$("[data-en-alt]").map((el) => ({
-    el,
-    bn: el.getAttribute("alt"),
-    en: el.getAttribute("data-en-alt"),
-  }));
+  // Titles are wrapped by ambient.js in an <fx-ink> box (gold shimmer);
+  // write into that box so the shimmer survives a language switch.
+  function setContent(item, value) {
+    if (item.plain) {
+      item.el.textContent = value;
+      return;
+    }
+
+    const ink = item.el.querySelector(":scope > fx-ink");
+    (ink || item.el).innerHTML = value;
+  }
+
+  const altTargets = $$("[data-en-alt],[data-bn-alt]").map((el) => {
+    const original = el.getAttribute("alt") || "";
+
+    return {
+      el,
+      bn: el.hasAttribute("data-bn-alt")
+        ? el.getAttribute("data-bn-alt")
+        : original,
+      en: el.hasAttribute("data-en-alt")
+        ? el.getAttribute("data-en-alt")
+        : original,
+    };
+  });
+
+  const ariaTargets = $$("[data-bn-aria],[data-en-aria]").map((el) => {
+    const original = el.getAttribute("aria-label") || "";
+
+    return {
+      el,
+      bn: el.hasAttribute("data-bn-aria")
+        ? el.getAttribute("data-bn-aria")
+        : original,
+      en: el.hasAttribute("data-en-aria")
+        ? el.getAttribute("data-en-aria")
+        : original,
+    };
+  });
+
+  /* Text that is written by script (RSVP pop-up, toasts). */
+  const I18N = {
+    en: {
+      rsvpTitle: "RSVP",
+      messageTitle: "Message",
+      msgLabelOptional: "A MESSAGE FOR US (OPTIONAL)",
+      msgLabelRequired: "YOUR MESSAGE FOR US",
+      needName: "Please enter your name.",
+      needMessage: "Please write your message.",
+      needResponse: "Please select your response.",
+      thanks: (name) => `Thank you, ${name} ♥`,
+      welcomeBack: (name) => `Welcome back, ${name} ♥`,
+    },
+    bn: {
+      rsvpTitle: "উপস্থিতি",
+      messageTitle: "বার্তা",
+      msgLabelOptional: "আমাদের জন্য একটি বার্তা (ঐচ্ছিক)",
+      msgLabelRequired: "আমাদের জন্য আপনার বার্তা",
+      needName: "অনুগ্রহ করে আপনার নাম লিখুন।",
+      needMessage: "অনুগ্রহ করে আপনার বার্তা লিখুন।",
+      needResponse: "অনুগ্রহ করে আপনার উত্তর বেছে নিন।",
+      thanks: (name) => `ধন্যবাদ, ${name} ♥`,
+      welcomeBack: (name) => `আবার স্বাগতম, ${name} ♥`,
+    },
+  };
+
+  function t(key, ...args) {
+    const value = I18N[currentLang][key];
+
+    return typeof value === "function" ? value(...args) : value;
+  }
+
+  // Assigned further down, once the calendar data exists.
+  let refreshCalendarLanguage = () => {};
 
   function readLangParam() {
     const value = (params.get("lang") || "").toLowerCase();
@@ -208,7 +292,6 @@
   }
 
   let currentLang = "bn";
-  let languageApplied = false;
 
   function applyLanguage(lang, { persist = false } = {}) {
     if (lang !== "en" && lang !== "bn") return;
@@ -233,29 +316,27 @@
 
     currentLang = lang;
     document.documentElement.setAttribute("data-lang", lang);
+    document.documentElement.setAttribute("lang", lang);
     document.title = TITLES[lang];
 
-    // At start-up the page is already in Bengali, so nothing to rewrite.
-    const skipRewrite = !languageApplied && lang === "bn";
-    languageApplied = true;
-
     translatable.forEach((item) => {
-      if (skipRewrite) return;
-
       const value = lang === "en" ? item.en : item.bn;
 
-      if (item.plain) {
-        item.el.textContent = value;
-      } else {
-        item.el.innerHTML = value;
-      }
+      if (value === item.current) return;
+
+      setContent(item, value);
+      item.current = value;
     });
 
     altTargets.forEach((item) => {
-      if (skipRewrite) return;
-
       item.el.setAttribute("alt", lang === "en" ? item.en : item.bn);
     });
+
+    ariaTargets.forEach((item) => {
+      item.el.setAttribute("aria-label", lang === "en" ? item.en : item.bn);
+    });
+
+    refreshCalendarLanguage();
 
     $$(".lang").forEach((widget) => {
       const label = $(".lang-cur", widget);
@@ -557,16 +638,15 @@
     rsvpIntent = choice === "message" ? "message" : "rsvp";
 
     if (rsvpIntent === "message") {
-      if (rsvpTitle) rsvpTitle.textContent = "Message";
-      if (rsvpMsgLabel) rsvpMsgLabel.textContent = "YOUR MESSAGE FOR US";
+      if (rsvpTitle) rsvpTitle.textContent = t("messageTitle");
+      if (rsvpMsgLabel) rsvpMsgLabel.textContent = t("msgLabelRequired");
       if (rsvpMessage) rsvpMessage.required = true;
       if (rsvpAttendWrap) rsvpAttendWrap.hidden = true;
       if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = true;
       if (rsvpAttend) rsvpAttend.required = false;
     } else {
-      if (rsvpTitle) rsvpTitle.textContent = "RSVP";
-      if (rsvpMsgLabel)
-        rsvpMsgLabel.textContent = "A MESSAGE FOR US (OPTIONAL)";
+      if (rsvpTitle) rsvpTitle.textContent = t("rsvpTitle");
+      if (rsvpMsgLabel) rsvpMsgLabel.textContent = t("msgLabelOptional");
       if (rsvpMessage) rsvpMessage.required = false;
       if (rsvpAttendWrap) rsvpAttendWrap.hidden = false;
       if (rsvpGuestsWrap) rsvpGuestsWrap.hidden = false;
@@ -645,6 +725,11 @@
       // 11 Feb 2027, 5:30 PM – 11:30 PM IST
       startUTC: "20270211T120000Z",
       endUTC: "20270211T180000Z",
+      bn: {
+        title: "সৃজিতা ও অর্ণব — বিয়ে (শুভ পরিণয়)",
+        description:
+          "সৃজিতা ও অর্ণবের শুভ বিবাহ। বৃহস্পতিবার ১১ ফেব্রুয়ারি ২০২৭, সন্ধ্যা ৫টা ৩০ মিনিট থেকে, দ্য সিলেক্ট হাউস (শুটিং বাড়ি), নরেন্দ্রপুর, কলকাতা।",
+      },
     },
     reception: {
       title: "Arnab & Srijita — Boubhaat (Reception)",
@@ -655,8 +740,19 @@
       // 13 Feb 2027, 6:00 PM – 11:00 PM IST (end time assumed)
       startUTC: "20270213T123000Z",
       endUTC: "20270213T173000Z",
+      bn: {
+        title: "অর্ণব ও সৃজিতা — বৌভাত (শুভ বৌভাত)",
+        description:
+          "অর্ণব ও সৃজিতার বৌভাত। শনিবার ১৩ ফেব্রুয়ারি ২০২৭, সন্ধ্যা ৬টা থেকে, প্রীতিভোজসহ, সিংহী প্যালেস, গড়িয়াহাট, কলকাতা।",
+      },
     },
   };
+
+  // The event in the guest's current language (address stays as written,
+  // so map apps can find it).
+  function localisedEvent(event) {
+    return currentLang === "bn" && event.bn ? { ...event, ...event.bn } : event;
+  }
 
   function googleCalendarUrl(event) {
     const query = new URLSearchParams({
@@ -718,20 +814,34 @@
   const calGoogleReception = $("#calGoogleReception");
   const calIcsReception = $("#calIcsReception");
 
-  if (calGoogleWedding) {
-    calGoogleWedding.href = googleCalendarUrl(CALENDAR_EVENTS.wedding);
-  }
+  refreshCalendarLanguage = () => {
+    if (calGoogleWedding) {
+      calGoogleWedding.href = googleCalendarUrl(
+        localisedEvent(CALENDAR_EVENTS.wedding),
+      );
+    }
+
+    if (calGoogleReception) {
+      calGoogleReception.href = googleCalendarUrl(
+        localisedEvent(CALENDAR_EVENTS.reception),
+      );
+    }
+  };
+
+  refreshCalendarLanguage();
 
   calIcsWedding?.addEventListener("click", () => {
-    downloadIcsFile(CALENDAR_EVENTS.wedding, "srijita-arnab-biye");
+    downloadIcsFile(
+      localisedEvent(CALENDAR_EVENTS.wedding),
+      "srijita-arnab-biye",
+    );
   });
 
-  if (calGoogleReception) {
-    calGoogleReception.href = googleCalendarUrl(CALENDAR_EVENTS.reception);
-  }
-
   calIcsReception?.addEventListener("click", () => {
-    downloadIcsFile(CALENDAR_EVENTS.reception, "srijita-arnab-boubhaat");
+    downloadIcsFile(
+      localisedEvent(CALENDAR_EVENTS.reception),
+      "srijita-arnab-boubhaat",
+    );
   });
 
   /* =========================================================
@@ -760,17 +870,17 @@
     const isMessage = rsvpIntent === "message";
 
     if (!name) {
-      showToast("Please enter your name.");
+      showToast(t("needName"));
       return;
     }
 
     if (isMessage && !message) {
-      showToast("Please write your message.");
+      showToast(t("needMessage"));
       return;
     }
 
     if (!isMessage && !attending) {
-      showToast("Please select your response.");
+      showToast(t("needResponse"));
       return;
     }
 
@@ -799,7 +909,7 @@
     if (calendarReceptionRow) calendarReceptionRow.hidden = !comingBoubhaat;
     if (rsvpCalendar) rsvpCalendar.hidden = !(comingBiye || comingBoubhaat);
 
-    showToast(`Thank you, ${name} ♥`);
+    showToast(t("thanks", name));
 
     if (!(comingBiye || comingBoubhaat)) {
       setTimeout(closeAndResetRsvp, 3200);
@@ -839,7 +949,7 @@
 
       if (data?.name) {
         setTimeout(() => {
-          showToast(`Welcome back, ${data.name} ♥`);
+          showToast(t("welcomeBack", data.name));
         }, 2400);
       }
     }

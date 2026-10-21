@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,11 +8,19 @@
       name="description"
       content="Wedding invitation for Srijita Seal & Arnab Deb."
     />
+    <meta name="theme-color" content="#6f102d" />
+
+    <!-- Browser-tab icon (favicon) + home-screen icons -->
+    <link rel="icon" href="favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&family=Tiro+Bangla:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
@@ -218,7 +226,7 @@
     <div id="loader" class="loader">
       <div class="loader-flower">✦</div>
       <p class="bengali" data-en="Shubho Bibaho">শুভ বিবাহ</p>
-      <span>SRIJITA & ARNAB</span>
+      <span data-bn="সৃজিতা ও অর্ণব">SRIJITA & ARNAB</span>
     </div>
 
     <!-- ================= ENVELOPE (intro — unchanged) ================= -->
@@ -235,7 +243,7 @@
           <div class="envelope-front"></div>
         </div>
 
-        <p class="envelope-hint">TAP TO OPEN</p>
+        <p class="envelope-hint" data-bn="খুলতে ছুঁয়ে দিন">TAP TO OPEN</p>
       </div>
     </section>
 
@@ -246,11 +254,11 @@
       <img
         class="cover-bg-image"
         src="assets/cover-card.png"
-        alt="শুভ বিবাহ — Srijita &amp; Arnab, 11 February 2027, Kolkata"
+        alt="শুভ বিবাহ — সৃজিতা ও অর্ণব, ১১ ফেব্রুয়ারি ২০২৭, কলকাতা"
         data-en-alt="Shubho Bibaho — Srijita &amp; Arnab, 11 February 2027, Kolkata"
       />
 
-      <button id="enterBtn" class="cover-button">
+      <button id="enterBtn" class="cover-button" data-bn="আমন্ত্রণপত্র খুলুন &lt;span&gt;→&lt;/span&gt;">
         OPEN INVITATION <span>→</span>
       </button>
     </section>
@@ -258,27 +266,27 @@
     <div id="site" class="site">
       <!-- ================= NAV ================= -->
       <header id="nav" class="nav">
-        <a class="brand" href="#home" aria-label="Arnab & Srijita — Home">
-          <span class="brand-name">Arnab</span>
+        <a class="brand" href="#home" aria-label="Arnab & Srijita — Home" data-bn-aria="অর্ণব ও সৃজিতা — মূল পাতা">
+          <span class="brand-name" data-bn="অর্ণব">Arnab</span>
           <span class="brand-orn">❖</span>
-          <span class="brand-name">Srijita</span>
+          <span class="brand-name" data-bn="সৃজিতা">Srijita</span>
         </a>
 
         <nav id="navLinks" class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#story">Our Story</a>
-          <a href="#srijita">Srijita</a>
-          <a href="#arnab">Arnab</a>
-          <a href="#culture">Our Culture</a>
-          <a class="biye-link" href="#biye" data-en="Wedding">Biye</a>
+          <a href="#home" data-bn="সূচনা">Home</a>
+          <a href="#story" data-bn="আমাদের গল্প">Our Story</a>
+          <a href="#srijita" data-bn="সৃজিতা">Srijita</a>
+          <a href="#arnab" data-bn="অর্ণব">Arnab</a>
+          <a href="#culture" data-bn="আমাদের সংস্কৃতি">Our Culture</a>
+          <a class="biye-link" href="#biye" data-en="Wedding" data-bn="বিয়ে">Biye</a>
           <a
             id="navReception"
             class="reception-link"
             href="#boubhaat"
             data-en="Reception"
-            >Boubhaat</a
+             data-bn="বৌভাত">Boubhaat</a
           >
-          <a href="#rsvp">RSVP</a>
+          <a href="#rsvp" data-bn="উপস্থিতি জানান">RSVP</a>
         </nav>
 
         <div class="nav-tools">
@@ -351,7 +359,7 @@
               </li>
             </ul>
           </div>
-          <button id="menuBtn" class="menu" aria-label="Open menu">☰</button>
+          <button id="menuBtn" class="menu" aria-label="Open menu" data-bn-aria="মেনু খুলুন">☰</button>
         </div>
       </header>
 
@@ -363,26 +371,26 @@
           <div class="stage">
             <img class="plate-bg" src="assets/design/intro.jpg" alt="" />
 
-            <p class="tx tx-intro-cap script">Auckland,<br />New Zealand</p>
+            <p class="tx tx-intro-cap script" data-bn="অকল্যান্ড,&lt;br&gt;নিউজিল্যান্ড">Auckland,<br />New Zealand</p>
             <div class="tx tx-intro-stamp stamp">
-              <b>AUCKLAND</b>
+              <b data-bn="অকল্যান্ড">AUCKLAND</b>
               <i>✈</i>
-              <span>TO</span>
-              <b>KOLKATA</b>
+              <span data-bn="">TO</span>
+              <b data-bn="কলকাতা">KOLKATA</b>
             </div>
 
             <div class="col col-intro reveal">
-              <h1 class="c-title script">We have<br />chosen a date</h1>
+              <h1 class="c-title script" data-bn="আমাদের শুভদিন&lt;br&gt;ঠিক হলো">We have<br />chosen a date</h1>
               <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
-              <p class="c-sub">
+              <p class="c-sub" data-bn="দুটি জীবন, দুটি শহর,&lt;br&gt;একটাই ঘর — আমাদের নিজের।">
                 Two lives, two cities,<br />one home to call our own.
               </p>
-              <p class="c-body">
+              <p class="c-body" data-bn="ভিন্ন আকাশ ছেড়ে একই দিগন্তের পথে আমাদের যাত্রা। আমাদের পরিবার আর সেই মানুষদের সঙ্গে আমরা এই আনন্দ ভাগ করে নিতে চাই, যাঁরা আমাদের গল্পটা গড়ে তুলেছেন।">
                 From different skies to a shared horizon, we are coming together
                 to celebrate with our families and the people who shaped our
                 story.
               </p>
-              <a class="c-btn pill-btn" href="#story">
+              <a class="c-btn pill-btn" href="#story" data-bn="যাত্রা শুরু করুন &lt;span&gt;→&lt;/span&gt;">
                 BEGIN THE JOURNEY <span>→</span>
               </a>
             </div>
@@ -399,42 +407,42 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/prelude.jpg" alt="" />
 
-                <p class="tx tx-pre-from script">From<br />New Zealand...</p>
-                <p class="tx tx-pre-to script">...to Kolkata</p>
+                <p class="tx tx-pre-from script" data-bn="নিউজিল্যান্ড&lt;br&gt;থেকে...">From<br />New Zealand...</p>
+                <p class="tx tx-pre-to script" data-bn="...কলকাতায়">...to Kolkata</p>
 
                 <div class="tx tx-pre-stamp-a stamp stamp-ink">
-                  <b>AUCKLAND</b>
-                  <span>DEPARTURE</span>
-                  <em>24 JAN 2027</em>
+                  <b data-bn="অকল্যান্ড">AUCKLAND</b>
+                  <span data-bn="প্রস্থান">DEPARTURE</span>
+                  <em data-bn="২৪ জানুয়ারি ২০২৭">24 JAN 2027</em>
                 </div>
                 <div class="tx tx-pre-stamp-b stamp stamp-red">
-                  <b>KOLKATA</b>
-                  <span>ARRIVAL</span>
-                  <em>22 FEB 2027</em>
+                  <b data-bn="কলকাতা">KOLKATA</b>
+                  <span data-bn="আগমন">ARRIVAL</span>
+                  <em data-bn="২২ ফেব্রুয়ারি ২০২৭">22 FEB 2027</em>
                 </div>
               </div>
             </div>
 
             <div class="col col-pre reveal">
-              <h2 class="c-title script">A Poetic Prelude</h2>
+              <h2 class="c-title script" data-bn="কাব্যিক ভূমিকা">A Poetic Prelude</h2>
               <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
 
-              <p class="c-p c-p1">
+              <p class="c-p c-p1" data-bn="ভালোবাসা আসেনি বজ্র-নিনাদে।&lt;br&gt;এসেছিল নরম পায়ে,&lt;br&gt;যেন এক প্রার্থনা, ধীরে ধীরে চিনে নিচ্ছে নিজের নাম।">
                 Love did not arrive with thunder.<br />It came softly,<br />like
                 a prayer learning its own name.
               </p>
               <b class="c-orn orn">❖</b>
-              <p class="c-p">
+              <p class="c-p" data-bn="দূরত্ব পেরিয়ে,&lt;br&gt;বদলে যাওয়া আকাশ আর অপেক্ষার দিনগুলোর ভেতর দিয়ে,&lt;br&gt;সে বারবার ফিরে এসেছে সেই দুটি হৃদয়েই।">
                 Across distance,<br />through changing skies and waiting
                 days,<br />it kept returning to the same two hearts.
               </p>
               <b class="c-orn orn">❖</b>
-              <p class="c-p">
+              <p class="c-p" data-bn="পথচলা আর ঘরে ফেরার মাঝখানে কোথাও,&lt;br&gt;যা শুরু হয়েছিল গল্প হয়ে,&lt;br&gt;তা-ই হয়ে উঠল এক প্রতিশ্রুতি।">
                 And somewhere between journey and home,<br />what began as a
                 story<br />became a promise.
               </p>
 
-              <a class="c-btn pill-btn" href="#srijita">
+              <a class="c-btn pill-btn" href="#srijita" data-bn="আমাদের গল্পে এগিয়ে চলুন &lt;span&gt;→&lt;/span&gt;">
                 CONTINUE TO OUR STORY <span>→</span>
               </a>
             </div>
@@ -443,18 +451,18 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/prelude.jpg" alt="" />
 
-                <p class="tx tx-pre-from script">From<br />New Zealand...</p>
-                <p class="tx tx-pre-to script">...to Kolkata</p>
+                <p class="tx tx-pre-from script" data-bn="নিউজিল্যান্ড&lt;br&gt;থেকে...">From<br />New Zealand...</p>
+                <p class="tx tx-pre-to script" data-bn="...কলকাতায়">...to Kolkata</p>
 
                 <div class="tx tx-pre-stamp-a stamp stamp-ink">
-                  <b>AUCKLAND</b>
-                  <span>DEPARTURE</span>
-                  <em>24 JAN 2027</em>
+                  <b data-bn="অকল্যান্ড">AUCKLAND</b>
+                  <span data-bn="প্রস্থান">DEPARTURE</span>
+                  <em data-bn="২৪ জানুয়ারি ২০২৭">24 JAN 2027</em>
                 </div>
                 <div class="tx tx-pre-stamp-b stamp stamp-red">
-                  <b>KOLKATA</b>
-                  <span>ARRIVAL</span>
-                  <em>22 FEB 2027</em>
+                  <b data-bn="কলকাতা">KOLKATA</b>
+                  <span data-bn="আগমন">ARRIVAL</span>
+                  <em data-bn="২২ ফেব্রুয়ারি ২০২৭">22 FEB 2027</em>
                 </div>
               </div>
             </div>
@@ -471,32 +479,32 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/srijita.jpg" alt="" />
 
-                <p class="tx tx-sri-from script">From<br />New Zealand...</p>
-                <p class="tx tx-sri-to script">...to<br />Kolkata</p>
-                <p class="tx tx-sri-note script">
+                <p class="tx tx-sri-from script" data-bn="নিউজিল্যান্ড&lt;br&gt;থেকে...">From<br />New Zealand...</p>
+                <p class="tx tx-sri-to script" data-bn="...কলকাতায়">...to<br />Kolkata</p>
+                <p class="tx tx-sri-note script" data-bn="একই শহর।&lt;br&gt;নতুন স্বপ্ন।&lt;br&gt;চিরকাল একসঙ্গে… ♡♡">
                   Same cities.<br />New dreams.<br />Together always… ♡♡
                 </p>
 
-                <h2 class="tx tx-sri-title script">Srijita</h2>
+                <h2 class="tx tx-sri-title script" data-bn="সৃজিতা">Srijita</h2>
               </div>
             </div>
 
             <div class="col col-sri reveal">
-              <p class="c-sub">Where love found<br />its gentlest strength.</p>
+              <p class="c-sub" data-bn="যেখানে ভালোবাসা&lt;br&gt;খুঁজে পেল তার কোমলতম শক্তি।">Where love found<br />its gentlest strength.</p>
               <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
 
-              <p class="c-p c-p1">
+              <p class="c-p c-p1" data-bn="অর্ণবের জীবনে সৃজিতা এল চেনা কোনো গানের মতো, প্রথমে মৃদু, পরে আর কখনো ভোলার নয়। তার মধ্যে অর্ণব পেল শুধু ভালোবাসা নয়, এমন এক সঙ্গী, যার সঙ্গে প্রতিটি ঋতু হয়ে ওঠে আরও অর্থময়।">
                 Srijita came into Arnab’s life like a familiar song, gentle at
                 first and unforgettable thereafter. In her, he found not only
                 love, but a companion with whom every season felt more
                 meaningful.
               </p>
-              <p class="c-p">
+              <p class="c-p" data-bn="তার মধ্যে আছে এক শান্ত উষ্ণতা, যা সাধারণ মুহূর্তকেও স্মৃতি করে তোলে। তার পাশে দূরত্ব মনে হয় কম, স্বপ্ন হয়ে ওঠে আরও বড়ো, আর জীবন শেখে কোমলতায় ফুটে উঠতে।">
                 She carries a quiet warmth that turns ordinary moments into
                 memory. With her, distances felt shorter, dreams grew larger,
                 and life learned how to bloom with tenderness.
               </p>
-              <p class="c-p c-p3">
+              <p class="c-p c-p3" data-bn="একসঙ্গে তারা বড়ো হয়েছে সময়, শহর আর বদলের ভেতর দিয়ে। অর্ণবের গল্পে সৃজিতা কোনো ক্ষণিকের অধ্যায় নয়। সে সেই লাবণ্য, সেই বিস্ময়, সেই ঘর, যাকে অর্ণব বারবার খুঁজে পেয়েছে।">
                 Together, they have grown through time, cities and change. In
                 Arnab’s story, Srijita is not a passing chapter. She is the
                 grace, the wonder and the home he kept finding, again and again.
@@ -508,13 +516,13 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/srijita.jpg" alt="" />
 
-                <p class="tx tx-sri-from script">From<br />New Zealand...</p>
-                <p class="tx tx-sri-to script">...to<br />Kolkata</p>
-                <p class="tx tx-sri-note script">
+                <p class="tx tx-sri-from script" data-bn="নিউজিল্যান্ড&lt;br&gt;থেকে...">From<br />New Zealand...</p>
+                <p class="tx tx-sri-to script" data-bn="...কলকাতায়">...to<br />Kolkata</p>
+                <p class="tx tx-sri-note script" data-bn="একই শহর।&lt;br&gt;নতুন স্বপ্ন।&lt;br&gt;চিরকাল একসঙ্গে… ♡♡">
                   Same cities.<br />New dreams.<br />Together always… ♡♡
                 </p>
 
-                <h2 class="tx tx-sri-title script">Srijita</h2>
+                <h2 class="tx tx-sri-title script" data-bn="সৃজিতা">Srijita</h2>
               </div>
             </div>
           </div>
@@ -530,37 +538,37 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/arnab.jpg" alt="" />
 
-                <p class="tx tx-arn-note script">
+                <p class="tx tx-arn-note script" data-bn="একই&lt;br&gt;শহর&lt;br&gt;ভিন্ন&lt;br&gt;পথ&lt;br&gt;এখন আমাদের&lt;br&gt;একসঙ্গে। ♡">
                   Same<br />Cities<br />Different<br />Journeys<br />Now Ours<br />Together.
                   ♡
                 </p>
-                <p class="tx tx-arn-pol script">
+                <p class="tx tx-arn-pol script" data-bn="আকাশ সেই&lt;br&gt;একই আছে,&lt;br&gt;গল্পটা এখন&lt;br&gt;আরও উজ্জ্বল... ♡&lt;br&gt;- অ">
                   Still the<br />same skies,<br />now a brighter<br />story...
                   ♡<br />- A
                 </p>
 
-                <h2 class="tx tx-arn-title script">Arnab</h2>
+                <h2 class="tx tx-arn-title script" data-bn="অর্ণব">Arnab</h2>
               </div>
             </div>
 
             <div class="col col-arn reveal">
-              <p class="c-sub">Where love found its steady shore.</p>
+              <p class="c-sub" data-bn="যেখানে ভালোবাসা পেল তার স্থির তীর।">Where love found its steady shore.</p>
               <div class="c-rule rule"><i></i><b>❖</b><i></i></div>
 
-              <p class="c-p c-p1">
+              <p class="c-p c-p1" data-bn="অর্ণব সৃজিতার জীবনে এল এক নীরব নিশ্চয়তা নিয়ে, যাকে চেনাতে কোলাহলের প্রয়োজন হয় না। তার মধ্যে সৃজিতা পেল এমন এক হৃদয়, যে স্বপ্ন, দূরত্ব আর নিষ্ঠাকে ধরে রাখতে পারে সমান মমতায়।">
                 Arnab entered Srijita’s life with a quiet certainty, the kind
                 that does not need noise to be known. In him, she found a heart
                 that could hold dreams, distance and devotion with equal grace.
               </p>
               <div class="c-rule c-rule2 rule"><i></i><b>❖</b><i></i></div>
-              <p class="c-p">
+              <p class="c-p" data-bn="সে জোয়ারের পাশে শান্ত এক স্থিরতা, সেই হাত যা ছেড়ে যায় না, সেই উপস্থিতি যা অনিশ্চয়তাকে বদলে দেয় ভরসায়। তার সঙ্গে ভালোবাসা শুধু বুকে রাখার অনুভূতি থাকেনি, হয়ে উঠেছে বিশ্বাস করার মতো এক ভবিষ্যৎ।">
                 He is the calm beside the tide, the hand that stays, and the
                 presence that turns uncertainty into trust. With him, love
                 became not only a feeling to cherish, but a future to believe
                 in.
               </p>
               <div class="c-rule c-rule2 rule"><i></i><b>❖</b><i></i></div>
-              <p class="c-p c-p3">
+              <p class="c-p c-p3" data-bn="একসঙ্গে তারা বেড়ে উঠেছে ধৈর্য, হাসি আর সময়ের ভেতর দিয়ে। সৃজিতার গল্পে অর্ণব শুধু একজন সঙ্গী নয়। সে আশ্রয়, সে প্রতিশ্রুতি, সে সেই আগামী, যাকে সৃজিতা বেছে নিয়েছে।">
                 Together, they have grown through patience, laughter and time.
                 In Srijita’s story, Arnab is not merely a companion. He is the
                 shelter, the promise and the tomorrow she chose.
@@ -571,16 +579,16 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/arnab.jpg" alt="" />
 
-                <p class="tx tx-arn-note script">
+                <p class="tx tx-arn-note script" data-bn="একই&lt;br&gt;শহর&lt;br&gt;ভিন্ন&lt;br&gt;পথ&lt;br&gt;এখন আমাদের&lt;br&gt;একসঙ্গে। ♡">
                   Same<br />Cities<br />Different<br />Journeys<br />Now Ours<br />Together.
                   ♡
                 </p>
-                <p class="tx tx-arn-pol script">
+                <p class="tx tx-arn-pol script" data-bn="আকাশ সেই&lt;br&gt;একই আছে,&lt;br&gt;গল্পটা এখন&lt;br&gt;আরও উজ্জ্বল... ♡&lt;br&gt;- অ">
                   Still the<br />same skies,<br />now a brighter<br />story...
                   ♡<br />- A
                 </p>
 
-                <h2 class="tx tx-arn-title script">Arnab</h2>
+                <h2 class="tx tx-arn-title script" data-bn="অর্ণব">Arnab</h2>
               </div>
             </div>
           </div>
@@ -594,18 +602,15 @@
           <div class="culture-wrap">
             <div class="culture-head">
               <div class="culture-title">
-                <h2 class="script">Bengali<br />Marriage Culture</h2>
-                <p class="culture-tag">
+                <h2 class="script" data-bn="বাঙালি বিবাহের&lt;br&gt;রীতিনীতি">Bengali<br />Marriage Culture</h2>
+                <p class="culture-tag" data-bn="ঐতিহ্য, আচার&lt;br&gt;আর তার পেছনের গল্প">
                   Traditions, rituals<br />and the stories behind them
                 </p>
                 <p
                   class="culture-bn bengali"
                   data-en="Our wedding follows the Vedic rites, the union of two hearts before ritual, mantra, the sacred fire and the divine witnesses.&lt;br&gt;In this tradition, every custom carries love, blessings, family, and the promise of a new beginning."
                 >
-                  আমাদের বিবাহ হচ্ছে বেদবিধি অনুযায়ী, আচার, মন্ত্র, অগ্নি ও
-                  সাক্ষী দৈবতাদের সম্মুখে দুই হৃদয়ের মিলন।<br />এই পরম্পরায়
-                  প্রতিটি রীতির মধ্যে আছে ভালোবাসা, আশীর্বাদ, পরিবার ও জীবনের
-                  নতুন সূচনার প্রতীক।
+                  আমাদের বিবাহ বৈদিক রীতি অনুসারে, আচার, মন্ত্র, অগ্নি ও দেবতাদের সাক্ষী রেখে দুই হৃদয়ের মিলন।<br />এই ঐতিহ্যে প্রতিটি রীতির মধ্যেই মিশে আছে ভালোবাসা, আশীর্বাদ, পরিবারের সান্নিধ্য ও নতুন জীবনের সূচনার প্রতিশ্রুতি।
                 </p>
               </div>
 
@@ -616,10 +621,10 @@
               />
 
               <aside class="culture-vedic">
-                <h3 class="script">Vedic Marriage</h3>
-                <p class="culture-vedic-sub">A Sacred Union</p>
+                <h3 class="script" data-bn="বৈদিক বিবাহ">Vedic Marriage</h3>
+                <p class="culture-vedic-sub" data-bn="এক পবিত্র মিলন">A Sacred Union</p>
                 <b class="orn orn-sm">❖</b>
-                <p>
+                <p data-bn="আমাদের বিবাহ সম্পন্ন হবে বৈদিক রীতি অনুসারে, যেখানে অগ্নি, সেই পবিত্র আগুন, সাক্ষী থাকবেন আমাদের শপথের।&lt;br&gt;মন্ত্র, আচার ও আশীর্বাদের মধ্য দিয়ে আমরা একসঙ্গে এগিয়ে যাব ধর্ম, ভালোবাসা, শ্রদ্ধা আর সাহচর্যে ভরা এক জীবনের পথে।">
                   Our marriage will be solemnised according to Vedic traditions,
                   where agni (the sacred fire) witnesses our vows.<br />Through
                   mantras, rituals and blessings, we take a step together
@@ -638,7 +643,7 @@
                 <img src="assets/design/culture/t1.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Ashirbad">আশীর্বাদ</h4>
-                  <em>Blessings</em>
+                  <em data-bn="শুভ সূচনা">Blessings</em>
                   <p
                     class="bengali"
                     data-en="Our auspicious journey begins with the blessings of family and loved ones."
@@ -651,13 +656,12 @@
                 <img src="assets/design/culture/t2.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Aiburo Bhaat">আইবুড়ো ভাত</h4>
-                  <em>Last Meal as Individuals</em>
+                  <em data-bn="অবিবাহিত জীবনের শেষ ভোজ">Last Meal as Individuals</em>
                   <p
                     class="bengali"
                     data-en="From childhood to youth, one chapter closes as we prepare for a new life."
                   >
-                    শৈশব থেকে যৌবন, এক জীবনের অধ্যায় শেষ করে নতুন জীবনের
-                    প্রস্তুতি।
+                    শৈশব থেকে যৌবন, এক অধ্যায়ের সমাপ্তি, আর নতুন জীবনের প্রস্তুতি।
                   </p>
                 </div>
               </li>
@@ -665,12 +669,12 @@
                 <img src="assets/design/culture/t3.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Gaye Holud">গায়ে হলুদ</h4>
-                  <em>Haldi Ceremony</em>
+                  <em data-bn="হলুদের আচার">Haldi Ceremony</em>
                   <p
                     class="bengali"
                     data-en="Purity, glow and auspicious blessings colour the start of a new journey."
                   >
-                    শুভ্রতা, আভা ও মঙ্গলবাণে রাঙিয়ে তোলে নতুন জীবনের পথচলা।
+                    পবিত্রতা, উজ্জ্বলতা ও মঙ্গলকামনায় রাঙিয়ে ওঠে নতুন জীবনের পথচলা।
                   </p>
                 </div>
               </li>
@@ -678,7 +682,7 @@
                 <img src="assets/design/culture/t4.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Boroyatra">বরযাত্রা</h4>
-                  <em>The Groom’s Procession</em>
+                  <em data-bn="বরের শোভাযাত্রা">The Groom’s Procession</em>
                   <p
                     class="bengali"
                     data-en="The groom arrives amid joy, celebration and the coming together of families."
@@ -691,13 +695,12 @@
                 <img src="assets/design/culture/t5.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Shubho Drishti">শুভ দৃষ্টি</h4>
-                  <em>The First Glance</em>
+                  <em data-bn="প্রথম চোখাচোখি">The First Glance</em>
                   <p
                     class="bengali"
                     data-en="The first glance between two hearts: shyness, sweetness and the start of a new chapter."
                   >
-                    দুই প্রকাণ্ডে প্রথম দেখা, লজ্জা, মধুরতা ও নতুন অধ্যায়ের
-                    সূচনা।
+                    দুই হৃদয়ের প্রথম দৃষ্টিবিনিময়: লজ্জা, মধুরতা আর নতুন অধ্যায়ের সূচনা।
                   </p>
                 </div>
               </li>
@@ -705,12 +708,12 @@
                 <img src="assets/design/culture/t6.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Mala Bodol">মালা বদল</h4>
-                  <em>Exchange of Garlands</em>
+                  <em data-bn="মালা বিনিময়">Exchange of Garlands</em>
                   <p
                     class="bengali"
                     data-en="A beautiful moment of two hearts accepting and acknowledging each other."
                   >
-                    দুই হৃদয়ের গ্রহণা ও স্বীকৃতির এক সুন্দর মুহূর্ত।
+                    দুই হৃদয়ের পরস্পরকে গ্রহণ ও স্বীকারের এক সুন্দর মুহূর্ত।
                   </p>
                 </div>
               </li>
@@ -718,12 +721,12 @@
                 <img src="assets/design/culture/t7.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Saptapadi">সপ্তপদী</h4>
-                  <em>Seven Steps</em>
+                  <em data-bn="সাত পদক্ষেপ">Seven Steps</em>
                   <p
                     class="bengali"
                     data-en="With the sacred fire as witness, seven steps together become a lifelong vow."
                   >
-                    অগ্নিকে সাক্ষী রেখে সাতটি পদক্ষেপ একসঙ্গে জীবনের প্রতিজ্ঞা।
+                    অগ্নিকে সাক্ষী রেখে সাতটি পদক্ষেপ হয়ে ওঠে আজীবনের প্রতিজ্ঞা।
                   </p>
                 </div>
               </li>
@@ -731,7 +734,7 @@
                 <img src="assets/design/culture/t8.jpg" alt="" />
                 <div>
                   <h4 class="bengali" data-en="Sindoor Daan">সিঁদুরদান</h4>
-                  <em>Vermilion</em>
+                  <em data-bn="সিঁদুর পরানো">Vermilion</em>
                   <p
                     class="bengali"
                     data-en="The mark of a lifelong companion, a symbol of an unbreakable bond."
@@ -766,7 +769,7 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/biye.jpg" alt="" />
 
-                <p class="tx tx-biye-kol script">Kolkata</p>
+                <p class="tx tx-biye-kol script" data-bn="কলকাতা">Kolkata</p>
               </div>
             </div>
 
@@ -805,7 +808,7 @@
                 data-en="In this moment of great joy,&lt;br&gt;may the love, blessings and good wishes&lt;br&gt;of her loved ones make her wedding complete.&lt;br&gt;With this heartfelt wish, you and your family&lt;br&gt;are warmly invited by"
               >
                 সেই পরম আনন্দের ক্ষণে<br />আপনজনের স্নেহ, আশীর্বাদ ও
-                শুভকামনায়<br />তাহার বিবাহের মঙ্গলবাস পূর্ণ হউক,<br />এই
+                শুভকামনায়<br />তাহার শুভ বিবাহ পরিপূর্ণ হউক,<br />এই
                 আন্তরিক অভিলাষে<br />আপনাদের সপরিবারে সাদর আমন্ত্রণ জানাইতেছেন
               </p>
               <p class="inv-host" data-en="Smt. Bela Seal">শ্রীমতী বেলা শীল</p>
@@ -1073,9 +1076,10 @@
                   rel="noopener"
                   href="https://www.google.com/maps/search/?api=1&amp;query=Select+House+The+Shooting+Bari+251+S.N.+Ghosh+Avenue+Narendrapur+Kolkata"
                   aria-label="Open The Select House in Google Maps"
+                  data-bn-aria="দ্য সিলেক্ট হাউস গুগল ম্যাপে খুলুন"
                 >
                   <svg class="ic"><use href="#i-pin" /></svg>
-                  OPEN IN GOOGLE MAPS
+                  <span data-bn="গুগল ম্যাপে খুলুন">OPEN IN GOOGLE MAPS</span>
                 </a>
               </div>
 
@@ -1103,10 +1107,10 @@
               class="inv-btn pill-btn only-both"
               href="#boubhaat"
               data-en="CONTINUE TO RECEPTION DETAILS &lt;span&gt;→&lt;/span&gt;"
-            >
+             data-bn="বৌভাতের বিবরণ দেখুন &lt;span&gt;→&lt;/span&gt;">
               CONTINUE TO BOUBHAAT DETAILS <span>→</span>
             </a>
-            <a class="inv-btn pill-btn only-biye" href="#rsvp">
+            <a class="inv-btn pill-btn only-biye" href="#rsvp" data-bn="উপস্থিতি জানাতে চলুন &lt;span&gt;→&lt;/span&gt;">
               CONTINUE TO RSVP <span>→</span>
             </a>
 
@@ -1114,7 +1118,7 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/biye.jpg" alt="" />
 
-                <p class="tx tx-biye-kol script">Kolkata</p>
+                <p class="tx tx-biye-kol script" data-bn="কলকাতা">Kolkata</p>
               </div>
             </div>
           </div>
@@ -1130,7 +1134,7 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/boubhaat.jpg" alt="" />
 
-                <p class="tx tx-bou-kol script">Kolkata</p>
+                <p class="tx tx-bou-kol script" data-bn="কলকাতা">Kolkata</p>
               </div>
             </div>
 
@@ -1461,9 +1465,10 @@
                   rel="noopener"
                   href="https://www.google.com/maps/search/?api=1&amp;query=Singhi+Palace+Orchestra+Co-Operative+Housing+Society+Gariahat+Road+Dover+Terrace+Ballygunge+Kolkata+700019"
                   aria-label="Open Singhi Palace in Google Maps"
+                  data-bn-aria="সিংহী প্যালেস গুগল ম্যাপে খুলুন"
                 >
                   <svg class="ic"><use href="#i-pin" /></svg>
-                  OPEN IN GOOGLE MAPS
+                  <span data-bn="গুগল ম্যাপে খুলুন">OPEN IN GOOGLE MAPS</span>
                 </a>
               </div>
 
@@ -1486,7 +1491,7 @@
               </p>
             </div>
 
-            <a class="inv-btn pill-btn" href="#rsvp">
+            <a class="inv-btn pill-btn" href="#rsvp" data-bn="উপস্থিতি জানাতে চলুন &lt;span&gt;→&lt;/span&gt;">
               CONTINUE TO RSVP <span>→</span>
             </a>
 
@@ -1494,7 +1499,7 @@
               <div class="art-in">
                 <img class="plate-bg" src="assets/design/boubhaat.jpg" alt="" />
 
-                <p class="tx tx-bou-kol script">Kolkata</p>
+                <p class="tx tx-bou-kol script" data-bn="কলকাতা">Kolkata</p>
               </div>
             </div>
           </div>
@@ -1507,12 +1512,12 @@
           <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
           <div class="rsvp-stage">
             <div class="rsvp-inner">
-              <h2 class="script">Will you<br />celebrate with us?</h2>
+              <h2 class="script" data-bn="আমাদের আনন্দে&lt;br&gt;আপনি থাকবেন তো?">Will you<br />celebrate with us?</h2>
 
               <p
                 class="rsvp-lead for-both"
                 data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Wedding, the Reception, or both."
-              >
+               data-bn="আপনার উপস্থিতি&lt;br&gt;আমাদের এই দিনগুলিকে করে তুলবে আরও বিশেষ।&lt;br&gt;বিয়েতে, বৌভাতে, নাকি দুটিতেই থাকছেন,&lt;br&gt;অনুগ্রহ করে আমাদের জানাবেন।">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Biye, the
                 Boubhaat, or both.
@@ -1520,14 +1525,14 @@
               <p
                 class="rsvp-lead for-biye"
                 data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Wedding."
-              >
+               data-bn="আপনার উপস্থিতি&lt;br&gt;আমাদের এই দিনটিকে করে তুলবে আরও বিশেষ।&lt;br&gt;বিয়েতে আপনি থাকছেন কি না,&lt;br&gt;অনুগ্রহ করে আমাদের জানাবেন।">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Biye.
               </p>
               <p
                 class="rsvp-lead for-boubhat"
                 data-en="Your presence will make&lt;br&gt;our days even more special.&lt;br&gt;Please let us know if you will be joining us&lt;br&gt;for the Reception."
-              >
+               data-bn="আপনার উপস্থিতি&lt;br&gt;আমাদের এই দিনটিকে করে তুলবে আরও বিশেষ।&lt;br&gt;বৌভাতে আপনি থাকছেন কি না,&lt;br&gt;অনুগ্রহ করে আমাদের জানাবেন।">
                 Your presence will make<br />our days even more special.<br />Please
                 let us know if you will be joining us<br />for the Boubhaat.
               </p>
@@ -1542,7 +1547,7 @@
                 >
                   <svg class="ic"><use href="#i-lotus" /></svg>
                   <span data-en="I’LL JOIN THE WEDDING"
-                    >I’LL JOIN THE BIYE</span
+                     data-bn="আমি বিয়েতে থাকব">I’LL JOIN THE BIYE</span
                   >
                 </button>
                 <button
@@ -1552,7 +1557,7 @@
                 >
                   <svg class="ic"><use href="#i-rings" /></svg>
                   <span data-en="I’LL JOIN THE RECEPTION"
-                    >I’LL JOIN THE BOUBHAAT</span
+                     data-bn="আমি বৌভাতে থাকব">I’LL JOIN THE BOUBHAAT</span
                   >
                 </button>
                 <button
@@ -1561,11 +1566,11 @@
                   data-rsvp="both"
                 >
                   <svg class="ic"><use href="#i-lotus" /></svg>
-                  <span>I’LL JOIN BOTH</span>
+                  <span data-bn="আমি দুটিতেই থাকব">I’LL JOIN BOTH</span>
                 </button>
               </div>
 
-              <div class="rsvp-or"><i></i><span>OR</span><i></i></div>
+              <div class="rsvp-or"><i></i><span data-bn="অথবা">OR</span><i></i></div>
 
               <button
                 type="button"
@@ -1573,24 +1578,24 @@
                 class="msg-btn script"
                 data-rsvp="message"
               >
-                Send us a message
+                <span data-bn="আমাদের একটি বার্তা পাঠান">Send us a message</span>
                 <svg class="ic"><use href="#i-quill" /></svg>
               </button>
             </div>
 
             <aside class="rsvp-note rsvp-note-a">
-              <h3 class="script">A little note...</h3>
-              <p>
+              <h3 class="script" data-bn="দু-একটি কথা...">A little note...</h3>
+              <p data-bn="আপনি আসুন কাছ থেকেই&lt;br&gt;কিংবা বহু দূর থেকে,&lt;br&gt;আপনার উপস্থিতি, ভালোবাসা ও আশীর্বাদ&lt;br&gt;আমাদের কাছে অমূল্য।">
                 Whether you are travelling<br />from near or far,<br />your
                 presence, love and blessings<br />mean the world to us.
               </p>
-              <p>
+              <p data-bn="আপনার পরিকল্পনার কথা&lt;br&gt;যত তাড়াতাড়ি সম্ভব জানাবেন,&lt;br&gt;যাতে আমরা আয়োজনটা সাজিয়ে নিতে পারি।">
                 Please let us know your plans<br />at your earliest
                 convenience<br />to help us with our arrangements.
               </p>
             </aside>
 
-            <aside class="rsvp-note rsvp-note-b script">
+            <aside class="rsvp-note rsvp-note-b script" data-bn="আলাদা ঠিকানা।&lt;br&gt;একই মানুষ।&lt;br&gt;সবসময় আমরা।">
               Different places.<br />Same people.<br />Always us.
             </aside>
           </div>
@@ -1599,8 +1604,8 @@
         <footer class="footer">
           <div class="sec-edge" aria-hidden="true"><i></i><b>❖</b><i></i></div>
           <p class="bengali" data-en="Shubho Bibaho">শুভ বিবাহ</p>
-          <h2 class="script">Arnab <span>❖</span> Srijita</h2>
-          <small>11 FEBRUARY 2027 · 13 FEBRUARY 2027</small>
+          <h2 class="script" data-bn="অর্ণব &lt;span&gt;❖&lt;/span&gt; সৃজিতা">Arnab <span>❖</span> Srijita</h2>
+          <small data-bn="১১ ফেব্রুয়ারি ২০২৭ · ১৩ ফেব্রুয়ারি ২০২৭">11 FEBRUARY 2027 · 13 FEBRUARY 2027</small>
         </footer>
       </main>
     </div>
@@ -1610,7 +1615,7 @@
       <div class="modal-backdrop"></div>
 
       <div class="modal-box">
-        <button id="modalClose" class="modal-close" aria-label="Close">
+        <button id="modalClose" class="modal-close" aria-label="Close" data-bn-aria="বন্ধ করুন">
           ×
         </button>
 
@@ -1621,40 +1626,40 @@
 
         <form id="rsvpForm">
           <label>
-            <span>YOUR NAME</span>
+            <span data-bn="আপনার নাম">YOUR NAME</span>
             <input id="rsvpName" type="text" required />
           </label>
 
           <label id="rsvpAttendWrap">
-            <span>WILL YOU JOIN US?</span>
+            <span data-bn="আপনি কি আসছেন?">WILL YOU JOIN US?</span>
             <select id="rsvpAttend">
-              <option value="">Select</option>
+              <option value="" data-bn="বেছে নিন">Select</option>
               <option
                 value="biye"
                 class="page-biye"
                 data-en="Joyfully — the Wedding (11 Feb)"
-              >
+               data-bn="সানন্দে — বিয়ে (১১ ফেব্রুয়ারি)">
                 Joyfully — the Biye (11 Feb)
               </option>
               <option
                 value="boubhaat"
                 class="page-reception"
                 data-en="Joyfully — the Reception (13 Feb)"
-              >
+               data-bn="সানন্দে — বৌভাত (১৩ ফেব্রুয়ারি)">
                 Joyfully — the Boubhaat (13 Feb)
               </option>
-              <option value="both" class="opt-both">Joyfully — both!</option>
-              <option value="no">Regretfully, no</option>
+              <option value="both" class="opt-both" data-bn="সানন্দে — দুটিতেই!">Joyfully — both!</option>
+              <option value="no" data-bn="দুঃখিত, আসতে পারছি না">Regretfully, no</option>
             </select>
           </label>
 
           <label id="rsvpGuestsWrap">
-            <span>NUMBER OF GUESTS</span>
+            <span data-bn="অতিথির সংখ্যা">NUMBER OF GUESTS</span>
             <select id="rsvpGuests">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option value="1" data-bn="১">1</option>
+              <option value="2" data-bn="২">2</option>
+              <option value="3" data-bn="৩">3</option>
+              <option value="4" data-bn="৪">4</option>
             </select>
           </label>
 
@@ -1663,19 +1668,19 @@
             <textarea id="rsvpMessage" rows="3"></textarea>
           </label>
 
-          <button type="submit" class="rsvp-button">SEND</button>
+          <button type="submit" class="rsvp-button" data-bn="পাঠান">SEND</button>
         </form>
 
         <div id="rsvpThanks" hidden>
-          <h3>Thank you ♥</h3>
-          <p>Your response has been noted.</p>
+          <h3 data-bn="ধন্যবাদ ♥">Thank you ♥</h3>
+          <p data-bn="আপনার উত্তর আমরা পেয়েছি।">Your response has been noted.</p>
 
           <div id="rsvpCalendar" class="rsvp-calendar" hidden>
-            <p class="rsvp-calendar-label">Save the date</p>
+            <p class="rsvp-calendar-label" data-bn="দিনটি ক্যালেন্ডারে রেখে দিন">Save the date</p>
 
             <div id="calendarWedding" class="calendar-row">
               <span data-en="Wedding · 11 Feb, Select House"
-                >Biye · 11 Feb, Select House</span
+                 data-bn="বিয়ে · ১১ ফেব্রুয়ারি, দ্য সিলেক্ট হাউস">Biye · 11 Feb, Select House</span
               >
               <div class="calendar-actions">
                 <a
@@ -1683,9 +1688,9 @@
                   class="cal-btn"
                   target="_blank"
                   rel="noopener"
-                  >Google Calendar</a
+                   data-bn="গুগল ক্যালেন্ডার">Google Calendar</a
                 >
-                <button id="calIcsWedding" type="button" class="cal-btn">
+                <button id="calIcsWedding" type="button" class="cal-btn" data-bn="অ্যাপল / আউটলুক (.ics)">
                   Apple / Outlook (.ics)
                 </button>
               </div>
@@ -1693,7 +1698,7 @@
 
             <div id="calendarReception" class="calendar-row">
               <span data-en="Reception · 13 Feb, Singhi Palace"
-                >Boubhaat · 13 Feb, Singhi Palace</span
+                 data-bn="বৌভাত · ১৩ ফেব্রুয়ারি, সিংহী প্যালেস">Boubhaat · 13 Feb, Singhi Palace</span
               >
               <div class="calendar-actions">
                 <a
@@ -1701,21 +1706,21 @@
                   class="cal-btn"
                   target="_blank"
                   rel="noopener"
-                  >Google Calendar</a
+                   data-bn="গুগল ক্যালেন্ডার">Google Calendar</a
                 >
-                <button id="calIcsReception" type="button" class="cal-btn">
+                <button id="calIcsReception" type="button" class="cal-btn" data-bn="অ্যাপল / আউটলুক (.ics)">
                   Apple / Outlook (.ics)
                 </button>
               </div>
             </div>
           </div>
 
-          <button id="rsvpDone" type="button" class="rsvp-done-btn">
+          <button id="rsvpDone" type="button" class="rsvp-done-btn" data-bn="বন্ধ করুন">
             Close
           </button>
         </div>
 
-        <small class="modal-note">
+        <small class="modal-note" data-bn="ডেমো মোড: আপনার উত্তর শুধু এই ব্রাউজারেই সংরক্ষিত থাকে।">
           Demo mode: RSVP is stored in this browser only.
         </small>
       </div>
