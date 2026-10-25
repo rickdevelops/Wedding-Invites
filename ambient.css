@@ -160,6 +160,7 @@
   html:not(.fx-force) .fx-glow,
   html:not(.fx-force) .fx-motes,
   html:not(.fx-force) .fx-petals,
+  html:not(.fx-force) .fx-blooms,
   html:not(.fx-force) .fx-rays {
     display: none;
   }
@@ -184,6 +185,7 @@
 .fx-off .fx-glow,
 .fx-off .fx-motes,
 .fx-off .fx-petals,
+.fx-off .fx-blooms,
 .fx-off .fx-rays,
 .fx-off .fx-water,
 .fx-off .fx-sway {
@@ -300,3 +302,55 @@ html[data-lang="en"] .inv .inv-title.fx-title {
   /* the water mask already feathers the edges; sway patches reuse it */
   pointer-events: none;
 }
+
+/* ---------- falling flowers: a quiet, occasional shower ----------
+   ambient.js adds a few flowers after the visitor scrolls / swipes; each
+   falls once and fades away, so there is never constant motion.
+   Three nested boxes keep the fall, the sway and the slow turn separate. */
+.fx-blooms {
+  position: fixed;
+  inset: 0;
+  z-index: 1800; /* over the pictures, under the menu (2000) and pop-ups */
+  overflow: hidden;
+  pointer-events: none;
+}
+.fx-bloom {
+  position: absolute;
+  top: 0;
+  width: var(--s, 20px);
+  height: var(--s, 20px);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fx-bloom-fall 13s linear 1 both;
+}
+.fx-bloom > i,
+.fx-bloom > i > i {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.fx-bloom > i {
+  animation: fx-bloom-sway 6s ease-in-out infinite;
+}
+.fx-bloom > i > i {
+  background: center / contain no-repeat;
+  filter: drop-shadow(0 1px 3px rgba(40, 8, 12, 0.4));
+  animation: fx-bloom-turn 10s ease-in-out infinite;
+}
+@keyframes fx-bloom-fall {
+  0%   { transform: translateY(-8vh); opacity: 0; }
+  12%  { opacity: var(--o, 0.88); }
+  75%  { opacity: var(--o, 0.88); }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+@keyframes fx-bloom-sway {
+  0%,
+  100% { transform: translateX(calc(var(--sway) * -1)); }
+  50%  { transform: translateX(var(--sway)); }
+}
+@keyframes fx-bloom-turn {
+  0%,
+  100% { transform: rotate(0deg) rotateX(0deg); }
+  50%  { transform: rotate(var(--turn)) rotateX(45deg); }
+}
+.fx-blooms.fx-paused * { animation-play-state: paused !important; }

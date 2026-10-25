@@ -499,6 +499,129 @@
   });
 
   /* =========================================================
+     FALLING FLOWERS — an occasional, quiet shower after a scroll / swipe
+     The same two flowers that are in the artwork's garlands (ivory jasmine
+     and crimson blossoms), drawn small and soft. Nothing falls while the
+     page is still: when the visitor scrolls or swipes a fair distance, a
+     handful (8 on desktop, 6 on phones) drift down once and fade away,
+     then it rests for at least 16 s before it can happen again.
+     To tune: COUNT, REST (seconds between showers), DIST (how far the
+     visitor must scroll), SIZE and PEAK (how visible, 0-1).
+  ========================================================= */
+  (() => {
+    const phone = window.innerWidth < 700;
+    const COUNT = phone ? 6 : 8;
+    const REST = 16000; // ms of calm between showers
+    const DIST = 700; // px of scrolling that wakes a shower
+    const SIZE = phone ? [20, 30] : [26, 40];
+    const PEAK = 0.88; // top opacity: clearly there, still soft
+
+    const svg = (inner) =>
+      "url(\"data:image/svg+xml;utf8," +
+      encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">' + inner + "</svg>") +
+      "\")";
+    const grad = (id, a, b) =>
+      '<defs><radialGradient id="' + id + '" cx="50%" cy="25%" r="85%"><stop offset="0" stop-color="' + a +
+      '"/><stop offset="1" stop-color="' + b + '"/></radialGradient></defs>';
+    const ring = (n, d, fill, stroke) => {
+      let s = "";
+      for (let i = 0; i < n; i++) {
+        s += '<path d="' + d + '" fill="' + fill + '" stroke="' + stroke +
+          '" stroke-width="1" stroke-linejoin="round" transform="rotate(' + (i * 360) / n + ')"/>';
+      }
+      return s;
+    };
+    const FLOWERS = [
+      // ivory jasmine: five soft pointed petals, warm golden heart
+      svg(grad("j", "#fffaf0", "#ecd9ae") +
+        ring(5, "M0 -2 C 11 -9 13 -27 0 -41 C -13 -27 -11 -9 0 -2 Z", "url(#j)", "#d9c28c") +
+        '<circle r="6.5" fill="#f0c25a"/><circle r="2.6" fill="#d98a2b"/>'),
+      // crimson blossom, as in the garland's red flowers
+      svg(grad("r", "#e8465c", "#8c1427") +
+        ring(5, "M0 -2 C 15 -8 17 -30 0 -39 C -17 -30 -15 -8 0 -2 Z", "url(#r)", "#690d1c") +
+        '<circle r="5.5" fill="#f3d27a"/><circle r="2.2" fill="#c98a24"/>'),
+    ];
+    const PICK = [0, 0, 1, 0, 1]; // mostly jasmine, some red
+
+    const layer = document.createElement("div");
+    layer.className = "fx-blooms";
+    layer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(layer);
+
+    const rand = Math.random; // each shower is a little different
+    let lastShower = -Infinity;
+    function shower(extra) {
+      lastShower = performance.now();
+      const n = COUNT + (extra || 0);
+      for (let i = 0; i < n; i++) {
+        const fall = document.createElement("i");
+        fall.className = "fx-bloom";
+        const sway = document.createElement("i");
+        const spin = document.createElement("i");
+        const dur = 11 + rand() * 5; // 11-16 s, slow
+        const size = SIZE[0] + rand() * (SIZE[1] - SIZE[0]);
+        // one flower per slice of the width so they never bunch together
+        fall.style.left = ((i + 0.2 + rand() * 0.6) / n) * 100 + "%";
+        fall.style.setProperty("--s", size + "px");
+        fall.style.setProperty("--o", PEAK);
+        fall.style.animationDuration = dur + "s";
+        fall.style.animationDelay = rand() * 3 + "s"; // trickle, not a burst
+        sway.style.setProperty("--sway", 14 + rand() * 26 + "px");
+        sway.style.animationDuration = 5 + rand() * 3 + "s";
+        sway.style.animationDelay = -rand() * 6 + "s";
+        spin.style.backgroundImage = FLOWERS[PICK[(i + Math.floor(rand() * 5)) % PICK.length]];
+        spin.style.setProperty("--turn", (rand() < 0.5 ? -1 : 1) * (90 + rand() * 120) + "deg");
+        spin.style.animationDuration = 8 + rand() * 5 + "s";
+        spin.style.animationDelay = -rand() * 8 + "s";
+        sway.appendChild(spin);
+        fall.appendChild(sway);
+        // a flower falls once, then removes itself
+        fall.addEventListener("animationend", (e) => {
+          if (e.target === fall) fall.remove();
+        });
+        layer.appendChild(fall);
+      }
+    }
+
+    // a welcome shower as soon as the invitation opens (the envelope and
+    // cover screens sit on top until then, so it would be hidden any earlier)
+    let welcomed = false;
+    const siteEl = document.getElementById("site");
+    const welcome = () => {
+      if (welcomed || !siteEl || !siteEl.classList.contains("show")) return;
+      welcomed = true;
+      setTimeout(() => shower(3), 600); // a slightly fuller first one
+    };
+    welcome(); // already showing (direct link)
+    siteEl && new MutationObserver(welcome).observe(siteEl, { attributes: true, attributeFilter: ["class"] });
+
+    // wake a shower after a good stretch of scrolling / swiping
+    let lastY = window.scrollY;
+    let travelled = 0;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        travelled += Math.abs(y - lastY);
+        lastY = y;
+        if (
+          travelled >= DIST &&
+          document.body.classList.contains("site-open") &&
+          !document.hidden &&
+          performance.now() - lastShower > REST &&
+          !layer.childElementCount
+        ) {
+          travelled = 0;
+          shower();
+        } else if (travelled >= DIST && performance.now() - lastShower <= REST) {
+          travelled = DIST * 0.5; // keep some credit, but don't pile up
+        }
+      },
+      { passive: true },
+    );
+  })();
+
+  /* =========================================================
      HEADINGS — the same slow gold shimmer on every title
      (the words are wrapped in one box that is taller than the line, so the
      tall swashes of the script lettering are never cut off; see ambient.css)

@@ -141,6 +141,7 @@ Soft, endlessly looping life on the artwork. Files: `ambient.css` + `ambient.js`
 * **Diya flames** pulse with a big, warm, uneven glow; the **sun** has a breathing halo and
   slowly turning rays.
 * **Petals** – jasmine and rose petals drift down every picture (behind the text).
+* **Falling flowers** – an occasional, quiet shower, once as the invitation opens, then only after the visitor scrolls / swipes a good distance (not continuous): 8 flowers on desktop, 6 on phones (a few more for the first one), drifting down once over ~11–16 s and fading away, then at least 16 s of calm. They are the garland's own flowers (ivory jasmine and crimson blossoms). Click-through; sits under the menu and pop-ups; off for "reduce motion". Tune `COUNT`, `REST`, `DIST`, `SIZE`, `PEAK` in `ambient.js` ("FALLING FLOWERS") and the look in `ambient.css` (`.fx-blooms`).
 * **Headings** get a slow gold shimmer sweep.
 * **Opening picture** has a few slow golden motes; the main "Begin the journey" button
   breathes, and the ❖ dividers glint.
