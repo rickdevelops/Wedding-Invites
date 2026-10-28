@@ -1,0 +1,6 @@
+# Lets the browser-less database trigger call the function without a login token.
+# (The function protects itself with the x-webhook-secret header instead.)
+project_id = "rsvp-db"
+
+[functions.rsvp-email]
+verify_jwt = false

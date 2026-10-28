@@ -183,3 +183,9 @@ down in each picture, so scroll to the river to see it.
 `favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`,
 `icon-512.png`, `site.webmanifest` (linked in `<head>`): a wine-and-gold "AS" monogram.
 The tab title is `Arnab & Srijita — Wedding Invitation` in English and `অর্ণব ও সৃজিতা — শুভ বিবাহ` in Bengali.
+
+## RSVP database + email notification
+
+RSVPs are saved to Supabase (table `rsvps`) and each new row emails the couple via an
+Edge Function + Resend. Full one-time setup: `supabase/SETUP.md`. Config constants are at the
+top of `script.js` (`SUPABASE_URL`, `SUPABASE_KEY`).

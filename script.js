@@ -23,6 +23,16 @@
   const body = document.body;
 
   /* =========================================================
+     SUPABASE (RSVP database)
+     The publishable key is safe to keep in the page: the table
+     only allows INSERT for visitors (see supabase/setup.sql).
+  ========================================================= */
+
+  const SUPABASE_URL = "https://keejwiquaxpqxnbodkin.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_oZ0ALwx1hvMSdXmtRrRUaQ_G_LewHv_";
+  const RSVP_TABLE = "rsvps";
+
+  /* =========================================================
      MODE
   ========================================================= */
 
@@ -241,6 +251,9 @@
       needName: "Please enter your name.",
       needMessage: "Please write your message.",
       needResponse: "Please select your response.",
+      sending: "SENDING…",
+      sendFailed:
+        "Sorry, we couldn’t send your response. Please check your connection and try again.",
       thanks: (name) => `Thank you, ${name} ♥`,
       welcomeBack: (name) => `Welcome back, ${name} ♥`,
     },
@@ -252,6 +265,9 @@
       needName: "অনুগ্রহ করে আপনার নাম লিখুন।",
       needMessage: "অনুগ্রহ করে আপনার বার্তা লিখুন।",
       needResponse: "অনুগ্রহ করে আপনার উত্তর বেছে নিন।",
+      sending: "পাঠানো হচ্ছে…",
+      sendFailed:
+        "দুঃখিত, আপনার উত্তর পাঠানো যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।",
       thanks: (name) => `ধন্যবাদ, ${name} ♥`,
       welcomeBack: (name) => `আবার স্বাগতম, ${name} ♥`,
     },
@@ -860,8 +876,37 @@
 
   rsvpDoneButton?.addEventListener("click", closeAndResetRsvp);
 
-  rsvpForm?.addEventListener("submit", (event) => {
+  // Saves one row in Supabase. The database then triggers the email.
+  async function saveRsvpToSupabase(row) {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${RSVP_TABLE}`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(row),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Supabase responded ${response.status}`);
+    }
+  }
+
+  let rsvpSubmitting = false;
+
+  rsvpForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (rsvpSubmitting) {
+      return;
+    }
+
+    // Hidden "website" field: real guests never fill it, spam bots do.
+    if ($("#rsvpWebsite")?.value) {
+      return;
+    }
 
     const name = $("#rsvpName")?.value.trim() || "";
     const attending = rsvpAttend?.value || "";
@@ -892,11 +937,51 @@
       submittedAt: new Date().toISOString(),
     };
 
-    // Demo only. This does not transmit data to anyone.
+    const submitButton = $(".rsvp-button", rsvpForm);
+    const originalLabel = submitButton ? submitButton.textContent : "";
+
+    rsvpSubmitting = true;
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = t("sending");
+    }
+
+    try {
+      await saveRsvpToSupabase({
+        name,
+        attending: data.attending,
+        guests: data.guests ? Number(data.guests) : null,
+        message: message || null,
+        invite_mode: requestedMode,
+        lang: currentLang,
+      });
+    } catch (error) {
+      console.error("Unable to save RSVP.", error);
+      showToast(t("sendFailed"));
+
+      rsvpSubmitting = false;
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+
+      return; // keep the form open so nothing the guest typed is lost
+    }
+
+    rsvpSubmitting = false;
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+    }
+
+    // Remember on this device so we can say "welcome back".
     try {
       localStorage.setItem("srijitaArnabWeddingRSVP", JSON.stringify(data));
     } catch (error) {
-      console.warn("Unable to save RSVP.", error);
+      console.warn("Unable to remember RSVP on this device.", error);
     }
 
     if (rsvpForm) rsvpForm.hidden = true;
