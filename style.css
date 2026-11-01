@@ -1441,6 +1441,16 @@ body.mode-reception-only .choice-both {
   display: none !important;
 }
 
+/* Footer date line follows the invitation: only the dates a guest is invited to */
+.footer .foot-date {
+  display: none;
+}
+body.mode-both .footer .foot-both,
+body.mode-bi-only .footer .foot-biye,
+body.mode-reception-only .footer .foot-boubhat {
+  display: block;
+}
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -3036,6 +3046,7 @@ html[data-lang="bn"] .tx-sri-title {
 }
 html[data-lang="bn"] .tx-arn-title {
   font-size: 9cqw;
+  text-align: center;
 }
 html[data-lang="bn"] .culture-title h2 {
   font-size: clamp(34px, 5vw, 52px);
